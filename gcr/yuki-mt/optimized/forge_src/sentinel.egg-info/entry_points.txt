@@ -1,0 +1,2 @@
+[console_scripts]
+forge = build_pipeline:main

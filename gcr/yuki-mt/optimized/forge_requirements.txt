@@ -1,0 +1,8 @@
+numpy
+flask
+psutil
+numba
+pyflakes
+google-genai
+python-dotenv
+pytest

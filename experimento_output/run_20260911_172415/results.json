@@ -1,0 +1,61 @@
+{
+  "timestamp": "20260911_172415",
+  "llm_only": {
+    "num_decorators": 1,
+    "import_success": true,
+    "jit_functions": [
+      "_compute_knn_feats",
+      "_compute_knn_feats (compiled)"
+    ],
+    "compilation_errors": [],
+    "errors": [],
+    "analysis": {
+      "label": "LLM-Only",
+      "patterns_found": {
+        "range() sem len()": 1,
+        "dict literal": 2,
+        "class definition": 2,
+        "sklearn import": 4,
+        "os.makedirs": 1,
+        "np.save": 2
+      }
+    }
+  },
+  "llm_plus_ast": {
+    "num_decorators": 9,
+    "import_success": true,
+    "jit_functions": [
+      "_compute_all_features_jit",
+      "_get_test_feature_jit",
+      "_get_train_feature_jit",
+      "compute_distance_to_kth_neighbor",
+      "compute_fraction_of_classes",
+      "compute_mean_distance_to_classes",
+      "compute_min_distance_to_classes",
+      "compute_min_normalized_distance_to_classes",
+      "compute_same_label_streak",
+      "_compute_all_features_jit (compiled)",
+      "_get_test_feature_jit (compiled)",
+      "_get_train_feature_jit (compiled)",
+      "compute_distance_to_kth_neighbor (compiled)",
+      "compute_fraction_of_classes (compiled)",
+      "compute_mean_distance_to_classes (compiled)",
+      "compute_min_distance_to_classes (compiled)",
+      "compute_min_normalized_distance_to_classes (compiled)",
+      "compute_same_label_streak (compiled)"
+    ],
+    "compilation_errors": [],
+    "errors": [],
+    "analysis": {
+      "label": "LLM+AST",
+      "patterns_found": {
+        "range() sem len()": 1,
+        "dict literal": 2,
+        "class definition": 1,
+        "sklearn import": 4,
+        "os.makedirs": 1,
+        "np.save": 2
+      }
+    }
+  }
+}

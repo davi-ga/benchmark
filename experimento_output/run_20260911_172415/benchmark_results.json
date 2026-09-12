@@ -1,0 +1,37 @@
+{
+  "original": {
+    "label": "Original",
+    "times_ms": [],
+    "errors": []
+  },
+  "llm_only": {
+    "label": "LLM-Only",
+    "times_ms": [
+      3.221,
+      2.561,
+      1.284,
+      1.12,
+      1.882
+    ],
+    "errors": [],
+    "jit_count": 1,
+    "warmup_ms": 7513.39,
+    "avg_ms": 2.013,
+    "min_ms": 1.12,
+    "max_ms": 3.221
+  },
+  "llm_plus_ast": {
+    "label": "LLM+AST",
+    "times_ms": [],
+    "errors": [
+      "WARMUP_ERROR: ",
+      "RUN_ERROR_0: ",
+      "RUN_ERROR_1: ",
+      "RUN_ERROR_2: ",
+      "RUN_ERROR_3: ",
+      "RUN_ERROR_4: "
+    ],
+    "jit_count": 9,
+    "warmup_ms": 3332.88
+  }
+}

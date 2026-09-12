@@ -1,0 +1,19 @@
+{
+  "timestamp": "20260911_171955",
+  "llm_only": {
+    "numba_decorators": 1,
+    "import_success": true,
+    "jit_functions": [
+      "_compute_features"
+    ],
+    "errors": []
+  },
+  "llm_plus_ast": {
+    "numba_decorators": 9,
+    "import_success": false,
+    "jit_functions": [],
+    "errors": [
+      "IMPORT_ERROR: ModuleNotFoundError: No module named '_numba_helpers'"
+    ]
+  }
+}

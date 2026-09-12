@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sentinel"
+version = "0.1.0"
+description = "Runtime sentinel for Numba-annotated Cloud Run containers: warm-up, telemetry and fallback."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy",
+    "psutil",
+]
+
+[project.optional-dependencies]
+build = [
+    "google-genai",
+    "python-dotenv",
+    "pyflakes",
+]
+
+[project.scripts]
+forge = "build_pipeline:main"
+
+[tool.setuptools]
+py-modules = ["sentinel", "build_pipeline"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-dir]
+"" = "src"
