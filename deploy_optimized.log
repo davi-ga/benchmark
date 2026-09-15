@@ -1,0 +1,250 @@
+Creating temporary archive of 9 file(s) totalling 15.0 KiB before compression.
+Uploading tarball of [.] to [gs://tcc-dev-496317_cloudbuild/source/1789387323.131657-6e99d83b99ce4f3c9416768bc42eb754.tgz]
+Created [https://cloudbuild.googleapis.com/v1/projects/tcc-dev-496317/locations/global/builds/306f9974-a57a-4886-86c8-651617d4856c].
+Logs are available at [ https://console.cloud.google.com/cloud-build/builds/306f9974-a57a-4886-86c8-651617d4856c?project=302846580571 ].
+Waiting for build to complete. Polling interval: 1 second(s).
+----------------------------- REMOTE BUILD OUTPUT ------------------------------
+starting build "306f9974-a57a-4886-86c8-651617d4856c"
+
+FETCHSOURCE
+Fetching storage object: gs://tcc-dev-496317_cloudbuild/source/1789387323.131657-6e99d83b99ce4f3c9416768bc42eb754.tgz#1789387322326090
+Copying gs://tcc-dev-496317_cloudbuild/source/1789387323.131657-6e99d83b99ce4f3c9416768bc42eb754.tgz#1789387322326090...
+/ [0 files][    0.0 B/  5.0 KiB]                                                / [1 files][  5.0 KiB/  5.0 KiB]                                                
+Operation completed over 1 objects/5.0 KiB.
+BUILD
+Starting Step #0
+Step #0: Already have image (with digest): gcr.io/cloud-builders/docker
+Step #0: Sending build context to Docker daemon  23.55kB
+Step #0: Step 1/11 : FROM python:3.12-slim
+Step #0: 3.12-slim: Pulling from library/python
+Step #0: 6310eb16bf42: Already exists
+Step #0: dbd0b7849e6c: Pulling fs layer
+Step #0: 1560cfed01dc: Pulling fs layer
+Step #0: 56235e424563: Pulling fs layer
+Step #0: 56235e424563: Verifying Checksum
+Step #0: 56235e424563: Download complete
+Step #0: dbd0b7849e6c: Verifying Checksum
+Step #0: dbd0b7849e6c: Download complete
+Step #0: 1560cfed01dc: Verifying Checksum
+Step #0: 1560cfed01dc: Download complete
+Step #0: dbd0b7849e6c: Pull complete
+Step #0: 1560cfed01dc: Pull complete
+Step #0: 56235e424563: Pull complete
+Step #0: Digest: sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea
+Step #0: Status: Downloaded newer image for python:3.12-slim
+Step #0:  ---> ec7d6c95cd36
+Step #0: Step 2/11 : RUN apt-get update && apt-get install -y --no-install-recommends libgomp1     && rm -rf /var/lib/apt/lists/*
+Step #0:  ---> Running in 5d828eba52a5
+Step #0: Get:1 http://deb.debian.org/debian trixie InRelease [140 kB]
+Step #0: Get:2 http://deb.debian.org/debian trixie-updates InRelease [47.3 kB]
+Step #0: Get:3 http://deb.debian.org/debian-security trixie-security InRelease [43.4 kB]
+Step #0: Get:4 http://deb.debian.org/debian trixie/main amd64 Packages [9678 kB]
+Step #0: Get:5 http://deb.debian.org/debian trixie-updates/main amd64 Packages [4412 B]
+Step #0: Get:6 http://deb.debian.org/debian-security trixie-security/main amd64 Packages [261 kB]
+Step #0: Fetched 10.2 MB in 1s (7047 kB/s)
+Step #0: Reading package lists...
+Step #0: Reading package lists...
+Step #0: Building dependency tree...
+Step #0: Reading state information...
+Step #0: The following NEW packages will be installed:
+Step #0:   libgomp1
+Step #0: 0 upgraded, 1 newly installed, 0 to remove and 12 not upgraded.
+Step #0: Need to get 137 kB of archives.
+Step #0: After this operation, 377 kB of additional disk space will be used.
+Step #0: Get:1 http://deb.debian.org/debian trixie/main amd64 libgomp1 amd64 14.2.0-19 [137 kB]
+Step #0: [91mdebconf: unable to initialize frontend: Dialog
+Step #0: debconf: (TERM is not set, so the dialog frontend is not usable.)
+Step #0: debconf: falling back to frontend: Readline
+Step #0: [0m[91mdebconf: unable to initialize frontend: Readline
+Step #0: [0m[91mdebconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC entries checked: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.40.1 /usr/local/share/perl/5.40.1 /usr/lib/x86_64-linux-gnu/perl5/5.40 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.40 /usr/share/perl/5.40 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 8, <STDIN> line 1.)
+Step #0: debconf: falling back to frontend: Teletype
+Step #0: [0m[91mdebconf: unable to initialize frontend: Teletype
+Step #0: debconf: (This frontend requires a controlling tty.)
+Step #0: debconf: falling back to frontend: Noninteractive
+Step #0: [0mFetched 137 kB in 0s (3061 kB/s)
+Step #0: Selecting previously unselected package libgomp1:amd64.
+Step #0: (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 5652 files and directories currently installed.)
+Step #0: Preparing to unpack .../libgomp1_14.2.0-19_amd64.deb ...
+Step #0: Unpacking libgomp1:amd64 (14.2.0-19) ...
+Step #0: Setting up libgomp1:amd64 (14.2.0-19) ...
+Step #0: Processing triggers for libc-bin (2.41-12+deb13u3) ...
+Step #0: Removing intermediate container 5d828eba52a5
+Step #0:  ---> 5985395ae598
+Step #0: Step 3/11 : WORKDIR /app
+Step #0:  ---> Running in d7febf21d52e
+Step #0: Removing intermediate container d7febf21d52e
+Step #0:  ---> 638b7817fe59
+Step #0: Step 4/11 : COPY requirements.txt .
+Step #0:  ---> ce3e94c89e06
+Step #0: Step 5/11 : RUN pip install --no-cache-dir -r requirements.txt
+Step #0:  ---> Running in bdb6f504fc57
+Step #0: Collecting flask==3.0.0 (from -r requirements.txt (line 1))
+Step #0:   Downloading flask-3.0.0-py3-none-any.whl.metadata (3.6 kB)
+Step #0: Collecting gunicorn==21.2.0 (from -r requirements.txt (line 2))
+Step #0:   Downloading gunicorn-21.2.0-py3-none-any.whl.metadata (4.1 kB)
+Step #0: Collecting numpy==1.26.0 (from -r requirements.txt (line 3))
+Step #0:   Downloading numpy-1.26.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (58 kB)
+Step #0: Collecting scikit-learn==1.4.0 (from -r requirements.txt (line 4))
+Step #0:   Downloading scikit_learn-1.4.0-1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (11 kB)
+Step #0: Collecting numba==0.59.0 (from -r requirements.txt (line 5))
+Step #0:   Downloading numba-0.59.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.7 kB)
+Step #0: Collecting psutil==5.9.8 (from -r requirements.txt (line 6))
+Step #0:   Downloading psutil-5.9.8-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (21 kB)
+Step #0: Collecting Werkzeug>=3.0.0 (from flask==3.0.0->-r requirements.txt (line 1))
+Step #0:   Downloading werkzeug-3.1.8-py3-none-any.whl.metadata (4.0 kB)
+Step #0: Collecting Jinja2>=3.1.2 (from flask==3.0.0->-r requirements.txt (line 1))
+Step #0:   Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Step #0: Collecting itsdangerous>=2.1.2 (from flask==3.0.0->-r requirements.txt (line 1))
+Step #0:   Downloading itsdangerous-2.2.0-py3-none-any.whl.metadata (1.9 kB)
+Step #0: Collecting click>=8.1.3 (from flask==3.0.0->-r requirements.txt (line 1))
+Step #0:   Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+Step #0: Collecting blinker>=1.6.2 (from flask==3.0.0->-r requirements.txt (line 1))
+Step #0:   Downloading blinker-1.9.0-py3-none-any.whl.metadata (1.6 kB)
+Step #0: Collecting packaging (from gunicorn==21.2.0->-r requirements.txt (line 2))
+Step #0:   Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Step #0: Collecting scipy>=1.6.0 (from scikit-learn==1.4.0->-r requirements.txt (line 4))
+Step #0:   Downloading scipy-1.18.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+Step #0: Collecting joblib>=1.2.0 (from scikit-learn==1.4.0->-r requirements.txt (line 4))
+Step #0:   Downloading joblib-1.6.0-py3-none-any.whl.metadata (6.5 kB)
+Step #0: Collecting threadpoolctl>=2.0.0 (from scikit-learn==1.4.0->-r requirements.txt (line 4))
+Step #0:   Downloading threadpoolctl-3.6.0-py3-none-any.whl.metadata (13 kB)
+Step #0: Collecting llvmlite<0.43,>=0.42.0dev0 (from numba==0.59.0->-r requirements.txt (line 5))
+Step #0:   Downloading llvmlite-0.42.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.8 kB)
+Step #0: Collecting MarkupSafe>=2.0 (from Jinja2>=3.1.2->flask==3.0.0->-r requirements.txt (line 1))
+Step #0:   Downloading markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+Step #0: Collecting cloudpickle>=3.0 (from joblib>=1.2.0->scikit-learn==1.4.0->-r requirements.txt (line 4))
+Step #0:   Downloading cloudpickle-3.1.2-py3-none-any.whl.metadata (7.1 kB)
+Step #0: INFO: pip is looking at multiple versions of scipy to determine which version is compatible with other requirements. This could take a while.
+Step #0: Collecting scipy>=1.6.0 (from scikit-learn==1.4.0->-r requirements.txt (line 4))
+Step #0:   Downloading scipy-1.18.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+Step #0:   Downloading scipy-1.17.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+Step #0:   Downloading scipy-1.17.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+Step #0:   Downloading scipy-1.16.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (62 kB)
+Step #0: Downloading flask-3.0.0-py3-none-any.whl (99 kB)
+Step #0: Downloading gunicorn-21.2.0-py3-none-any.whl (80 kB)
+Step #0: Downloading numpy-1.26.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (17.9 MB)
+Step #0:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 17.9/17.9 MB 286.6 MB/s eta 0:00:00
+Step #0: Downloading scikit_learn-1.4.0-1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (12.2 MB)
+Step #0:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.2/12.2 MB 189.6 MB/s eta 0:00:00
+Step #0: Downloading numba-0.59.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (3.7 MB)
+Step #0:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.7/3.7 MB 295.0 MB/s eta 0:00:00
+Step #0: Downloading psutil-5.9.8-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (288 kB)
+Step #0: Downloading blinker-1.9.0-py3-none-any.whl (8.5 kB)
+Step #0: Downloading click-8.5.0-py3-none-any.whl (125 kB)
+Step #0: Downloading itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+Step #0: Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+Step #0: Downloading joblib-1.6.0-py3-none-any.whl (306 kB)
+Step #0: Downloading llvmlite-0.42.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (43.8 MB)
+Step #0:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 43.8/43.8 MB 304.8 MB/s eta 0:00:00
+Step #0: Downloading scipy-1.16.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (35.7 MB)
+Step #0:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.7/35.7 MB 319.0 MB/s eta 0:00:00
+Step #0: Downloading threadpoolctl-3.6.0-py3-none-any.whl (18 kB)
+Step #0: Downloading werkzeug-3.1.8-py3-none-any.whl (226 kB)
+Step #0: Downloading packaging-26.3-py3-none-any.whl (129 kB)
+Step #0: Downloading cloudpickle-3.1.2-py3-none-any.whl (22 kB)
+Step #0: Downloading markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+Step #0: Installing collected packages: threadpoolctl, psutil, packaging, numpy, MarkupSafe, llvmlite, itsdangerous, cloudpickle, click, blinker, Werkzeug, scipy, numba, joblib, Jinja2, gunicorn, scikit-learn, flask
+Step #0: Successfully installed Jinja2-3.1.6 MarkupSafe-3.0.3 Werkzeug-3.1.8 blinker-1.9.0 click-8.5.0 cloudpickle-3.1.2 flask-3.0.0 gunicorn-21.2.0 itsdangerous-2.2.0 joblib-1.6.0 llvmlite-0.42.0 numba-0.59.0 numpy-1.26.0 packaging-26.3 psutil-5.9.8 scikit-learn-1.4.0 scipy-1.16.3 threadpoolctl-3.6.0
+Step #0: [91mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+Step #0: [0m[91m
+Step #0: [notice] A new release of pip is available: 25.0.1 -> 26.2.1
+Step #0: [notice] To update, run: pip install --upgrade pip
+Step #0: [0mRemoving intermediate container bdb6f504fc57
+Step #0:  ---> 171ef5c875a9
+Step #0: Step 6/11 : COPY knn_feature.py .
+Step #0:  ---> ce592c68a15e
+Step #0: Step 7/11 : COPY _numba_helpers.py .
+Step #0:  ---> aad59c72236e
+Step #0: Step 8/11 : COPY app.py .
+Step #0:  ---> f007e61a4297
+Step #0: Step 9/11 : COPY sentinel.py .
+Step #0:  ---> 69166e6f5ea6
+Step #0: Step 10/11 : EXPOSE 8080
+Step #0:  ---> Running in ad9f4496b62f
+Step #0: Removing intermediate container ad9f4496b62f
+Step #0:  ---> c2df7e8c5eb2
+Step #0: Step 11/11 : CMD ["gunicorn", "--bind", "0.0.0.0:8080", "--workers", "1", "--timeout", "120", "app:app"]
+Step #0:  ---> Running in 9bd1eead2c39
+Step #0: Removing intermediate container 9bd1eead2c39
+Step #0:  ---> 92e6e5c6e40b
+Step #0: Successfully built 92e6e5c6e40b
+Step #0: Successfully tagged gcr.io/tcc-dev-496317/yuki-mt-full-test-optimized:latest
+Finished Step #0
+Starting Step #1
+Step #1: Already have image (with digest): gcr.io/cloud-builders/docker
+Step #1: Using default tag: latest
+Step #1: The push refers to repository [gcr.io/tcc-dev-496317/yuki-mt-full-test-optimized]
+Step #1: c0be474db43d: Preparing
+Step #1: d0480f23cae7: Preparing
+Step #1: 40a1fe2e5716: Preparing
+Step #1: dbe97181e54b: Preparing
+Step #1: c1016f277472: Preparing
+Step #1: 17ace37fee21: Preparing
+Step #1: 33b908180f0f: Preparing
+Step #1: e7adf4b9f4ca: Preparing
+Step #1: 24257af4ce5b: Preparing
+Step #1: 3d664d274420: Preparing
+Step #1: 3070bb8623db: Preparing
+Step #1: 411a86676185: Preparing
+Step #1: 3070bb8623db: Waiting
+Step #1: 411a86676185: Waiting
+Step #1: 3d664d274420: Layer already exists
+Step #1: 24257af4ce5b: Layer already exists
+Step #1: 3070bb8623db: Layer already exists
+Step #1: 411a86676185: Layer already exists
+Step #1: d0480f23cae7: Pushed
+Step #1: 17ace37fee21: Pushed
+Step #1: 40a1fe2e5716: Pushed
+Step #1: e7adf4b9f4ca: Pushed
+Step #1: 33b908180f0f: Pushed
+Step #1: dbe97181e54b: Pushed
+Step #1: c0be474db43d: Pushed
+Step #1: c1016f277472: Pushed
+Step #1: latest: digest: sha256:64ad64e5334a3564f06196fd40e21afbf2bfa97dd8d8020ac554dd1188a308b9 size: 2826
+Finished Step #1
+Starting Step #2
+Step #2: Already have image (with digest): gcr.io/cloud-builders/gcloud
+Step #2: Deploying container to Cloud Run service [yuki-mt-full-test-optimized] in project [tcc-dev-496317] region [us-central1]
+Step #2: Deploying new service...
+Step #2: Setting IAM Policy.............warning
+Step #2: Creating Revision.................................................................................................................................................................................................................done
+Step #2: Routing traffic.....done
+Step #2: Completed with warnings:
+Step #2:   Setting IAM policy failed, try "gcloud beta run services add-iam-policy-binding --region=us-central1 --member=allUsers --role=roles/run.invoker yuki-mt-full-test-optimized"
+Step #2: Service [yuki-mt-full-test-optimized] revision [yuki-mt-full-test-optimized-00001-jbh] has been deployed and is serving 100 percent of traffic.
+Step #2: Service URL: https://yuki-mt-full-test-optimized-302846580571.us-central1.run.app
+Finished Step #2
+PUSH
+Pushing gcr.io/tcc-dev-496317/yuki-mt-full-test-optimized
+The push refers to repository [gcr.io/tcc-dev-496317/yuki-mt-full-test-optimized]
+c0be474db43d: Preparing
+d0480f23cae7: Preparing
+40a1fe2e5716: Preparing
+dbe97181e54b: Preparing
+c1016f277472: Preparing
+17ace37fee21: Preparing
+33b908180f0f: Preparing
+e7adf4b9f4ca: Preparing
+24257af4ce5b: Preparing
+3d664d274420: Preparing
+3070bb8623db: Preparing
+411a86676185: Preparing
+3070bb8623db: Waiting
+411a86676185: Waiting
+c1016f277472: Layer already exists
+e7adf4b9f4ca: Layer already exists
+24257af4ce5b: Layer already exists
+40a1fe2e5716: Layer already exists
+3d664d274420: Layer already exists
+33b908180f0f: Layer already exists
+17ace37fee21: Layer already exists
+c0be474db43d: Layer already exists
+d0480f23cae7: Layer already exists
+dbe97181e54b: Layer already exists
+3070bb8623db: Layer already exists
+411a86676185: Layer already exists
+latest: digest: sha256:64ad64e5334a3564f06196fd40e21afbf2bfa97dd8d8020ac554dd1188a308b9 size: 2826
+DONE
+--------------------------------------------------------------------------------
+ID                                    CREATE_TIME                DURATION  SOURCE                                                                                        IMAGES                                                       STATUS
+306f9974-a57a-4886-86c8-651617d4856c  2026-09-14T12:02:03+00:00  1M58S     gs://tcc-dev-496317_cloudbuild/source/1789387323.131657-6e99d83b99ce4f3c9416768bc42eb754.tgz  gcr.io/tcc-dev-496317/yuki-mt-full-test-optimized (+1 more)  SUCCESS

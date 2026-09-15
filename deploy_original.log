@@ -1,0 +1,182 @@
+Creating temporary archive of 9 file(s) totalling 17.3 KiB before compression.
+Uploading tarball of [.] to [gs://tcc-dev-496317_cloudbuild/source/1789387150.764372-9689a5a1176a4a46b1e0f420d2110545.tgz]
+Created [https://cloudbuild.googleapis.com/v1/projects/tcc-dev-496317/locations/global/builds/b4e2369d-e7d1-400e-8f9f-49afc2432e6e].
+Logs are available at [ https://console.cloud.google.com/cloud-build/builds/b4e2369d-e7d1-400e-8f9f-49afc2432e6e?project=302846580571 ].
+Waiting for build to complete. Polling interval: 1 second(s).
+----------------------------- REMOTE BUILD OUTPUT ------------------------------
+starting build "b4e2369d-e7d1-400e-8f9f-49afc2432e6e"
+
+FETCHSOURCE
+Fetching storage object: gs://tcc-dev-496317_cloudbuild/source/1789387150.764372-9689a5a1176a4a46b1e0f420d2110545.tgz#1789387149392540
+Copying gs://tcc-dev-496317_cloudbuild/source/1789387150.764372-9689a5a1176a4a46b1e0f420d2110545.tgz#1789387149392540...
+/ [0 files][    0.0 B/  7.6 KiB]                                                / [1 files][  7.6 KiB/  7.6 KiB]                                                
+Operation completed over 1 objects/7.6 KiB.
+BUILD
+Starting Step #0
+Step #0: Already have image (with digest): gcr.io/cloud-builders/docker
+Step #0: Sending build context to Docker daemon  26.62kB
+Step #0: Step 1/8 : FROM python:3.12-slim
+Step #0: 3.12-slim: Pulling from library/python
+Step #0: 6310eb16bf42: Already exists
+Step #0: dbd0b7849e6c: Pulling fs layer
+Step #0: 1560cfed01dc: Pulling fs layer
+Step #0: 56235e424563: Pulling fs layer
+Step #0: 56235e424563: Verifying Checksum
+Step #0: 56235e424563: Download complete
+Step #0: 1560cfed01dc: Verifying Checksum
+Step #0: 1560cfed01dc: Download complete
+Step #0: dbd0b7849e6c: Verifying Checksum
+Step #0: dbd0b7849e6c: Download complete
+Step #0: dbd0b7849e6c: Pull complete
+Step #0: 1560cfed01dc: Pull complete
+Step #0: 56235e424563: Pull complete
+Step #0: Digest: sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea
+Step #0: Status: Downloaded newer image for python:3.12-slim
+Step #0:  ---> ec7d6c95cd36
+Step #0: Step 2/8 : WORKDIR /app
+Step #0:  ---> Running in 89182c0e0dc0
+Step #0: Removing intermediate container 89182c0e0dc0
+Step #0:  ---> 698f5729e956
+Step #0: Step 3/8 : COPY requirements.txt .
+Step #0:  ---> b11a752d4c40
+Step #0: Step 4/8 : RUN pip install --no-cache-dir -r requirements.txt
+Step #0:  ---> Running in 2ca917f680bb
+Step #0: Collecting flask==3.0.0 (from -r requirements.txt (line 1))
+Step #0:   Downloading flask-3.0.0-py3-none-any.whl.metadata (3.6 kB)
+Step #0: Collecting gunicorn==21.2.0 (from -r requirements.txt (line 2))
+Step #0:   Downloading gunicorn-21.2.0-py3-none-any.whl.metadata (4.1 kB)
+Step #0: Collecting numpy==1.26.0 (from -r requirements.txt (line 3))
+Step #0:   Downloading numpy-1.26.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (58 kB)
+Step #0: Collecting scikit-learn==1.4.0 (from -r requirements.txt (line 4))
+Step #0:   Downloading scikit_learn-1.4.0-1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (11 kB)
+Step #0: Collecting Werkzeug>=3.0.0 (from flask==3.0.0->-r requirements.txt (line 1))
+Step #0:   Downloading werkzeug-3.1.8-py3-none-any.whl.metadata (4.0 kB)
+Step #0: Collecting Jinja2>=3.1.2 (from flask==3.0.0->-r requirements.txt (line 1))
+Step #0:   Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Step #0: Collecting itsdangerous>=2.1.2 (from flask==3.0.0->-r requirements.txt (line 1))
+Step #0:   Downloading itsdangerous-2.2.0-py3-none-any.whl.metadata (1.9 kB)
+Step #0: Collecting click>=8.1.3 (from flask==3.0.0->-r requirements.txt (line 1))
+Step #0:   Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+Step #0: Collecting blinker>=1.6.2 (from flask==3.0.0->-r requirements.txt (line 1))
+Step #0:   Downloading blinker-1.9.0-py3-none-any.whl.metadata (1.6 kB)
+Step #0: Collecting packaging (from gunicorn==21.2.0->-r requirements.txt (line 2))
+Step #0:   Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Step #0: Collecting scipy>=1.6.0 (from scikit-learn==1.4.0->-r requirements.txt (line 4))
+Step #0:   Downloading scipy-1.18.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+Step #0: Collecting joblib>=1.2.0 (from scikit-learn==1.4.0->-r requirements.txt (line 4))
+Step #0:   Downloading joblib-1.6.0-py3-none-any.whl.metadata (6.5 kB)
+Step #0: Collecting threadpoolctl>=2.0.0 (from scikit-learn==1.4.0->-r requirements.txt (line 4))
+Step #0:   Downloading threadpoolctl-3.6.0-py3-none-any.whl.metadata (13 kB)
+Step #0: Collecting MarkupSafe>=2.0 (from Jinja2>=3.1.2->flask==3.0.0->-r requirements.txt (line 1))
+Step #0:   Downloading markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+Step #0: Collecting cloudpickle>=3.0 (from joblib>=1.2.0->scikit-learn==1.4.0->-r requirements.txt (line 4))
+Step #0:   Downloading cloudpickle-3.1.2-py3-none-any.whl.metadata (7.1 kB)
+Step #0: INFO: pip is looking at multiple versions of scipy to determine which version is compatible with other requirements. This could take a while.
+Step #0: Collecting scipy>=1.6.0 (from scikit-learn==1.4.0->-r requirements.txt (line 4))
+Step #0:   Downloading scipy-1.18.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+Step #0:   Downloading scipy-1.17.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+Step #0:   Downloading scipy-1.17.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+Step #0:   Downloading scipy-1.16.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (62 kB)
+Step #0: Downloading flask-3.0.0-py3-none-any.whl (99 kB)
+Step #0: Downloading gunicorn-21.2.0-py3-none-any.whl (80 kB)
+Step #0: Downloading numpy-1.26.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (17.9 MB)
+Step #0:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 17.9/17.9 MB 273.9 MB/s eta 0:00:00
+Step #0: Downloading scikit_learn-1.4.0-1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (12.2 MB)
+Step #0:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.2/12.2 MB 243.6 MB/s eta 0:00:00
+Step #0: Downloading blinker-1.9.0-py3-none-any.whl (8.5 kB)
+Step #0: Downloading click-8.5.0-py3-none-any.whl (125 kB)
+Step #0: Downloading itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+Step #0: Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+Step #0: Downloading joblib-1.6.0-py3-none-any.whl (306 kB)
+Step #0: Downloading scipy-1.16.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (35.7 MB)
+Step #0:    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.7/35.7 MB 328.0 MB/s eta 0:00:00
+Step #0: Downloading threadpoolctl-3.6.0-py3-none-any.whl (18 kB)
+Step #0: Downloading werkzeug-3.1.8-py3-none-any.whl (226 kB)
+Step #0: Downloading packaging-26.3-py3-none-any.whl (129 kB)
+Step #0: Downloading cloudpickle-3.1.2-py3-none-any.whl (22 kB)
+Step #0: Downloading markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+Step #0: Installing collected packages: threadpoolctl, packaging, numpy, MarkupSafe, itsdangerous, cloudpickle, click, blinker, Werkzeug, scipy, joblib, Jinja2, gunicorn, scikit-learn, flask
+Step #0: Successfully installed Jinja2-3.1.6 MarkupSafe-3.0.3 Werkzeug-3.1.8 blinker-1.9.0 click-8.5.0 cloudpickle-3.1.2 flask-3.0.0 gunicorn-21.2.0 itsdangerous-2.2.0 joblib-1.6.0 numpy-1.26.0 packaging-26.3 scikit-learn-1.4.0 scipy-1.16.3 threadpoolctl-3.6.0
+Step #0: [91mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+Step #0: [0m[91m
+Step #0: [notice] A new release of pip is available: 25.0.1 -> 26.2.1
+Step #0: [notice] To update, run: pip install --upgrade pip
+Step #0: [0mRemoving intermediate container 2ca917f680bb
+Step #0:  ---> 94a55f3658ec
+Step #0: Step 5/8 : COPY src/ src/
+Step #0:  ---> 1122da22a0a2
+Step #0: Step 6/8 : COPY app.py .
+Step #0:  ---> 29c7acaedb6d
+Step #0: Step 7/8 : EXPOSE 8080
+Step #0:  ---> Running in 14cc4ade89a8
+Step #0: Removing intermediate container 14cc4ade89a8
+Step #0:  ---> 3a9447d5c1cb
+Step #0: Step 8/8 : CMD ["gunicorn", "--bind", "0.0.0.0:8080", "--workers", "1", "--timeout", "120", "app:app"]
+Step #0:  ---> Running in c0360f578d9a
+Step #0: Removing intermediate container c0360f578d9a
+Step #0:  ---> c5b15fa93b75
+Step #0: Successfully built c5b15fa93b75
+Step #0: Successfully tagged gcr.io/tcc-dev-496317/yuki-mt-full-test-original:latest
+Finished Step #0
+Starting Step #1
+Step #1: Already have image (with digest): gcr.io/cloud-builders/docker
+Step #1: Using default tag: latest
+Step #1: The push refers to repository [gcr.io/tcc-dev-496317/yuki-mt-full-test-original]
+Step #1: 8bc7c69a52e5: Preparing
+Step #1: d993cdcbb03f: Preparing
+Step #1: db4b5276156a: Preparing
+Step #1: 4c5c6747af21: Preparing
+Step #1: 9b6788330e74: Preparing
+Step #1: 24257af4ce5b: Preparing
+Step #1: 3d664d274420: Preparing
+Step #1: 3070bb8623db: Preparing
+Step #1: 411a86676185: Preparing
+Step #1: 24257af4ce5b: Layer already exists
+Step #1: 3d664d274420: Layer already exists
+Step #1: 3070bb8623db: Layer already exists
+Step #1: 411a86676185: Layer already exists
+Step #1: 8bc7c69a52e5: Pushed
+Step #1: d993cdcbb03f: Pushed
+Step #1: 4c5c6747af21: Pushed
+Step #1: 9b6788330e74: Pushed
+Step #1: db4b5276156a: Pushed
+Step #1: latest: digest: sha256:c3a4817b8518e07813b5c4822b775e945859fac4cd463f0e74d718797f08d7e8 size: 2200
+Finished Step #1
+Starting Step #2
+Step #2: Already have image (with digest): gcr.io/cloud-builders/gcloud
+Step #2: Deploying container to Cloud Run service [yuki-mt-full-test-original] in project [tcc-dev-496317] region [us-central1]
+Step #2: Deploying new service...
+Step #2: Setting IAM Policy.............warning
+Step #2: Creating Revision.................................................................................................................................................................................................................................................................................................done
+Step #2: Routing traffic.....done
+Step #2: Completed with warnings:
+Step #2:   Setting IAM policy failed, try "gcloud beta run services add-iam-policy-binding --region=us-central1 --member=allUsers --role=roles/run.invoker yuki-mt-full-test-original"
+Step #2: Service [yuki-mt-full-test-original] revision [yuki-mt-full-test-original-00001-76j] has been deployed and is serving 100 percent of traffic.
+Step #2: Service URL: https://yuki-mt-full-test-original-302846580571.us-central1.run.app
+Finished Step #2
+PUSH
+Pushing gcr.io/tcc-dev-496317/yuki-mt-full-test-original
+The push refers to repository [gcr.io/tcc-dev-496317/yuki-mt-full-test-original]
+8bc7c69a52e5: Preparing
+d993cdcbb03f: Preparing
+db4b5276156a: Preparing
+4c5c6747af21: Preparing
+9b6788330e74: Preparing
+24257af4ce5b: Preparing
+3d664d274420: Preparing
+3070bb8623db: Preparing
+411a86676185: Preparing
+d993cdcbb03f: Layer already exists
+db4b5276156a: Layer already exists
+411a86676185: Layer already exists
+3070bb8623db: Layer already exists
+8bc7c69a52e5: Layer already exists
+24257af4ce5b: Layer already exists
+3d664d274420: Layer already exists
+9b6788330e74: Layer already exists
+4c5c6747af21: Layer already exists
+latest: digest: sha256:c3a4817b8518e07813b5c4822b775e945859fac4cd463f0e74d718797f08d7e8 size: 2200
+DONE
+--------------------------------------------------------------------------------
+ID                                    CREATE_TIME                DURATION  SOURCE                                                                                        IMAGES                                                      STATUS
+b4e2369d-e7d1-400e-8f9f-49afc2432e6e  2026-09-14T11:59:10+00:00  1M39S     gs://tcc-dev-496317_cloudbuild/source/1789387150.764372-9689a5a1176a4a46b1e0f420d2110545.tgz  gcr.io/tcc-dev-496317/yuki-mt-full-test-original (+1 more)  SUCCESS
