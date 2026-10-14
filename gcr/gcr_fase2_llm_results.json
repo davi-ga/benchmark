@@ -1,0 +1,444 @@
+{
+  "metadata": {
+    "start_time": "2026-10-02T22:43:46.053821",
+    "requests_per_service": 10,
+    "warmup_per_service": 1,
+    "variants": [
+      "original",
+      "optimized",
+      "optimized-fixed"
+    ],
+    "note": "wall=lat\u00eancia de parede; server=time_ms reportado pelo servi\u00e7o",
+    "end_time": "2026-10-02T22:44:54.282179"
+  },
+  "apps": {
+    "yuki-mt": {
+      "original": {
+        "warmup_wall_ms": 10976.102909000474,
+        "n_requested": 10,
+        "n_ok": 10,
+        "wall_ms": {
+          "mean": 549.3198047006445,
+          "std": 67.07532639953904,
+          "min": 488.89314100233605,
+          "max": 668.3092239982216
+        },
+        "server_ms": {
+          "mean": 59.56587040000034,
+          "std": 15.18443298805262,
+          "min": 51.33891900000087,
+          "max": 100.38648499999958
+        },
+        "runs": [
+          {
+            "ok": true,
+            "wall_ms": 630.3020669947728,
+            "server_ms": 55.72678999999958
+          },
+          {
+            "ok": true,
+            "wall_ms": 599.9939130051644,
+            "server_ms": 56.66914100000042
+          },
+          {
+            "ok": true,
+            "wall_ms": 489.13687700405717,
+            "server_ms": 51.97917300000121
+          },
+          {
+            "ok": true,
+            "wall_ms": 501.0330629957025,
+            "server_ms": 51.87438100000108
+          },
+          {
+            "ok": true,
+            "wall_ms": 490.12526200385764,
+            "server_ms": 52.6056300000004
+          },
+          {
+            "ok": true,
+            "wall_ms": 488.89314100233605,
+            "server_ms": 53.07225500000001
+          },
+          {
+            "ok": true,
+            "wall_ms": 591.9022340021911,
+            "server_ms": 68.30052300000133
+          },
+          {
+            "ok": true,
+            "wall_ms": 668.3092239982216,
+            "server_ms": 51.33891900000087
+          },
+          {
+            "ok": true,
+            "wall_ms": 525.7996389991604,
+            "server_ms": 100.38648499999958
+          },
+          {
+            "ok": true,
+            "wall_ms": 507.702627000981,
+            "server_ms": 53.70540699999893
+          }
+        ],
+        "url": "https://yuki-mt-original-b56c2yqz6q-uc.a.run.app/predict"
+      },
+      "optimized": {
+        "warmup_wall_ms": 19329.51527499972,
+        "n_requested": 10,
+        "n_ok": 10,
+        "wall_ms": {
+          "mean": 466.36424500029534,
+          "std": 69.89442891955076,
+          "min": 378.6992800014559,
+          "max": 646.4046639957814
+        },
+        "server_ms": {
+          "mean": 0.4612261999994871,
+          "std": 0.03473511612452763,
+          "min": 0.42636499999915145,
+          "max": 0.5403709999995954
+        },
+        "runs": [
+          {
+            "ok": true,
+            "wall_ms": 450.4445200000191,
+            "server_ms": 0.42636499999915145
+          },
+          {
+            "ok": true,
+            "wall_ms": 443.1769200018607,
+            "server_ms": 0.43288899999893715
+          },
+          {
+            "ok": true,
+            "wall_ms": 442.2625009974581,
+            "server_ms": 0.48588900000012814
+          },
+          {
+            "ok": true,
+            "wall_ms": 491.3060519975261,
+            "server_ms": 0.5403709999995954
+          },
+          {
+            "ok": true,
+            "wall_ms": 646.4046639957814,
+            "server_ms": 0.4650779999977317
+          },
+          {
+            "ok": true,
+            "wall_ms": 444.16079400252784,
+            "server_ms": 0.45653099999753977
+          },
+          {
+            "ok": true,
+            "wall_ms": 442.4240560038015,
+            "server_ms": 0.4313200000005679
+          },
+          {
+            "ok": true,
+            "wall_ms": 378.6992800014559,
+            "server_ms": 0.4674199999996631
+          },
+          {
+            "ok": true,
+            "wall_ms": 482.0726870020735,
+            "server_ms": 0.4740540000014448
+          },
+          {
+            "ok": true,
+            "wall_ms": 442.69097600044915,
+            "server_ms": 0.43234500000011167
+          }
+        ],
+        "url": "https://yuki-mt-optimized-b56c2yqz6q-uc.a.run.app/predict"
+      },
+      "optimized-fixed": {
+        "warmup_wall_ms": 746.3608160032891,
+        "n_requested": 10,
+        "n_ok": 10,
+        "wall_ms": {
+          "mean": 507.188568499987,
+          "std": 55.531747569972865,
+          "min": 465.831909001281,
+          "max": 646.8067169989808
+        },
+        "server_ms": {
+          "mean": 38.160675500012076,
+          "std": 1.6442473884277902,
+          "min": 36.69221799998468,
+          "max": 42.31208500004868
+        },
+        "runs": [
+          {
+            "ok": true,
+            "wall_ms": 646.8067169989808,
+            "server_ms": 39.05766599996241
+          },
+          {
+            "ok": true,
+            "wall_ms": 482.9015130017069,
+            "server_ms": 36.69221799998468
+          },
+          {
+            "ok": true,
+            "wall_ms": 465.831909001281,
+            "server_ms": 38.835220999999365
+          },
+          {
+            "ok": true,
+            "wall_ms": 492.23965800047154,
+            "server_ms": 37.911925000003066
+          },
+          {
+            "ok": true,
+            "wall_ms": 472.90950499882456,
+            "server_ms": 42.31208500004868
+          },
+          {
+            "ok": true,
+            "wall_ms": 467.84231300262036,
+            "server_ms": 37.61387999998078
+          },
+          {
+            "ok": true,
+            "wall_ms": 469.83440100302687,
+            "server_ms": 37.435533000007126
+          },
+          {
+            "ok": true,
+            "wall_ms": 546.3675919963862,
+            "server_ms": 37.522391000038624
+          },
+          {
+            "ok": true,
+            "wall_ms": 512.593196996022,
+            "server_ms": 37.4228220000532
+          },
+          {
+            "ok": true,
+            "wall_ms": 514.5588800005498,
+            "server_ms": 36.80301400004282
+          }
+        ],
+        "url": "https://yuki-mt-optimized-fixed-b56c2yqz6q-uc.a.run.app/predict"
+      },
+      "speedup_server_original_vs_optimized": 129.14676226126483,
+      "speedup_server_original_vs_optimized-fixed": 1.560922851063826
+    },
+    "cube-builder": {
+      "original": {
+        "warmup_wall_ms": 3779.3505100053153,
+        "n_requested": 10,
+        "n_ok": 10,
+        "wall_ms": {
+          "mean": 290.67402179862256,
+          "std": 15.785313183768114,
+          "min": 279.91284600284416,
+          "max": 334.2514260002645
+        },
+        "server_ms": {
+          "mean": 0.03756920000004271,
+          "std": 0.0012016574479170065,
+          "min": 0.03541600000023237,
+          "max": 0.03892199999988577
+        },
+        "runs": [
+          {
+            "ok": true,
+            "wall_ms": 287.10440499708056,
+            "server_ms": 0.03786599999999751
+          },
+          {
+            "ok": true,
+            "wall_ms": 279.91284600284416,
+            "server_ms": 0.038083000000188605
+          },
+          {
+            "ok": true,
+            "wall_ms": 288.32725099346135,
+            "server_ms": 0.03664900000011073
+          },
+          {
+            "ok": true,
+            "wall_ms": 291.363749995071,
+            "server_ms": 0.036056999999978245
+          },
+          {
+            "ok": true,
+            "wall_ms": 282.2230820020195,
+            "server_ms": 0.03855599999980086
+          },
+          {
+            "ok": true,
+            "wall_ms": 289.49019799620146,
+            "server_ms": 0.037963999999668374
+          },
+          {
+            "ok": true,
+            "wall_ms": 285.8640169943101,
+            "server_ms": 0.03891800000044299
+          },
+          {
+            "ok": true,
+            "wall_ms": 287.75660900282674,
+            "server_ms": 0.03892199999988577
+          },
+          {
+            "ok": true,
+            "wall_ms": 334.2514260002645,
+            "server_ms": 0.03726100000012167
+          },
+          {
+            "ok": true,
+            "wall_ms": 280.4466340021463,
+            "server_ms": 0.03541600000023237
+          }
+        ],
+        "url": "https://cube-builder-original-b56c2yqz6q-uc.a.run.app/qa"
+      },
+      "optimized": {
+        "warmup_wall_ms": 8609.787606001191,
+        "n_requested": 10,
+        "n_ok": 10,
+        "wall_ms": {
+          "mean": 287.1477679014788,
+          "std": 3.329228423107314,
+          "min": 283.4565930024837,
+          "max": 293.2539160028682
+        },
+        "server_ms": {
+          "mean": 0.02932579999992413,
+          "std": 0.009514383704773284,
+          "min": 0.024926000000036197,
+          "max": 0.056276999998772226
+        },
+        "runs": [
+          {
+            "ok": true,
+            "wall_ms": 283.4565930024837,
+            "server_ms": 0.056276999998772226
+          },
+          {
+            "ok": true,
+            "wall_ms": 291.9063660010579,
+            "server_ms": 0.024945999999914648
+          },
+          {
+            "ok": true,
+            "wall_ms": 285.70672099885996,
+            "server_ms": 0.026565000000644545
+          },
+          {
+            "ok": true,
+            "wall_ms": 283.81969899783144,
+            "server_ms": 0.024926000000036197
+          },
+          {
+            "ok": true,
+            "wall_ms": 289.3568600047729,
+            "server_ms": 0.026761000000874446
+          },
+          {
+            "ok": true,
+            "wall_ms": 287.4528660031501,
+            "server_ms": 0.026730000000085852
+          },
+          {
+            "ok": true,
+            "wall_ms": 285.42947100504534,
+            "server_ms": 0.02733999999904313
+          },
+          {
+            "ok": true,
+            "wall_ms": 285.535502996936,
+            "server_ms": 0.026255999999946766
+          },
+          {
+            "ok": true,
+            "wall_ms": 293.2539160028682,
+            "server_ms": 0.027730000001113808
+          },
+          {
+            "ok": true,
+            "wall_ms": 285.55968400178244,
+            "server_ms": 0.025726999998809674
+          }
+        ],
+        "url": "https://cube-builder-optimized-b56c2yqz6q-uc.a.run.app/qa"
+      },
+      "optimized-fixed": {
+        "warmup_wall_ms": 399.4312089998857,
+        "n_requested": 10,
+        "n_ok": 10,
+        "wall_ms": {
+          "mean": 336.15008930064505,
+          "std": 54.38012270269929,
+          "min": 293.11839200090617,
+          "max": 475.5500750034116
+        },
+        "server_ms": {
+          "mean": 0.023,
+          "std": 0.004830458915396478,
+          "min": 0.02,
+          "max": 0.03
+        },
+        "runs": [
+          {
+            "ok": true,
+            "wall_ms": 475.5500750034116,
+            "server_ms": 0.03
+          },
+          {
+            "ok": true,
+            "wall_ms": 356.10704099963186,
+            "server_ms": 0.02
+          },
+          {
+            "ok": true,
+            "wall_ms": 323.5201950010378,
+            "server_ms": 0.02
+          },
+          {
+            "ok": true,
+            "wall_ms": 334.91852700535674,
+            "server_ms": 0.02
+          },
+          {
+            "ok": true,
+            "wall_ms": 309.4246260006912,
+            "server_ms": 0.02
+          },
+          {
+            "ok": true,
+            "wall_ms": 308.57054999796674,
+            "server_ms": 0.02
+          },
+          {
+            "ok": true,
+            "wall_ms": 298.040702000435,
+            "server_ms": 0.02
+          },
+          {
+            "ok": true,
+            "wall_ms": 301.1780730012106,
+            "server_ms": 0.02
+          },
+          {
+            "ok": true,
+            "wall_ms": 293.11839200090617,
+            "server_ms": 0.03
+          },
+          {
+            "ok": true,
+            "wall_ms": 361.0727119958028,
+            "server_ms": 0.03
+          }
+        ],
+        "url": "https://cube-builder-optimized-fixed-b56c2yqz6q-uc.a.run.app/qa"
+      },
+      "speedup_server_original_vs_optimized": 1.2810971908742441,
+      "speedup_server_original_vs_optimized-fixed": 1.6334434782627267
+    }
+  }
+}

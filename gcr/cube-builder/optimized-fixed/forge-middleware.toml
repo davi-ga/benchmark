@@ -1,0 +1,14 @@
+# forge-middleware config — cube-builder-optimized-fixed
+[settings]
+timeout_s = 60
+sample_ms = 25
+
+[[module]]
+name = "processing"
+search_path = "optimized"
+# functions com side effects (I/O, boto3, rasterio) nunca devem ser aquecidas;
+# warmup é opt-in por natureza — apenas o listado abaixo roda no boot
+
+[[module.warmup]]
+function = "extract_qa_bits"
+args = ["expr:np.zeros(16, dtype=np.uint16)", 1]

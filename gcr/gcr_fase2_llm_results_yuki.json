@@ -1,0 +1,230 @@
+{
+  "metadata": {
+    "start_time": "2026-10-02T22:57:55.413551",
+    "requests_per_service": 10,
+    "warmup_per_service": 1,
+    "variants": [
+      "original",
+      "optimized",
+      "optimized-fixed"
+    ],
+    "note": "wall=lat\u00eancia de parede; server=time_ms reportado pelo servi\u00e7o",
+    "end_time": "2026-10-02T22:58:19.296315"
+  },
+  "apps": {
+    "yuki-mt": {
+      "original": {
+        "warmup_wall_ms": 595.123759994749,
+        "n_requested": 10,
+        "n_ok": 10,
+        "wall_ms": {
+          "mean": 526.0058343003038,
+          "std": 48.71399256144244,
+          "min": 444.0467020031065,
+          "max": 593.4866940006032
+        },
+        "server_ms": {
+          "mean": 60.12902700000495,
+          "std": 18.59746084544449,
+          "min": 51.972374000001764,
+          "max": 112.59326200001851
+        },
+        "runs": [
+          {
+            "ok": true,
+            "wall_ms": 497.47200399724534,
+            "server_ms": 54.171787000086624
+          },
+          {
+            "ok": true,
+            "wall_ms": 558.9531320001697,
+            "server_ms": 112.59326200001851
+          },
+          {
+            "ok": true,
+            "wall_ms": 569.1239870066056,
+            "server_ms": 53.86668300002384
+          },
+          {
+            "ok": true,
+            "wall_ms": 575.2924420012278,
+            "server_ms": 60.50862299991877
+          },
+          {
+            "ok": true,
+            "wall_ms": 593.4866940006032,
+            "server_ms": 53.88813900003697
+          },
+          {
+            "ok": true,
+            "wall_ms": 539.8520659946371,
+            "server_ms": 55.854542999895784
+          },
+          {
+            "ok": true,
+            "wall_ms": 444.0467020031065,
+            "server_ms": 52.86636800008182
+          },
+          {
+            "ok": true,
+            "wall_ms": 473.73825300019234,
+            "server_ms": 53.51071300003696
+          },
+          {
+            "ok": true,
+            "wall_ms": 506.32940399373183,
+            "server_ms": 52.057777999948485
+          },
+          {
+            "ok": true,
+            "wall_ms": 501.763659005519,
+            "server_ms": 51.972374000001764
+          }
+        ],
+        "url": "https://yuki-mt-original-b56c2yqz6q-uc.a.run.app/predict"
+      },
+      "optimized": {
+        "warmup_wall_ms": 546.7298919975292,
+        "n_requested": 10,
+        "n_ok": 10,
+        "wall_ms": {
+          "mean": 472.1148344993708,
+          "std": 70.13969106365063,
+          "min": 338.97305999562377,
+          "max": 590.5910660003428
+        },
+        "server_ms": {
+          "mean": 0.5103505999954905,
+          "std": 0.09765772630281105,
+          "min": 0.42744100005620567,
+          "max": 0.7430869999325296
+        },
+        "runs": [
+          {
+            "ok": true,
+            "wall_ms": 441.18551800056593,
+            "server_ms": 0.6250459999819213
+          },
+          {
+            "ok": true,
+            "wall_ms": 456.19297699886374,
+            "server_ms": 0.501013999951283
+          },
+          {
+            "ok": true,
+            "wall_ms": 567.426527995849,
+            "server_ms": 0.45724900007826363
+          },
+          {
+            "ok": true,
+            "wall_ms": 492.26221699791495,
+            "server_ms": 0.4902079999737907
+          },
+          {
+            "ok": true,
+            "wall_ms": 447.47998000093503,
+            "server_ms": 0.4603710000310457
+          },
+          {
+            "ok": true,
+            "wall_ms": 484.1013369950815,
+            "server_ms": 0.42744100005620567
+          },
+          {
+            "ok": true,
+            "wall_ms": 590.5910660003428,
+            "server_ms": 0.46327200004725455
+          },
+          {
+            "ok": true,
+            "wall_ms": 338.97305999562377,
+            "server_ms": 0.4699589999290765
+          },
+          {
+            "ok": true,
+            "wall_ms": 461.6982490042574,
+            "server_ms": 0.4658589999735341
+          },
+          {
+            "ok": true,
+            "wall_ms": 441.23741300427355,
+            "server_ms": 0.7430869999325296
+          }
+        ],
+        "url": "https://yuki-mt-optimized-b56c2yqz6q-uc.a.run.app/predict"
+      },
+      "optimized-fixed": {
+        "warmup_wall_ms": 8345.378244004678,
+        "n_requested": 10,
+        "n_ok": 10,
+        "wall_ms": {
+          "mean": 440.536003800662,
+          "std": 21.99133061037242,
+          "min": 413.8862199979485,
+          "max": 488.25500599923544
+        },
+        "server_ms": {
+          "mean": 3.5374798999896484,
+          "std": 0.12751847814911402,
+          "min": 3.4048429999984364,
+          "max": 3.816289999917899
+        },
+        "runs": [
+          {
+            "ok": true,
+            "wall_ms": 453.10681000410113,
+            "server_ms": 3.4881020000057106
+          },
+          {
+            "ok": true,
+            "wall_ms": 417.23510699375765,
+            "server_ms": 3.4835879999945973
+          },
+          {
+            "ok": true,
+            "wall_ms": 432.0514520004508,
+            "server_ms": 3.5775259999581976
+          },
+          {
+            "ok": true,
+            "wall_ms": 413.8862199979485,
+            "server_ms": 3.4048429999984364
+          },
+          {
+            "ok": true,
+            "wall_ms": 452.1001869943575,
+            "server_ms": 3.4457219999239896
+          },
+          {
+            "ok": true,
+            "wall_ms": 443.33591800386785,
+            "server_ms": 3.4667119999767237
+          },
+          {
+            "ok": true,
+            "wall_ms": 427.230656001484,
+            "server_ms": 3.655498000057378
+          },
+          {
+            "ok": true,
+            "wall_ms": 450.68673100468004,
+            "server_ms": 3.816289999917899
+          },
+          {
+            "ok": true,
+            "wall_ms": 488.25500599923544,
+            "server_ms": 3.428872000085903
+          },
+          {
+            "ok": true,
+            "wall_ms": 427.4719510067371,
+            "server_ms": 3.607645999977649
+          }
+        ],
+        "url": "https://yuki-mt-optimized-fixed-b56c2yqz6q-uc.a.run.app/predict"
+      },
+      "speedup_server_original_vs_optimized": 117.81905811521777,
+      "speedup_server_original_vs_optimized-fixed": 16.99770138628375
+    }
+  }
+}

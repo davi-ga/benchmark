@@ -1,0 +1,906 @@
+{
+  "metadata": {
+    "model": "gemini-3.1-pro-preview",
+    "total_runs": 30,
+    "runs_per_benchmark": 10,
+    "max_attempts": 3,
+    "start_time": "2026-09-25T16:58:11.184044",
+    "benchmarks": [
+      "yuki-mt",
+      "img2palette",
+      "cube-builder"
+    ],
+    "end_time": "2026-09-25T17:14:35.225354"
+  },
+  "benchmarks": {
+    "yuki-mt": {
+      "runs": [
+        {
+          "test_generation": {
+            "time_ms": 8932.97,
+            "tokens": {
+              "total": 2962
+            }
+          },
+          "modularization_attempts": [
+            {
+              "attempt": 1,
+              "time_ms": 9640.44,
+              "tokens": {
+                "total": 4085
+              }
+            }
+          ],
+          "total_api_calls": 2,
+          "total_time_ms": 18573.41,
+          "total_tokens": 7047,
+          "status": "success",
+          "run_number": 1,
+          "benchmark": "yuki-mt",
+          "timestamp": "2026-09-25T16:58:32.479677",
+          "wall_time_ms": 21293.77293586731,
+          "estimated_cost_usd": 0.063423
+        },
+        {
+          "test_generation": {
+            "time_ms": 8206.53,
+            "tokens": {
+              "total": 2750
+            }
+          },
+          "modularization_attempts": [
+            {
+              "attempt": 1,
+              "time_ms": 10180.51,
+              "tokens": {
+                "total": 4154
+              }
+            }
+          ],
+          "total_api_calls": 2,
+          "total_time_ms": 18387.04,
+          "total_tokens": 6904,
+          "status": "success",
+          "run_number": 2,
+          "benchmark": "yuki-mt",
+          "timestamp": "2026-09-25T16:58:53.775641",
+          "wall_time_ms": 21294.19469833374,
+          "estimated_cost_usd": 0.06213599999999999
+        },
+        {
+          "test_generation": {
+            "time_ms": 5784.12,
+            "tokens": {
+              "total": 2461
+            }
+          },
+          "modularization_attempts": [
+            {
+              "attempt": 1,
+              "time_ms": 10150.0,
+              "tokens": {
+                "total": 4174
+              }
+            }
+          ],
+          "total_api_calls": 2,
+          "total_time_ms": 15934.119999999999,
+          "total_tokens": 6635,
+          "status": "success",
+          "run_number": 3,
+          "benchmark": "yuki-mt",
+          "timestamp": "2026-09-25T16:59:12.417571",
+          "wall_time_ms": 18638.77558708191,
+          "estimated_cost_usd": 0.059715000000000004
+        },
+        {
+          "test_generation": {
+            "time_ms": 8792.37,
+            "tokens": {
+              "total": 2990
+            }
+          },
+          "modularization_attempts": [
+            {
+              "attempt": 1,
+              "time_ms": 10147.42,
+              "tokens": {
+                "total": 4181
+              }
+            },
+            {
+              "attempt": 2,
+              "time_ms": 9963.67,
+              "tokens": {
+                "total": 4197
+              }
+            }
+          ],
+          "total_api_calls": 3,
+          "total_time_ms": 28903.46,
+          "total_tokens": 11368,
+          "status": "success",
+          "run_number": 4,
+          "benchmark": "yuki-mt",
+          "timestamp": "2026-09-25T16:59:47.354642",
+          "wall_time_ms": 34935.37926673889,
+          "estimated_cost_usd": 0.10231199999999999
+        },
+        {
+          "test_generation": {
+            "time_ms": 5095.12,
+            "tokens": {
+              "total": 2389
+            }
+          },
+          "modularization_attempts": [
+            {
+              "attempt": 1,
+              "time_ms": 10316.92,
+              "tokens": {
+                "total": 4167
+              }
+            },
+            {
+              "attempt": 2,
+              "time_ms": 11069.05,
+              "tokens": {
+                "total": 4352
+              }
+            },
+            {
+              "attempt": 3,
+              "time_ms": 22800.67,
+              "tokens": {
+                "total": 5999
+              }
+            }
+          ],
+          "total_api_calls": 4,
+          "total_time_ms": 49281.76,
+          "total_tokens": 16907,
+          "status": "success",
+          "run_number": 5,
+          "benchmark": "yuki-mt",
+          "timestamp": "2026-09-25T17:00:41.475837",
+          "wall_time_ms": 54119.79007720947,
+          "estimated_cost_usd": 0.152163
+        },
+        {
+          "test_generation": {
+            "time_ms": 5732.56,
+            "tokens": {
+              "total": 2513
+            }
+          },
+          "modularization_attempts": [
+            {
+              "attempt": 1,
+              "time_ms": 8182.53,
+              "tokens": {
+                "total": 3859
+              }
+            }
+          ],
+          "total_api_calls": 2,
+          "total_time_ms": 13915.09,
+          "total_tokens": 6372,
+          "status": "success",
+          "run_number": 6,
+          "benchmark": "yuki-mt",
+          "timestamp": "2026-09-25T17:00:57.534457",
+          "wall_time_ms": 16057.352781295776,
+          "estimated_cost_usd": 0.057347999999999996
+        },
+        {
+          "test_generation": {
+            "time_ms": 5181.81,
+            "tokens": {
+              "total": 2490
+            }
+          },
+          "modularization_attempts": [
+            {
+              "attempt": 1,
+              "time_ms": 10085.04,
+              "tokens": {
+                "total": 4191
+              }
+            }
+          ],
+          "total_api_calls": 2,
+          "total_time_ms": 15266.850000000002,
+          "total_tokens": 6681,
+          "status": "success",
+          "run_number": 7,
+          "benchmark": "yuki-mt",
+          "timestamp": "2026-09-25T17:01:15.204202",
+          "wall_time_ms": 17665.690183639526,
+          "estimated_cost_usd": 0.060129
+        },
+        {
+          "test_generation": {
+            "time_ms": 5187.09,
+            "tokens": {
+              "total": 2434
+            }
+          },
+          "modularization_attempts": [
+            {
+              "attempt": 1,
+              "time_ms": 7876.44,
+              "tokens": {
+                "total": 3857
+              }
+            },
+            {
+              "attempt": 2,
+              "time_ms": 11193.2,
+              "tokens": {
+                "total": 4256
+              }
+            }
+          ],
+          "total_api_calls": 3,
+          "total_time_ms": 24256.73,
+          "total_tokens": 10547,
+          "status": "success",
+          "run_number": 8,
+          "benchmark": "yuki-mt",
+          "timestamp": "2026-09-25T17:01:41.816217",
+          "wall_time_ms": 26609.55286026001,
+          "estimated_cost_usd": 0.09492300000000001
+        },
+        {
+          "test_generation": {
+            "time_ms": 4152.06,
+            "tokens": {
+              "total": 2332
+            }
+          },
+          "modularization_attempts": [
+            {
+              "attempt": 1,
+              "time_ms": 11250.63,
+              "tokens": {
+                "total": 4348
+              }
+            }
+          ],
+          "total_api_calls": 2,
+          "total_time_ms": 15402.689999999999,
+          "total_tokens": 6680,
+          "status": "success",
+          "run_number": 9,
+          "benchmark": "yuki-mt",
+          "timestamp": "2026-09-25T17:01:59.276048",
+          "wall_time_ms": 17458.181858062744,
+          "estimated_cost_usd": 0.06011999999999999
+        },
+        {
+          "test_generation": {
+            "time_ms": 7902.34,
+            "tokens": {
+              "total": 2845
+            }
+          },
+          "modularization_attempts": [
+            {
+              "attempt": 1,
+              "time_ms": 13967.28,
+              "tokens": {
+                "total": 4770
+              }
+            }
+          ],
+          "total_api_calls": 2,
+          "total_time_ms": 21869.620000000003,
+          "total_tokens": 7615,
+          "status": "success",
+          "run_number": 10,
+          "benchmark": "yuki-mt",
+          "timestamp": "2026-09-25T17:02:23.251189",
+          "wall_time_ms": 23973.777532577515,
+          "estimated_cost_usd": 0.068535
+        }
+      ],
+      "statistics": {
+        "total_runs": 10,
+        "successful_runs": 10,
+        "success_rate": 1.0,
+        "total_api_calls": {
+          "mean": 2.4,
+          "std": 0.699205898780101,
+          "min": 2,
+          "max": 4
+        },
+        "total_time_ms": {
+          "mean": 22179.077,
+          "std": 10606.899270537759,
+          "min": 13915.09,
+          "max": 49281.76
+        },
+        "total_tokens": {
+          "mean": 8675.6,
+          "std": 3380.571095737129,
+          "min": 6372,
+          "max": 16907
+        },
+        "estimated_cost_usd": {
+          "mean": 0.0780804,
+          "std": 0.03042513986163416,
+          "min": 0.057347999999999996,
+          "max": 0.152163
+        }
+      }
+    },
+    "img2palette": {
+      "runs": [
+        {
+          "test_generation": {
+            "time_ms": 5623.38,
+            "tokens": {
+              "total": 5736
+            }
+          },
+          "modularization_attempts": [
+            {
+              "attempt": 1,
+              "time_ms": 27749.04,
+              "tokens": {
+                "total": 10598
+              }
+            }
+          ],
+          "total_api_calls": 2,
+          "total_time_ms": 33372.42,
+          "total_tokens": 16334,
+          "status": "success",
+          "run_number": 1,
+          "benchmark": "img2palette",
+          "timestamp": "2026-09-25T17:03:00.629696",
+          "wall_time_ms": 37376.636028289795,
+          "estimated_cost_usd": 0.14700599999999997
+        },
+        {
+          "test_generation": {
+            "time_ms": 7389.8,
+            "tokens": {
+              "total": 5912
+            }
+          },
+          "modularization_attempts": [
+            {
+              "attempt": 1,
+              "time_ms": 19102.08,
+              "tokens": {
+                "total": 9072
+              }
+            }
+          ],
+          "total_api_calls": 2,
+          "total_time_ms": 26491.88,
+          "total_tokens": 14984,
+          "status": "success",
+          "run_number": 2,
+          "benchmark": "img2palette",
+          "timestamp": "2026-09-25T17:03:30.290715",
+          "wall_time_ms": 29659.207105636597,
+          "estimated_cost_usd": 0.134856
+        },
+        {
+          "test_generation": {
+            "time_ms": 6489.98,
+            "tokens": {
+              "total": 5856
+            }
+          },
+          "modularization_attempts": [
+            {
+              "attempt": 1,
+              "time_ms": 15296.52,
+              "tokens": {
+                "total": 8379
+              }
+            },
+            {
+              "attempt": 2,
+              "time_ms": 21594.32,
+              "tokens": {
+                "total": 9493
+              }
+            }
+          ],
+          "total_api_calls": 3,
+          "total_time_ms": 43380.81999999999,
+          "total_tokens": 23728,
+          "status": "success",
+          "run_number": 3,
+          "benchmark": "img2palette",
+          "timestamp": "2026-09-25T17:04:15.993168",
+          "wall_time_ms": 45700.99854469299,
+          "estimated_cost_usd": 0.21355199999999996
+        },
+        {
+          "test_generation": {
+            "time_ms": 6540.15,
+            "tokens": {
+              "total": 5850
+            }
+          },
+          "modularization_attempts": [
+            {
+              "attempt": 1,
+              "time_ms": 30502.4,
+              "tokens": {
+                "total": 10707
+              }
+            },
+            {
+              "attempt": 2,
+              "time_ms": 30026.61,
+              "tokens": {
+                "total": 10943
+              }
+            }
+          ],
+          "total_api_calls": 3,
+          "total_time_ms": 67069.16,
+          "total_tokens": 27500,
+          "status": "success",
+          "run_number": 4,
+          "benchmark": "img2palette",
+          "timestamp": "2026-09-25T17:05:27.078971",
+          "wall_time_ms": 71084.11455154419,
+          "estimated_cost_usd": 0.2475
+        },
+        {
+          "test_generation": {
+            "time_ms": 8240.71,
+            "tokens": {
+              "total": 6050
+            }
+          },
+          "modularization_attempts": [
+            {
+              "attempt": 1,
+              "time_ms": 30738.02,
+              "tokens": {
+                "total": 10879
+              }
+            },
+            {
+              "attempt": 2,
+              "time_ms": 18078.33,
+              "tokens": {
+                "total": 8891
+              }
+            },
+            {
+              "attempt": 3,
+              "time_ms": 20435.77,
+              "tokens": {
+                "total": 9332
+              }
+            }
+          ],
+          "total_api_calls": 4,
+          "total_time_ms": 77492.82999999999,
+          "total_tokens": 35152,
+          "status": "failed",
+          "error": "Equivalence tests failed after 3 attempt(s). Aborting.",
+          "run_number": 5,
+          "benchmark": "img2palette",
+          "timestamp": "2026-09-25T17:06:57.330953",
+          "wall_time_ms": 90249.3748664856,
+          "estimated_cost_usd": 0.3163679999999999
+        },
+        {
+          "test_generation": {
+            "time_ms": 6542.6,
+            "tokens": {
+              "total": 5921
+            }
+          },
+          "modularization_attempts": [
+            {
+              "attempt": 1,
+              "time_ms": 19589.1,
+              "tokens": {
+                "total": 9126
+              }
+            }
+          ],
+          "total_api_calls": 2,
+          "total_time_ms": 26131.699999999997,
+          "total_tokens": 15047,
+          "status": "success",
+          "run_number": 6,
+          "benchmark": "img2palette",
+          "timestamp": "2026-09-25T17:07:26.410112",
+          "wall_time_ms": 29077.437162399292,
+          "estimated_cost_usd": 0.135423
+        },
+        {
+          "test_generation": {
+            "time_ms": 6275.23,
+            "tokens": {
+              "total": 5870
+            }
+          },
+          "modularization_attempts": [
+            {
+              "attempt": 1,
+              "time_ms": 28328.34,
+              "tokens": {
+                "total": 10720
+              }
+            }
+          ],
+          "total_api_calls": 2,
+          "total_time_ms": 34603.57,
+          "total_tokens": 16590,
+          "status": "success",
+          "run_number": 7,
+          "benchmark": "img2palette",
+          "timestamp": "2026-09-25T17:08:05.858806",
+          "wall_time_ms": 39446.97642326355,
+          "estimated_cost_usd": 0.14931
+        },
+        {
+          "test_generation": {
+            "time_ms": 7560.55,
+            "tokens": {
+              "total": 6035
+            }
+          },
+          "modularization_attempts": [
+            {
+              "attempt": 1,
+              "time_ms": 22888.03,
+              "tokens": {
+                "total": 9565
+              }
+            }
+          ],
+          "total_api_calls": 2,
+          "total_time_ms": 30448.579999999998,
+          "total_tokens": 15600,
+          "status": "success",
+          "run_number": 8,
+          "benchmark": "img2palette",
+          "timestamp": "2026-09-25T17:08:42.074444",
+          "wall_time_ms": 36213.977336883545,
+          "estimated_cost_usd": 0.1404
+        },
+        {
+          "test_generation": {
+            "time_ms": 7692.58,
+            "tokens": {
+              "total": 5994
+            }
+          },
+          "modularization_attempts": [
+            {
+              "attempt": 1,
+              "time_ms": 21171.42,
+              "tokens": {
+                "total": 9230
+              }
+            }
+          ],
+          "total_api_calls": 2,
+          "total_time_ms": 28864.0,
+          "total_tokens": 15224,
+          "status": "success",
+          "run_number": 9,
+          "benchmark": "img2palette",
+          "timestamp": "2026-09-25T17:09:13.374915",
+          "wall_time_ms": 31298.16770553589,
+          "estimated_cost_usd": 0.13701599999999997
+        },
+        {
+          "test_generation": {
+            "time_ms": 5986.54,
+            "tokens": {
+              "total": 5779
+            }
+          },
+          "modularization_attempts": [
+            {
+              "attempt": 1,
+              "time_ms": 15244.8,
+              "tokens": {
+                "total": 8408
+              }
+            },
+            {
+              "attempt": 2,
+              "time_ms": 31962.24,
+              "tokens": {
+                "total": 11096
+              }
+            }
+          ],
+          "total_api_calls": 3,
+          "total_time_ms": 53193.58,
+          "total_tokens": 25283,
+          "status": "success",
+          "run_number": 10,
+          "benchmark": "img2palette",
+          "timestamp": "2026-09-25T17:10:10.436918",
+          "wall_time_ms": 57059.914112091064,
+          "estimated_cost_usd": 0.227547
+        }
+      ],
+      "statistics": {
+        "total_runs": 10,
+        "successful_runs": 9,
+        "success_rate": 0.9,
+        "total_api_calls": {
+          "mean": 2.3333333333333335,
+          "std": 0.5,
+          "min": 2,
+          "max": 3
+        },
+        "total_time_ms": {
+          "mean": 38172.85666666667,
+          "std": 13925.153902163884,
+          "min": 26131.699999999997,
+          "max": 67069.16
+        },
+        "total_tokens": {
+          "mean": 18921.11111111111,
+          "std": 5056.0898786622765,
+          "min": 14984,
+          "max": 27500
+        },
+        "estimated_cost_usd": {
+          "mean": 0.17029,
+          "std": 0.045504808907960485,
+          "min": 0.134856,
+          "max": 0.2475
+        }
+      }
+    },
+    "cube-builder": {
+      "runs": [
+        {
+          "test_generation": {
+            "time_ms": 4043.83,
+            "tokens": {
+              "total": 25380
+            }
+          },
+          "modularization_attempts": [
+            {
+              "attempt": 1,
+              "time_ms": 10098.71,
+              "tokens": {
+                "total": 27378
+              }
+            }
+          ],
+          "total_api_calls": 2,
+          "total_time_ms": 14142.539999999999,
+          "total_tokens": 52758,
+          "status": "failed",
+          "error": "LLM call failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 250, model: gemini-3.1-pro\\nPlease retry in 3h49m29.22161568s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-pro'}, 'quotaValue': '250'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '13769s'}]}}",
+          "run_number": 1,
+          "benchmark": "cube-builder",
+          "timestamp": "2026-09-25T17:10:32.836489",
+          "wall_time_ms": 22396.894454956055,
+          "estimated_cost_usd": 0.47482199999999997
+        },
+        {
+          "test_generation": {
+            "time_ms": 0.0,
+            "tokens": {
+              "total": 0
+            }
+          },
+          "modularization_attempts": [],
+          "total_api_calls": 1,
+          "total_time_ms": 0.0,
+          "total_tokens": 0,
+          "status": "failed",
+          "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 250, model: gemini-3.1-pro\\nPlease retry in 3h49m20.712265953s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-pro'}, 'quotaValue': '250'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '13760s'}]}}",
+          "run_number": 2,
+          "benchmark": "cube-builder",
+          "timestamp": "2026-09-25T17:10:41.341753",
+          "wall_time_ms": 8502.93517112732,
+          "estimated_cost_usd": 0.0
+        },
+        {
+          "test_generation": {
+            "time_ms": 0.0,
+            "tokens": {
+              "total": 0
+            }
+          },
+          "modularization_attempts": [],
+          "total_api_calls": 1,
+          "total_time_ms": 0.0,
+          "total_tokens": 0,
+          "status": "failed",
+          "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 250, model: gemini-3.1-pro\\nPlease retry in 3h49m12.445342562s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-pro'}, 'quotaValue': '250'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '13752s'}]}}",
+          "run_number": 3,
+          "benchmark": "cube-builder",
+          "timestamp": "2026-09-25T17:10:49.621325",
+          "wall_time_ms": 8277.928352355957,
+          "estimated_cost_usd": 0.0
+        },
+        {
+          "test_generation": {
+            "time_ms": 0.0,
+            "tokens": {
+              "total": 0
+            }
+          },
+          "modularization_attempts": [],
+          "total_api_calls": 1,
+          "total_time_ms": 0.0,
+          "total_tokens": 0,
+          "status": "failed",
+          "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 250, model: gemini-3.1-pro\\nPlease retry in 3h49m4.09876399s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-pro'}, 'quotaValue': '250'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '13744s'}]}}",
+          "run_number": 4,
+          "benchmark": "cube-builder",
+          "timestamp": "2026-09-25T17:10:57.964724",
+          "wall_time_ms": 8341.869592666626,
+          "estimated_cost_usd": 0.0
+        },
+        {
+          "test_generation": {
+            "time_ms": 4436.17,
+            "tokens": {
+              "total": 25441
+            }
+          },
+          "modularization_attempts": [
+            {
+              "attempt": 1,
+              "time_ms": 162006.02,
+              "tokens": {
+                "total": 50703
+              }
+            }
+          ],
+          "total_api_calls": 2,
+          "total_time_ms": 166442.19,
+          "total_tokens": 76144,
+          "status": "failed",
+          "error": "LLM call failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 250, model: gemini-3.1-pro\\nPlease retry in 3h46m8.913144463s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-pro'}, 'quotaValue': '250'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '13568s'}]}}",
+          "run_number": 5,
+          "benchmark": "cube-builder",
+          "timestamp": "2026-09-25T17:13:53.158730",
+          "wall_time_ms": 175189.8810863495,
+          "estimated_cost_usd": 0.685296
+        },
+        {
+          "test_generation": {
+            "time_ms": 0.0,
+            "tokens": {
+              "total": 0
+            }
+          },
+          "modularization_attempts": [],
+          "total_api_calls": 1,
+          "total_time_ms": 0.0,
+          "total_tokens": 0,
+          "status": "failed",
+          "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 250, model: gemini-3.1-pro\\nPlease retry in 3h46m0.4826735s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-pro'}, 'quotaValue': '250'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '13560s'}]}}",
+          "run_number": 6,
+          "benchmark": "cube-builder",
+          "timestamp": "2026-09-25T17:14:01.597741",
+          "wall_time_ms": 8437.243461608887,
+          "estimated_cost_usd": 0.0
+        },
+        {
+          "test_generation": {
+            "time_ms": 0.0,
+            "tokens": {
+              "total": 0
+            }
+          },
+          "modularization_attempts": [],
+          "total_api_calls": 1,
+          "total_time_ms": 0.0,
+          "total_tokens": 0,
+          "status": "failed",
+          "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 250, model: gemini-3.1-pro\\nPlease retry in 3h45m52.154620383s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-pro'}, 'quotaValue': '250'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '13552s'}]}}",
+          "run_number": 7,
+          "benchmark": "cube-builder",
+          "timestamp": "2026-09-25T17:14:09.917899",
+          "wall_time_ms": 8318.21084022522,
+          "estimated_cost_usd": 0.0
+        },
+        {
+          "test_generation": {
+            "time_ms": 0.0,
+            "tokens": {
+              "total": 0
+            }
+          },
+          "modularization_attempts": [],
+          "total_api_calls": 1,
+          "total_time_ms": 0.0,
+          "total_tokens": 0,
+          "status": "failed",
+          "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 250, model: gemini-3.1-pro\\nPlease retry in 3h45m43.656277608s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-pro'}, 'quotaValue': '250'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '13543s'}]}}",
+          "run_number": 8,
+          "benchmark": "cube-builder",
+          "timestamp": "2026-09-25T17:14:18.401553",
+          "wall_time_ms": 8481.363296508789,
+          "estimated_cost_usd": 0.0
+        },
+        {
+          "test_generation": {
+            "time_ms": 0.0,
+            "tokens": {
+              "total": 0
+            }
+          },
+          "modularization_attempts": [],
+          "total_api_calls": 1,
+          "total_time_ms": 0.0,
+          "total_tokens": 0,
+          "status": "failed",
+          "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 250, model: gemini-3.1-pro\\nPlease retry in 3h45m35.238040936s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-pro'}, 'quotaValue': '250'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '13535s'}]}}",
+          "run_number": 9,
+          "benchmark": "cube-builder",
+          "timestamp": "2026-09-25T17:14:26.863742",
+          "wall_time_ms": 8459.17534828186,
+          "estimated_cost_usd": 0.0
+        },
+        {
+          "test_generation": {
+            "time_ms": 0.0,
+            "tokens": {
+              "total": 0
+            }
+          },
+          "modularization_attempts": [],
+          "total_api_calls": 1,
+          "total_time_ms": 0.0,
+          "total_tokens": 0,
+          "status": "failed",
+          "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 250, model: gemini-3.1-pro\\nPlease retry in 3h45m26.838425184s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-pro'}, 'quotaValue': '250'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '13526s'}]}}",
+          "run_number": 10,
+          "benchmark": "cube-builder",
+          "timestamp": "2026-09-25T17:14:35.223894",
+          "wall_time_ms": 8357.479333877563,
+          "estimated_cost_usd": 0.0
+        }
+      ],
+      "statistics": {
+        "total_runs": 10,
+        "successful_runs": 0,
+        "success_rate": 0.0,
+        "total_api_calls": {
+          "mean": 0,
+          "std": 0,
+          "min": 0,
+          "max": 0
+        },
+        "total_time_ms": {
+          "mean": 0,
+          "std": 0,
+          "min": 0,
+          "max": 0
+        },
+        "total_tokens": {
+          "mean": 0,
+          "std": 0,
+          "min": 0,
+          "max": 0
+        },
+        "estimated_cost_usd": {
+          "mean": 0,
+          "std": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,230 @@
+{
+  "metadata": {
+    "start_time": "2026-10-03T02:19:58.573973",
+    "requests_per_service": 10,
+    "warmup_per_service": 0,
+    "variants": [
+      "original",
+      "optimized",
+      "optimized-fixed"
+    ],
+    "note": "wall=lat\u00eancia de parede; server=time_ms reportado pelo servi\u00e7o",
+    "end_time": "2026-10-03T02:24:25.564256"
+  },
+  "apps": {
+    "img2palette": {
+      "original": {
+        "warmup_wall_ms": null,
+        "n_requested": 10,
+        "n_ok": 10,
+        "wall_ms": {
+          "mean": 6869.098975199995,
+          "std": 5044.731122761176,
+          "min": 5083.244229000229,
+          "max": 21220.338903000084
+        },
+        "server_ms": {
+          "mean": 5047.375129300001,
+          "std": 230.11523281499487,
+          "min": 4806.459687999997,
+          "max": 5547.376185000001
+        },
+        "runs": [
+          {
+            "ok": true,
+            "wall_ms": 21220.338903000084,
+            "server_ms": 5547.376185000001
+          },
+          {
+            "ok": true,
+            "wall_ms": 5580.593676999797,
+            "server_ms": 5297.966338000002
+          },
+          {
+            "ok": true,
+            "wall_ms": 5106.6650030002165,
+            "server_ms": 4824.395455000002
+          },
+          {
+            "ok": true,
+            "wall_ms": 5183.981519000099,
+            "server_ms": 4902.068923000002
+          },
+          {
+            "ok": true,
+            "wall_ms": 5211.731069000052,
+            "server_ms": 4926.187864999995
+          },
+          {
+            "ok": true,
+            "wall_ms": 5083.244229000229,
+            "server_ms": 4806.459687999997
+          },
+          {
+            "ok": true,
+            "wall_ms": 5216.098933000012,
+            "server_ms": 4935.794803000001
+          },
+          {
+            "ok": true,
+            "wall_ms": 5311.92235699973,
+            "server_ms": 5021.053053000003
+          },
+          {
+            "ok": true,
+            "wall_ms": 5399.288110999805,
+            "server_ms": 5114.891278000002
+          },
+          {
+            "ok": true,
+            "wall_ms": 5377.125950999925,
+            "server_ms": 5097.5577050000065
+          }
+        ],
+        "url": "https://img2palette-original-b56c2yqz6q-uc.a.run.app/palette-local"
+      },
+      "optimized": {
+        "warmup_wall_ms": null,
+        "n_requested": 10,
+        "n_ok": 10,
+        "wall_ms": {
+          "mean": 9414.74234250004,
+          "std": 13526.904188762446,
+          "min": 5080.054939000092,
+          "max": 47912.68776800007
+        },
+        "server_ms": {
+          "mean": 7500.435915,
+          "std": 8386.012632391788,
+          "min": 4759.406222999999,
+          "max": 31366.838176999998
+        },
+        "runs": [
+          {
+            "ok": true,
+            "wall_ms": 47912.68776800007,
+            "server_ms": 31366.838176999998
+          },
+          {
+            "ok": true,
+            "wall_ms": 5152.155141000094,
+            "server_ms": 4862.567179999999
+          },
+          {
+            "ok": true,
+            "wall_ms": 5206.995753000228,
+            "server_ms": 4926.305323999997
+          },
+          {
+            "ok": true,
+            "wall_ms": 5215.3158070000245,
+            "server_ms": 4930.011129
+          },
+          {
+            "ok": true,
+            "wall_ms": 5097.909539000284,
+            "server_ms": 4816.106597000001
+          },
+          {
+            "ok": true,
+            "wall_ms": 5080.054939000092,
+            "server_ms": 4803.570003000004
+          },
+          {
+            "ok": true,
+            "wall_ms": 5100.178319999941,
+            "server_ms": 4820.77975
+          },
+          {
+            "ok": true,
+            "wall_ms": 5085.043964999841,
+            "server_ms": 4798.784991999994
+          },
+          {
+            "ok": true,
+            "wall_ms": 5199.575092000032,
+            "server_ms": 4919.989775000005
+          },
+          {
+            "ok": true,
+            "wall_ms": 5097.507100999792,
+            "server_ms": 4759.406222999999
+          }
+        ],
+        "url": "https://img2palette-optimized-b56c2yqz6q-uc.a.run.app/palette-local"
+      },
+      "optimized-fixed": {
+        "warmup_wall_ms": null,
+        "n_requested": 10,
+        "n_ok": 10,
+        "wall_ms": {
+          "mean": 10414.73137479993,
+          "std": 7260.922007141618,
+          "min": 7516.851336999935,
+          "max": 31038.446379000106
+        },
+        "server_ms": {
+          "mean": 9033.405999999999,
+          "std": 3819.645287723281,
+          "min": 7236.48,
+          "max": 19825.89
+        },
+        "runs": [
+          {
+            "ok": true,
+            "wall_ms": 31038.446379000106,
+            "server_ms": 19825.89
+          },
+          {
+            "ok": true,
+            "wall_ms": 8909.429480999734,
+            "server_ms": 8623.5
+          },
+          {
+            "ok": true,
+            "wall_ms": 7980.082756999764,
+            "server_ms": 7684.04
+          },
+          {
+            "ok": true,
+            "wall_ms": 7616.387448000296,
+            "server_ms": 7331.7
+          },
+          {
+            "ok": true,
+            "wall_ms": 7716.51566699984,
+            "server_ms": 7418.87
+          },
+          {
+            "ok": true,
+            "wall_ms": 8597.83862500035,
+            "server_ms": 8304.4
+          },
+          {
+            "ok": true,
+            "wall_ms": 7973.6653239997395,
+            "server_ms": 7684.74
+          },
+          {
+            "ok": true,
+            "wall_ms": 8221.336359999896,
+            "server_ms": 7936.58
+          },
+          {
+            "ok": true,
+            "wall_ms": 8576.760369999647,
+            "server_ms": 8287.86
+          },
+          {
+            "ok": true,
+            "wall_ms": 7516.851336999935,
+            "server_ms": 7236.48
+          }
+        ],
+        "url": "https://img2palette-optimized-fixed-b56c2yqz6q-uc.a.run.app/palette-local"
+      },
+      "speedup_server_original_vs_optimized": 0.6729442377083494,
+      "speedup_server_original_vs_optimized-fixed": 0.5587455196079975
+    }
+  }
+}

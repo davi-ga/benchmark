@@ -1,0 +1,6 @@
+[
+  {
+    "app": "cube-builder",
+    "error": "No module named 'shapely'"
+  }
+]

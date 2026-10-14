@@ -1,0 +1,86 @@
+[
+  {
+    "app": "yuki-mt",
+    "ref_mediana_ms": 3.285,
+    "arms": [
+      {
+        "arm": "ast_only",
+        "importou": true,
+        "njit_count": 0,
+        "rodou": true,
+        "correto": true,
+        "mediana_ms": 0.974,
+        "speedup": 3.37,
+        "erro": "",
+        "first_call_ms": 1.33
+      },
+      {
+        "arm": "llm_plus_ast",
+        "importou": true,
+        "njit_count": 2,
+        "rodou": true,
+        "correto": true,
+        "mediana_ms": 0.327,
+        "speedup": 10.05,
+        "erro": "",
+        "first_call_ms": 770.4
+      }
+    ]
+  },
+  {
+    "app": "img2palette",
+    "ref_mediana_ms": 96.258,
+    "arms": [
+      {
+        "arm": "ast_only",
+        "importou": true,
+        "njit_count": 5,
+        "rodou": true,
+        "correto": true,
+        "mediana_ms": 94.343,
+        "speedup": 1.02,
+        "erro": "",
+        "first_call_ms": 2055.85
+      },
+      {
+        "arm": "llm_plus_ast",
+        "importou": true,
+        "njit_count": 12,
+        "rodou": true,
+        "correto": false,
+        "mediana_ms": 82.294,
+        "speedup": 1.17,
+        "erro": "",
+        "first_call_ms": 1231.31
+      }
+    ]
+  },
+  {
+    "app": "cube-builder",
+    "ref_mediana_ms": 0.001,
+    "arms": [
+      {
+        "arm": "ast_only",
+        "importou": true,
+        "njit_count": 4,
+        "rodou": true,
+        "correto": true,
+        "mediana_ms": 0.001,
+        "speedup": 1.1,
+        "erro": "",
+        "first_call_ms": 62.06
+      },
+      {
+        "arm": "llm_plus_ast",
+        "importou": true,
+        "njit_count": 4,
+        "rodou": true,
+        "correto": true,
+        "mediana_ms": 0.001,
+        "speedup": 1.1,
+        "erro": "",
+        "first_call_ms": 55.44
+      }
+    ]
+  }
+]
