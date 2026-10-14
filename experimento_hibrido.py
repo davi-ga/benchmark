@@ -266,6 +266,95 @@ def llm_only_arm(app: str, rep: int) -> tuple[list[dict], str]:
         return None, str(exc)[:200]
 
 
+ANNOTATE_PROMPT = """Você é um expert em otimização Python com Numba.
+
+Analise o código abaixo e:
+1. Identifique funções que podem ser compiladas com Numba (funções puras, sem classes, sem sklearn)
+2. Adicione @numba.njit APENAS nessas funções
+3. Adicione `import numba` no topo
+4. Mantenha o resto do código inalterado
+
+RETORNE APENAS O CÓDIGO COMPLETO MODIFICADO.
+"""
+
+PROMPT_NUMBA_STRONG = """Você é um especialista em Numba. Sua tarefa é, para CADA
+função do arquivo, decidir se ela pode ser compilada em modo nopython e, quando
+puder, adicionar o decorador @numba.njit.
+
+Regras de decisão — NÃO anote a função se qualquer item abaixo for verdadeiro:
+- usa classes, `self`, ou é um método de classe;
+- usa bibliotecas externas (sklearn, PIL, requests, os, multiprocessing, hashlib, datetime, plotly, etc.);
+- usa dict/set (literais `{}` ou chamadas `dict()`/`set()`);
+- usa strings, f-strings, `.format`, `print`, `logging`, `try/except`, `raise`, `open`;
+- usa indexação booleana em array 2D (`arr[mask]` com `mask` 2D);
+- usa `np.where`, `np.select`, `np.vectorize` ou `lambda`;
+- constrói array com `np.array(lista)` dentro do corpo.
+
+Anote SOMENTE funções com operações numéricas puras: loops, aritmética de
+arrays, indexação inteira, funções suportadas de `np`/`numba`.
+
+Instruções obrigatórias:
+1. Preserve EXATAMENTE os nomes e assinaturas das funções.
+2. Preserve TODAS as funções: não remova, não renomeie, não substitua o corpo por `pass`.
+3. Adicione `import numba` no topo (se não existir). Não duplique imports.
+4. Se nenhuma função for elegível, devolva o arquivo praticamente inalterado.
+5. Retorne APENAS o código Python completo — sem explicações e sem cercas de código.
+"""
+
+# arquivo que contem o kernel principal por app (mesmo escopo do experimento 11/set)
+MAIN_FILE = {
+    "yuki-mt": "src/knn_feature.py",
+    "img2palette": "src/image.py",
+    "cube-builder": "src/processing.py",
+}
+
+
+def llm_only_annotate_arm(app: str, source: str = "raw") -> tuple[list[dict], str]:
+    """LLM-Only como ANOTADOR: prompt pede @numba.njit.
+
+    source="raw"          -> codigo bruto do original
+    source="preprocessed" -> saida do PreprocessorService (limpa, sem classe/imports externos)
+    """
+    import os as _os
+    from google import genai
+    from google.genai import types as genai_types
+
+    main = MAIN_FILE[app]
+    if source == "preprocessed":
+        from services.preprocessor import PreprocessorService
+
+        src_dir = GCR / app / "original"
+        docs_in = [
+            {"path": str(p.relative_to(src_dir)), "body": p.read_text()}
+            for p in sorted(src_dir.rglob("*.py")) if "__pycache__" not in str(p)
+        ]
+        docs_pp = PreprocessorService().transform_documents(docs_in)
+        match = next((d for d in docs_pp if Path(d["path"]).as_posix() == main), None)
+        if match is None:
+            return None, f"preprocessed main file {main!r} not found"
+        code = match["body"]
+    else:
+        code = (GCR / app / "original" / main).read_text()
+
+    prompt = (PROMPT_NUMBA_STRONG
+              if _os.getenv("EXPERIMENTO_ANNOTATE_PROMPT", "strong") == "strong"
+              else ANNOTATE_PROMPT)
+    try:
+        client = genai.Client(api_key=_os.getenv("GEMINI_API_KEY"))
+        resp = client.models.generate_content(
+            model="gemini-3.1-pro-preview",
+            contents=f"{prompt}\n\n```\n{code}\n```",
+            config=genai_types.GenerateContentConfig(temperature=0.2),
+        )
+        out = resp.text.strip()
+        if out.startswith("```"):
+            out = out.split("\n", 1)[-1].rsplit("```", 1)[0].strip()
+        return [{"path": main, "body": out}], ""
+    except Exception as exc:  # noqa: BLE001
+        return None, str(exc)[:200]
+
+
+
 def load_saved_arm(app: str, sub: str) -> list[dict]:
     d = GCR / app / "optimized-fixed" / sub
     docs = []
@@ -319,16 +408,27 @@ def run_app(app: str):
 
     row_eval("ast_only", load_saved_arm(app, "optimized_astonly_backup"))
     row_eval("llm_plus_ast", load_saved_arm(app, "optimized"))
-    for i in range(REPS_LLM_ONLY):
-        docs, err = llm_only_arm(app, i)
-        if docs is None:
-            rows.append({"arm": f"llm_only_{i + 1}", "importou": False,
-                         "njit_count": 0, "rodou": False, "correto": False,
-                         "mediana_ms": None, "speedup": 0,
-                         "erro": f"LLM call: {err}"})
-            print(f"[llm_only_{i + 1}] FALHA CHAMADA LLM: {err}", flush=True)
-        else:
-            row_eval(f"llm_only_{i + 1}", docs)
+    llm_mode = os.getenv("EXPERIMENTO_LLM_ONLY_MODE", "annotate")
+    if llm_mode == "annotate":
+        sources = os.getenv("EXPERIMENTO_ANNOTATE_SOURCES", "raw,preprocessed").split(",")
+        runs = [(f"llm_only_{s.strip()}", s.strip()) for s in sources if s.strip()]
+    else:
+        runs = [("llm_only_modularize", None)]
+    print(f"[llm_only] modo: {llm_mode} | runs: {[r[0] for r in runs]}", flush=True)
+    for base_label, src in runs:
+        for i in range(REPS_LLM_ONLY):
+            if src is None:
+                docs, err = llm_only_arm(app, i)
+            else:
+                docs, err = llm_only_annotate_arm(app, source=src)
+            label = f"{base_label}_{i + 1}"
+            if docs is None:
+                rows.append({"arm": label, "importou": False, "njit_count": 0,
+                             "rodou": False, "correto": False, "mediana_ms": None,
+                             "speedup": 0, "erro": f"LLM call: {err}"})
+                print(f"[{label}] FALHA CHAMADA LLM: {err}", flush=True)
+            else:
+                row_eval(label, docs)
     return {"app": app, "ref_mediana_ms": round(ref_med, 3), "arms": rows}
 
 

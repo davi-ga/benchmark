@@ -1,0 +1,30 @@
+[
+  {
+    "app": "yuki-mt",
+    "ref_mediana_ms": 3.098,
+    "arms": [
+      {
+        "arm": "ast_only",
+        "importou": true,
+        "njit_count": 0,
+        "rodou": true,
+        "correto": true,
+        "mediana_ms": 0.929,
+        "speedup": 3.33,
+        "erro": "",
+        "first_call_ms": 1.67
+      },
+      {
+        "arm": "llm_plus_ast",
+        "importou": true,
+        "njit_count": 2,
+        "rodou": true,
+        "correto": true,
+        "mediana_ms": 0.334,
+        "speedup": 9.28,
+        "erro": "",
+        "first_call_ms": 839.48
+      }
+    ]
+  }
+]

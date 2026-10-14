@@ -1,0 +1,96 @@
+[
+  {
+    "app": "yuki-mt",
+    "ref_mediana_ms": 3.458,
+    "arms": [
+      {
+        "arm": "ast_only",
+        "importou": true,
+        "njit_count": 0,
+        "rodou": true,
+        "correto": true,
+        "mediana_ms": 1.049,
+        "speedup": 3.3,
+        "erro": "",
+        "first_call_ms": 1.65
+      },
+      {
+        "arm": "llm_plus_ast",
+        "importou": true,
+        "njit_count": 2,
+        "rodou": true,
+        "correto": true,
+        "mediana_ms": 0.319,
+        "speedup": 10.84,
+        "erro": "",
+        "first_call_ms": 795.32
+      },
+      {
+        "arm": "llm_only_raw_1",
+        "importou": true,
+        "njit_count": 0,
+        "rodou": true,
+        "correto": true,
+        "mediana_ms": 3.649,
+        "speedup": 0.95,
+        "erro": "",
+        "first_call_ms": 3.8
+      },
+      {
+        "arm": "llm_only_raw_2",
+        "importou": true,
+        "njit_count": 0,
+        "rodou": true,
+        "correto": true,
+        "mediana_ms": 4.113,
+        "speedup": 0.84,
+        "erro": "",
+        "first_call_ms": 3.38
+      },
+      {
+        "arm": "llm_only_raw_3",
+        "importou": true,
+        "njit_count": 0,
+        "rodou": true,
+        "correto": true,
+        "mediana_ms": 3.269,
+        "speedup": 1.06,
+        "erro": "",
+        "first_call_ms": 4.12
+      },
+      {
+        "arm": "llm_only_preprocessed_1",
+        "importou": true,
+        "njit_count": 0,
+        "rodou": true,
+        "correto": true,
+        "mediana_ms": 0.864,
+        "speedup": 4.0,
+        "erro": "",
+        "first_call_ms": 1.12
+      },
+      {
+        "arm": "llm_only_preprocessed_2",
+        "importou": true,
+        "njit_count": 0,
+        "rodou": true,
+        "correto": true,
+        "mediana_ms": 0.894,
+        "speedup": 3.87,
+        "erro": "",
+        "first_call_ms": 1.77
+      },
+      {
+        "arm": "llm_only_preprocessed_3",
+        "importou": true,
+        "njit_count": 0,
+        "rodou": true,
+        "correto": true,
+        "mediana_ms": 0.872,
+        "speedup": 3.97,
+        "erro": "",
+        "first_call_ms": 1.05
+      }
+    ]
+  }
+]
