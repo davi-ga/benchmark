@@ -1,29 +1,31 @@
 #!/usr/bin/env python3
 """
-Reprodutibilidade de runtime no GCR — 10 requests por repo.
+Reprodutibilidade de runtime no GCR — N requests por repo.
 
-Para cada app (yuki-mt, img2palette, cube-builder) e cada variante
-(original, optimized) nos serviços Cloud Run já deployados:
+Para cada app e cada variante (original, optimized) nos serviços Cloud Run:
   1. 1 request de warm-up (descartado — absorve cold start / compilação JIT)
-  2. 10 requests medidos
-Registra latência de parede (wall-clock) e o `time_ms` reportado pelo servidor,
-calcula estatísticas (média, desvio-padrão, min, max) e o speedup.
+  2. N requests medidos, registrando CADA execução (wall_ms e time_ms do servidor)
+
+As URLs podem ser resolvidas dinamicamente via `gcloud run services describe`
+(--project/--region) ou por um template (--base-url).
 
 Uso:
-    python benchmarks/gcr/run_gcr_requests.py
-    python benchmarks/gcr/run_gcr_requests.py --requests 10
+    python benchmarks/gcr/run_gcr_requests.py --project tcc-dev-496317 --region us-central1
+    python benchmarks/gcr/run_gcr_requests.py --project tcc-dev-496317 --apps fbosler --requests 10
+    python benchmarks/gcr/run_gcr_requests.py --base-url "https://{svc}-HASH-uc.a.run.app{path}"
 """
 
 import argparse
 import json
 import statistics
+import subprocess
 import time
 import urllib.error
 import urllib.request
 from datetime import datetime
 from pathlib import Path
 
-API = "https://{svc}-b56c2yqz6q-uc.a.run.app{path}"
+DEFAULT_BASE_URL = "https://{svc}-b56c2yqz6q-uc.a.run.app{path}"
 
 APPS = {
     "yuki-mt": {
@@ -41,9 +43,34 @@ APPS = {
         "path": "/qa",
         "payload": {"band_data": [i % 256 for i in range(1000)], "bit_location": 3},
     },
+    "fbosler": {
+        "svc": "fbosler",
+        "path": "/score",
+        "payload": {"n": 200_000},
+    },
 }
 
 RESULTS_FILE = Path(__file__).parent / "gcr_reproducibility_results.json"
+
+
+def resolve_url(svc: str, path: str, project: str | None, region: str, base_url: str) -> str:
+    """Resolve the service URL via gcloud when --project is given, else use the template."""
+    if project:
+        proc = subprocess.run(
+            [
+                "gcloud", "run", "services", "describe", svc,
+                "--project", project,
+                "--region", region,
+                "--format", "value(status.url)",
+            ],
+            capture_output=True,
+            text=True,
+        )
+        base = proc.stdout.strip()
+        if base:
+            return base + path
+        print(f"    WARNING: could not resolve {svc} via gcloud; falling back to --base-url")
+    return base_url.format(svc=svc, path=path)
 
 
 def make_request(url: str, payload: dict, timeout: int = 180):
@@ -63,8 +90,6 @@ def make_request(url: str, payload: dict, timeout: int = 180):
 
 
 def measure(url: str, payload: dict, n: int, warmups: int = 1) -> dict:
-    # Warm-up (descartado) — pode ser desligado (warmups=0) para medir tambem
-    # o primeiro request (compilacao JIT no request)
     warm = {"wall_ms": None}
     for _ in range(max(warmups, 0)):
         warm = make_request(url, payload)
@@ -110,6 +135,13 @@ def main():
     parser.add_argument("--warmups", type=int, default=1)
     parser.add_argument("--apps", nargs="*", default=list(APPS))
     parser.add_argument("--variants", nargs="*", default=["original", "optimized"])
+    parser.add_argument("--project", default=None, help="GCP project; resolve URLs via gcloud.")
+    parser.add_argument("--region", default="us-central1")
+    parser.add_argument(
+        "--base-url",
+        default=DEFAULT_BASE_URL,
+        help="URL template used when --project is not given: 'https://{svc}-HASH.a.run.app{path}'.",
+    )
     parser.add_argument("--output", default=str(RESULTS_FILE))
     args = parser.parse_args()
 
@@ -119,6 +151,9 @@ def main():
             "requests_per_service": args.requests,
             "warmup_per_service": args.warmups,
             "variants": args.variants,
+            "project": args.project,
+            "region": args.region,
+            "base_url": args.base_url,
             "note": "wall=latência de parede; server=time_ms reportado pelo serviço",
         },
         "apps": {},
@@ -129,7 +164,8 @@ def main():
         print(f"\n{'=' * 70}\n# {app}\n{'=' * 70}")
         app_result = {}
         for variant in args.variants:
-            url = API.format(svc=f"{cfg['svc']}-{variant}", path=cfg["path"])
+            svc = f"{cfg['svc']}-{variant}"
+            url = resolve_url(svc, cfg["path"], args.project, args.region, args.base_url)
             print(f"\n  [{variant}] {url}")
             app_result[variant] = measure(url, cfg["payload"], args.requests, args.warmups)
             app_result[variant]["url"] = url
@@ -139,9 +175,13 @@ def main():
             orig = app_result[base].get("server_ms", {}).get("mean", 0)
             opt = app_result[variant].get("server_ms", {}).get("mean", 0)
             app_result[f"speedup_server_{base}_vs_{variant}"] = (orig / opt) if opt else 0.0
+            orig_w = app_result[base].get("wall_ms", {}).get("mean", 0)
+            opt_w = app_result[variant].get("wall_ms", {}).get("mean", 0)
+            app_result[f"speedup_wall_{base}_vs_{variant}"] = (orig_w / opt_w) if opt_w else 0.0
             print(
                 f"\n  -> {base} server={orig:.1f}ms  {variant} server={opt:.1f}ms  "
-                f"speedup={app_result[f'speedup_server_{base}_vs_{variant}']:.2f}x"
+                f"speedup_server={app_result[f'speedup_server_{base}_vs_{variant}']:.2f}x  "
+                f"speedup_wall={app_result[f'speedup_wall_{base}_vs_{variant}']:.2f}x"
             )
         results["apps"][app] = app_result
 
