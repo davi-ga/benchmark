@@ -1,9 +1,15 @@
-import numpy as np
-import os
+try:
+    from sklearn.cluster import KMeans, AgglomerativeClustering
+except ImportError:
+    KMeans = AgglomerativeClustering = None
+try:
+    from sklearn.metrics import pairwise_distances
+except ImportError:
+    pairwise_distances = None
 try:
     from PIL import Image
 except ImportError:
-    Image, = (None,)
+    Image = None
 try:
     import requests
 except ImportError:
@@ -11,23 +17,49 @@ except ImportError:
 try:
     from io import BytesIO
 except ImportError:
-    BytesIO, = (None,)
-try:
-    from sklearn.cluster import KMeans, AgglomerativeClustering
-except ImportError:
-    KMeans, AgglomerativeClustering = (None, None)
-try:
-    from sklearn.metrics import pairwise_distances
-except ImportError:
-    pairwise_distances, = (None,)
-try:
-    import plotly.graph_objects as go
-except ImportError:
-    go = None
+    BytesIO = None
+"""
+Helper functions for image processing
+
+The color space conversion functions are modified from functions of the
+Python package scikit-image, https://github.com/scikit-image/scikit-image.
+scikit-image has the following license.
+
+Copyright (C) 2019, the scikit-image team
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the
+    distribution.
+ 3. Neither the name of skimage nor the names of its contributors may be
+    used to endorse or promote products derived from this software without
+    specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+"""
+import numpy as np
+import os
 import numba
 from _numba_helpers import _sanitize_for_numba, _deep_to_list
 
-@numba.njit(cache=True)
+@numba.njit
 def _np_unique_with_counts(arr):
     """Implementação Numba-compatível de np.unique(arr, return_counts=True)"""
     sorted_arr = np.sort(arr)
@@ -50,7 +82,6 @@ def _np_unique_with_counts(arr):
             counts[idx] += 1
     return (unique_vals, counts)
 
-@numba.njit(cache=True)
 def _int_to_hex(integer):
     """Converte inteiro para string hex (sem usar hex() built-in)"""
     hex_chars = '0123456789abcdef'
@@ -64,7 +95,6 @@ def _int_to_hex(integer):
         result = '0' + result
     return result
 
-@numba.njit(cache=True)
 def _int_to_bin(integer):
     """Converte inteiro para string binária (sem usar bin() built-in)"""
     if integer == 0:
@@ -75,7 +105,6 @@ def _int_to_bin(integer):
         integer = integer // 2
     return result
 
-@numba.njit(cache=True)
 def _int_to_oct(integer):
     """Converte inteiro para string octal (sem usar oct() built-in)"""
     if integer == 0:
@@ -91,135 +120,191 @@ xyz_ref_white = np.asarray((0.95047, 1.0, 1.08883))
 xyz_from_rgb = np.array([[0.412453, 0.35758, 0.180423], [0.212671, 0.71516, 0.072169], [0.019334, 0.119193, 0.950227]])
 rgb_from_xyz = np.linalg.inv(xyz_from_rgb)
 
-@numba.njit(cache=True)
-def _rgb2xyz_core(rgb_arr):
-    n, c = rgb_arr.shape
-    xyz_arr = np.zeros((n, c), dtype=np.float64)
-    for i in range(n):
-        for j in range(c):
-            val = rgb_arr[i, j]
-            if val > 0.04045:
-                xyz_arr[i, j] = ((val + 0.055) / 1.055) ** 2.4
-            else:
-                xyz_arr[i, j] = val / 12.92
-    return xyz_arr
-
-@numba.njit(cache=True)
+@numba.njit
 def rgb2xyz(rgb_arr):
     """
     Convert colur from RGB to CIE 1931 XYZ
-    """
-    xyz_arr = _rgb2xyz_core(rgb_arr)
-    return xyz_arr @ np.transpose(xyz_from_rgb)
 
-@numba.njit(cache=True)
-def _xyz2lab_core(xyz_arr, ref_white):
-    n, c = xyz_arr.shape
-    lab_arr = np.zeros((n, c), dtype=np.float64)
-    for i in range(n):
-        for j in range(c):
-            val = xyz_arr[i, j] / ref_white[j]
-            if val > 0.008856:
-                lab_arr[i, j] = val ** (1.0 / 3.0)
-            else:
-                lab_arr[i, j] = 7.787 * val + 16.0 / 116.0
-    return lab_arr
+    Parameters
+    ----------
+    rgb_arr: ndarray
+        Color in RGB
+    
+    Returns
+    ------
+    xyz_arr: ndarray
+        Color in CIE 1931 XYZ
+    
+    """
+    xyz_arr = np.copy(rgb_arr)
+    mask = xyz_arr > 0.04045
+    for _idx in np.ndindex(xyz_arr.shape):
+        if mask[_idx]:
+            xyz_arr[_idx] = np.power((xyz_arr[_idx] + 0.055) / 1.055, 2.4)
+    for _idx in np.ndindex(xyz_arr.shape):
+        if not mask[_idx]:
+            xyz_arr[_idx] /= 12.92
+    return xyz_arr @ np.transpose(xyz_from_rgb)
 
 def xyz2lab(xyz_arr):
     """
     Convert colur from CIE 1931 XYZ to CIE 1976 L*a*b*
+
+    Parameters
+    ----------
+    xyz_arr: ndarray
+        Color in CIE 1931 XYZ
+    
+    Returns
+    ------
+    lab_arr: ndarray
+        Color in CIE 1976 L*a*b*
+    
     """
-    lab_arr = _xyz2lab_core(xyz_arr, xyz_ref_white)
+    lab_arr = np.copy(xyz_arr) / xyz_ref_white
+    mask = lab_arr > 0.008856
+    for _idx in np.ndindex(lab_arr.shape):
+        if mask[_idx]:
+            lab_arr[_idx] = np.cbrt(lab_arr[_idx])
+    for _idx in np.ndindex(lab_arr.shape):
+        if not mask[_idx]:
+            lab_arr[_idx] = 7.787 * lab_arr[_idx] + 16.0 / 116.0
     x, y, z = (lab_arr[:, 0], lab_arr[:, 1], lab_arr[:, 2])
     L = 116.0 * y - 16.0
     a = 500.0 * (x - y)
     b = 200.0 * (y - z)
     return np.transpose(np.asarray((L, a, b)))
 
-@numba.njit(cache=True)
-def _lab2xyz_core(lab_arr, ref_white):
-    n = lab_arr.shape[0]
-    xyz_arr = np.zeros((n, 3), dtype=np.float64)
-    for i in range(n):
-        L = lab_arr[i, 0]
-        a = lab_arr[i, 1]
-        b = lab_arr[i, 2]
-        y = (L + 16.0) / 116.0
-        x = a / 500.0 + y
-        z = y - b / 200.0
-        if z < 0:
-            z = 0.0
-        xyz_arr[i, 0] = x
-        xyz_arr[i, 1] = y
-        xyz_arr[i, 2] = z
-        for j in range(3):
-            val = xyz_arr[i, j]
-            if val > 0.2068966:
-                xyz_arr[i, j] = val ** 3.0
-            else:
-                xyz_arr[i, j] = (val - 16.0 / 116.0) / 7.787
-            xyz_arr[i, j] *= ref_white[j]
-    return xyz_arr
-
-@numba.njit(cache=True)
 def lab2xyz(lab_arr):
     """
     Convert colur from CIE 1976 L*a*b* to CIE 1931 XYZ
+
+    Parameters
+    ----------
+    lab_arr: ndarray
+        Color in CIE 1976 L*a*b*
+    
+    Returns
+    ------
+    xyz_arr: ndarray
+        Color in CIE 1931 XYZ
+    
     """
-    return _lab2xyz_core(lab_arr, xyz_ref_white)
+    L, a, b = (lab_arr[:, 0], lab_arr[:, 1], lab_arr[:, 2])
+    y = (L + 16.0) / 116.0
+    x = a / 500.0 + y
+    z = y - b / 200.0
+    if np.any(z < 0):
+        invalid = np.nonzero(z < 0)
+        z[invalid] = 0
+    xyz_arr = np.transpose(np.asarray((x, y, z)))
+    mask = xyz_arr > 0.2068966
+    for _idx in np.ndindex(xyz_arr.shape):
+        if mask[_idx]:
+            xyz_arr[_idx] = np.power(xyz_arr[_idx], 3.0)
+    for _idx in np.ndindex(xyz_arr.shape):
+        if not mask[_idx]:
+            xyz_arr[_idx] = (xyz_arr[_idx] - 16.0 / 116.0) / 7.787
+    xyz_arr *= xyz_ref_white
+    return xyz_arr
 
-@numba.njit(cache=True)
-def _xyz2rgb_core(rgb_arr):
-    n, c = rgb_arr.shape
-    out = np.zeros((n, c), dtype=np.float64)
-    for i in range(n):
-        for j in range(c):
-            val = rgb_arr[i, j]
-            if val > 0.0031308:
-                val = 1.055 * val ** (1.0 / 2.4) - 0.055
-            else:
-                val *= 12.92
-            if val < 0.0:
-                val = 0.0
-            elif val > 1.0:
-                val = 1.0
-            out[i, j] = val
-    return out
-
-@numba.njit(cache=True)
 def xyz2rgb(xyz_arr):
     """
     Convert colur from CIE 1931 XYZ to RGB
+
+    Parameters
+    ----------
+    xyz_arr: ndarray
+        Color in CIE 1931 XYZ
+    
+    Returns
+    ------
+    rgb_arr: ndarray
+        Color in RGB
+    
     """
     rgb_arr = xyz_arr @ np.transpose(rgb_from_xyz)
-    return _xyz2rgb_core(rgb_arr)
+    mask = rgb_arr > 0.0031308
+    for _idx in np.ndindex(rgb_arr.shape):
+        if mask[_idx]:
+            rgb_arr[_idx] = 1.055 * np.power(rgb_arr[_idx], 1 / 2.4) - 0.055
+    for _idx in np.ndindex(rgb_arr.shape):
+        if not mask[_idx]:
+            rgb_arr[_idx] *= 12.92
+    rgb_arr = np.clip(rgb_arr, 0, 1)
+    return rgb_arr
 
 def rgb2lab(rgb_arr):
     """
     Convert colur from RGB to CIE 1976 L*a*b*
+
+    Parameters
+    ----------
+    rgb_arr: ndarray
+        Color in RGB
+    
+    Returns
+    -------
+    lab_arr: ndarray
+        Color in CIE 1976 L*a*b*
+    
     """
     return xyz2lab(rgb2xyz(rgb_arr))
 
-@numba.njit(cache=True)
 def lab2rgb(lab_arr):
     """
     Convert colur from CIE 1976 L*a*b* to RGB
+
+    Parameters
+    ----------
+    lab_arr: ndarray
+        Color in CIE 1976 L*a*b*
+    
+    Returns
+    ------
+    rgb_arr: ndarray
+        Color in RGB
+    
     """
     return xyz2rgb(lab2xyz(lab_arr))
 
 def get_lab_data(im):
     """
     Convert colur from CIE 1976 L*a*b* to RGB
+
+    Parameters
+    ----------
+    im: Image
+        Image to create palette
+    
+    Returns
+    ------
+    lab_arr: ndarray
+        Color in CIE 1976 L*a*b*
+    
     """
     img_size = (150, 150)
     im.thumbnail(img_size)
     pixel_rgb = np.asarray(im)
-    pixel_lab = rgb2lab(pixel_rgb.reshape(-1, pixel_rgb.shape[-1]) / 255.0)
+    pixel_lab = rgb2lab(pixel_rgb.reshape(-1, pixel_rgb.shape[-1]) / 255)
     return pixel_lab.reshape(-1, pixel_lab.shape[-1])
 
 def make_img(colors, counts):
     """
     Create image from colors
+
+    Parameters
+    ----------
+    colors: ndarray
+        Color in RGB
+    counts: ndarray
+        Number of data points in each color cluster
+
+    Returns
+    ------
+    img: Image
+        Generated image
+    
     """
     img_size = (512, 512)
     n_clusters = len(colors)
@@ -232,6 +317,17 @@ def make_img(colors, counts):
 def get_hex_string(rgb_arr):
     """
     Covert RGB color to HEX values
+
+    Parameters
+    ----------
+    rgb_arr: ndarray
+        Color in RGB
+
+    Returns
+    ------
+    hex_names: str
+        HEX values of color
+    
     """
 
     def int2hex(integer):
@@ -244,6 +340,21 @@ def get_hex_string(rgb_arr):
 def cluster_kmeans(data, n_clusters):
     """
     Partition data with k-means clustering
+
+    Parameters
+    ----------
+    data: ndarray
+        Data points
+    n_clusters: int
+        Number of clusters
+
+    Returns
+    ------
+    centers: ndarray
+        Clusters centers
+    labels: ndarray
+        Center label of every data point
+    
     """
     kmeans = KMeans(n_clusters)
     labels = kmeans.fit_predict(data)
@@ -253,6 +364,17 @@ def cluster_kmeans(data, n_clusters):
 def compute_medoid(data):
     """
     Get medoid of data
+
+    Parameters
+    ----------
+    data: ndarray
+        Data points
+
+    Returns
+    ------
+    medoid: ndarray
+        Medoid
+    
     """
     dist_mat = pairwise_distances(data)
     return data[np.argmin(dist_mat.sum(axis=0))]
@@ -260,6 +382,21 @@ def compute_medoid(data):
 def cluster_agglo(data, n_clusters):
     """
     Partition data with agglomerative clustering
+
+    Parameters
+    ----------
+    data: ndarray
+        Data points
+    n_clusters: int
+        Number of clusters
+
+    Returns
+    ------
+    centers: ndarray
+        Clusters centers
+    labels: ndarray
+        Center label of every data point
+    
     """
     ac = AgglomerativeClustering(n_clusters)
     labels = ac.fit_predict(data)
@@ -271,6 +408,23 @@ def cluster_agglo(data, n_clusters):
 def get_cluster(centers, labels):
     """
     Sort cluster centers and count number of labels
+
+    Parameters
+    ----------
+    centers: ndarray
+        Clusters centers
+    labels: ndarray
+        Center label of every data point
+
+    Returns
+    ------
+    sort_centers: ndarray
+        Clusters centers sorted by number of label descending
+    sort_labels: ndarray
+        Sorted center label of every data point
+    sort_counts: ndarray
+        Number of data points of sorted centers
+    
     """
     _, counts = _np_unique_with_counts(labels)
     sort_idx = (-counts).argsort()
@@ -280,6 +434,22 @@ def get_cluster(centers, labels):
 def get_palette(im, k):
     """
     Create a palette from an image
+
+    Parameters
+    ----------
+    im: Image
+        Image to create palette from
+    k: int
+        Number of pallete colors
+        If None or k is outside of the range [2, 10], uses default_k as k
+    
+    Returns
+    ------
+    im_output: Image
+        Image of palette colors
+    hex_colors: ndarray
+        Palette colors in HEX values
+    
     """
     if k is None:
         k = default_k
@@ -294,6 +464,22 @@ def get_palette(im, k):
 def get_palette_plot(im, k):
     """
     Create a palette from an image and plot clusters in 3D 
+
+    Parameters
+    ----------
+    img: Image
+        Image to create palette.
+    k: int
+        Number of pallete colors.
+        If None or k is outside of the range [2, 10], uses default_k as k
+    
+    Returns
+    ------
+    im_output: Image
+        Image of palette colors
+    hex_colors: ndarray
+        Palette colors in HEX values
+    
     """
     if k is None:
         k = default_k
@@ -310,6 +496,16 @@ def get_palette_plot(im, k):
 def plot_3d(data, labels, centers_hex):
     """
     Plot clustered data in 3D 
+
+    Parameters
+    ----------
+    data: ndarray
+        Data points
+    labels: ndarray
+        Labels of every data point
+    centers_hex: ndarray
+        Color in HEX values
+    
     """
     l, a, b = np.transpose(data)
     fig = go.Figure(data=[go.Scatter3d(x=a, y=b, z=l, mode='markers', marker={'size': 3, 'color': [(lambda hex: '#' + hex)(x) for x in centers_hex][labels], 'opacity': 0.1})])
@@ -319,6 +515,17 @@ def plot_3d(data, labels, centers_hex):
 def get_image_from_url(url):
     """
     Download and create image
+
+    Parameters
+    ----------
+    url: str
+        Image link
+    
+    Returns
+    ------
+    im: Image
+        Image downloaded
+    
     """
     response = requests.get(url)
     return Image.open(BytesIO(response.content))

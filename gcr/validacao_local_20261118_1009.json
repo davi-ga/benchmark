@@ -1,0 +1,306 @@
+[
+  {
+    "app": "yuki-mt",
+    "original": {
+      "mediana_ms": 2.96,
+      "desvio_ms": 1.132,
+      "amostras_ms": [
+        4.524,
+        2.873,
+        5.198,
+        3.387,
+        2.735,
+        2.96,
+        2.93,
+        5.824,
+        2.961,
+        2.828
+      ]
+    },
+    "arms": [
+      {
+        "arm": "ast_only",
+        "importou": true,
+        "njit_count": 0,
+        "compilou": [],
+        "rodou": true,
+        "correto": true,
+        "primeira_chamada_ms": 1.3,
+        "mediana_ms": 0.878,
+        "desvio_ms": 0.055,
+        "amostras_ms": [
+          0.863,
+          0.845,
+          0.957,
+          0.937,
+          0.913,
+          0.855,
+          0.817,
+          0.847,
+          0.982,
+          0.892
+        ],
+        "erro": "",
+        "speedup": 3.37
+      },
+      {
+        "arm": "llm_plus_ast",
+        "importou": true,
+        "njit_count": 4,
+        "compilou": [],
+        "rodou": true,
+        "correto": true,
+        "primeira_chamada_ms": 716.04,
+        "mediana_ms": 0.332,
+        "desvio_ms": 0.023,
+        "amostras_ms": [
+          0.316,
+          0.298,
+          0.33,
+          0.377,
+          0.359,
+          0.333,
+          0.335,
+          0.31,
+          0.331,
+          0.334
+        ],
+        "erro": "",
+        "speedup": 8.92
+      },
+      {
+        "arm": "llm_only",
+        "importou": true,
+        "njit_count": 0,
+        "compilou": [],
+        "rodou": true,
+        "correto": true,
+        "primeira_chamada_ms": 3.12,
+        "mediana_ms": 2.835,
+        "desvio_ms": 1.41,
+        "amostras_ms": [
+          3.794,
+          2.814,
+          2.682,
+          2.991,
+          2.744,
+          2.806,
+          2.941,
+          7.284,
+          2.853,
+          2.817
+        ],
+        "erro": "",
+        "speedup": 1.04
+      }
+    ]
+  },
+  {
+    "app": "img2palette",
+    "original": {
+      "mediana_ms": 81.069,
+      "desvio_ms": 6.499,
+      "amostras_ms": [
+        74.558,
+        82.584,
+        81.586,
+        80.551,
+        78.932,
+        76.426,
+        85.841,
+        78.559,
+        97.916,
+        83.326
+      ]
+    },
+    "arms": [
+      {
+        "arm": "ast_only",
+        "importou": true,
+        "njit_count": 2,
+        "compilou": [],
+        "rodou": true,
+        "correto": true,
+        "primeira_chamada_ms": 1265.25,
+        "mediana_ms": 81.728,
+        "desvio_ms": 4.232,
+        "amostras_ms": [
+          79.344,
+          77.691,
+          81.618,
+          82.33,
+          81.838,
+          92.388,
+          79.156,
+          83.501,
+          85.36,
+          79.457
+        ],
+        "erro": "",
+        "speedup": 0.99
+      },
+      {
+        "arm": "llm_plus_ast",
+        "importou": true,
+        "njit_count": 2,
+        "compilou": [],
+        "rodou": true,
+        "correto": true,
+        "primeira_chamada_ms": 851.65,
+        "mediana_ms": 202.252,
+        "desvio_ms": 42.151,
+        "amostras_ms": [
+          177.061,
+          307.02,
+          216.574,
+          181.81,
+          243.237,
+          180.604,
+          187.806,
+          187.931,
+          224.423,
+          253.039
+        ],
+        "erro": "",
+        "speedup": 0.4
+      },
+      {
+        "arm": "llm_only",
+        "importou": true,
+        "njit_count": 0,
+        "compilou": [],
+        "rodou": true,
+        "correto": true,
+        "primeira_chamada_ms": 83.54,
+        "mediana_ms": 76.568,
+        "desvio_ms": 3.06,
+        "amostras_ms": [
+          82.244,
+          76.69,
+          75.216,
+          74.073,
+          82.278,
+          78.343,
+          75.296,
+          76.447,
+          73.509,
+          77.048
+        ],
+        "erro": "",
+        "speedup": 1.06
+      }
+    ]
+  },
+  {
+    "app": "cube-builder",
+    "original": {
+      "mediana_ms": 0.001,
+      "desvio_ms": 0.0,
+      "amostras_ms": [
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001
+      ]
+    },
+    "arms": [
+      {
+        "arm": "ast_only",
+        "importou": true,
+        "njit_count": 3,
+        "compilou": [],
+        "rodou": true,
+        "correto": true,
+        "primeira_chamada_ms": 54.38,
+        "mediana_ms": 0.001,
+        "desvio_ms": 0.001,
+        "amostras_ms": [
+          0.004,
+          0.002,
+          0.002,
+          0.001,
+          0.001,
+          0.001,
+          0.001,
+          0.002,
+          0.001,
+          0.001
+        ],
+        "erro": "",
+        "speedup": 0.86
+      },
+      {
+        "arm": "llm_plus_ast",
+        "importou": false,
+        "erro": "RuntimeError: Equivalence tests failed after 3 attempt(s). Aborting."
+      },
+      {
+        "arm": "llm_only",
+        "importou": false,
+        "erro": "ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project is temporarily rate-limited to prevent exceeding its monthly spending cap. Please raise your project spend cap or wait before retrying.', 'status': 'RESOURCE_EXHAUSTED'}}"
+      }
+    ]
+  },
+  {
+    "app": "fbosler",
+    "original": {
+      "mediana_ms": 534.993,
+      "desvio_ms": 26.082,
+      "amostras_ms": [
+        583.708,
+        534.228,
+        522.461,
+        528.155,
+        576.423,
+        531.436,
+        535.758,
+        545.778,
+        587.108,
+        518.463
+      ]
+    },
+    "arms": [
+      {
+        "arm": "ast_only",
+        "importou": true,
+        "njit_count": 2,
+        "compilou": [],
+        "rodou": true,
+        "correto": true,
+        "primeira_chamada_ms": 348.98,
+        "mediana_ms": 203.057,
+        "desvio_ms": 15.364,
+        "amostras_ms": [
+          249.761,
+          204.414,
+          203.232,
+          204.908,
+          203.772,
+          200.226,
+          202.881,
+          200.385,
+          195.436,
+          202.449
+        ],
+        "erro": "",
+        "speedup": 2.63
+      },
+      {
+        "arm": "llm_plus_ast",
+        "importou": false,
+        "erro": "ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project is temporarily rate-limited to prevent exceeding its monthly spending cap. Please raise your project spend cap or wait before retrying.', 'status': 'RESOURCE_EXHAUSTED'}}"
+      },
+      {
+        "arm": "llm_only",
+        "importou": false,
+        "erro": "ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project is temporarily rate-limited to prevent exceeding its monthly spending cap. Please raise your project spend cap or wait before retrying.', 'status': 'RESOURCE_EXHAUSTED'}}"
+      }
+    ]
+  }
+]

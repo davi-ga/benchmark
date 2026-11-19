@@ -1,0 +1,70 @@
+[
+  {
+    "app": "img2palette",
+    "ref_mediana_ms": 480.717,
+    "arms": [
+      {
+        "arm": "ast_only",
+        "importou": true,
+        "njit_count": 5,
+        "rodou": true,
+        "correto": true,
+        "mediana_ms": 399.567,
+        "speedup": 1.2,
+        "erro": "",
+        "first_call_ms": 11973.41
+      },
+      {
+        "arm": "llm_plus_ast",
+        "importou": true,
+        "njit_count": 12,
+        "rodou": true,
+        "correto": false,
+        "mediana_ms": 390.939,
+        "speedup": 1.23,
+        "erro": "",
+        "first_call_ms": 5739.11
+      },
+      {
+        "arm": "llm_only_raw_1",
+        "importou": false,
+        "njit_count": 0,
+        "rodou": false,
+        "correto": false,
+        "mediana_ms": null,
+        "speedup": 0,
+        "erro": "LLM call: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.g"
+      },
+      {
+        "arm": "llm_only_raw_2",
+        "importou": false,
+        "njit_count": 0,
+        "rodou": false,
+        "correto": false,
+        "mediana_ms": null,
+        "speedup": 0,
+        "erro": "LLM call: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.g"
+      },
+      {
+        "arm": "llm_only_preprocessed_1",
+        "importou": false,
+        "njit_count": 0,
+        "rodou": false,
+        "correto": false,
+        "mediana_ms": null,
+        "speedup": 0,
+        "erro": "LLM call: 403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'Your billing account has an outstanding balance. Make a payment at https://aistudio.google.com/billing to restore service. For more informati"
+      },
+      {
+        "arm": "llm_only_preprocessed_2",
+        "importou": false,
+        "njit_count": 0,
+        "rodou": false,
+        "correto": false,
+        "mediana_ms": null,
+        "speedup": 0,
+        "erro": "LLM call: 403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'Your billing account has an outstanding balance. Make a payment at https://aistudio.google.com/billing to restore service. For more informati"
+      }
+    ]
+  }
+]

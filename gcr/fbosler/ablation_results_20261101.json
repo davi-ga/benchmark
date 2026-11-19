@@ -1,0 +1,44 @@
+{
+  "app": "fbosler",
+  "ref_mediana_ms": 481.16,
+  "ref_total": 2000000.0,
+  "n_calls": 200000,
+  "arms": [
+    {
+      "arm": "ast_only",
+      "importou": true,
+      "njit_decor": 2,
+      "njit_compilou": ["_scaled_sigmoid_jit", "sigmoid"],
+      "rodou": true,
+      "correto": true,
+      "mediana_ms": 188.81,
+      "speedup": 2.55,
+      "first_call_ms": 474.38,
+      "erro": ""
+    },
+    {
+      "arm": "llm_plus_ast",
+      "importou": true,
+      "njit_decor": 2,
+      "njit_compilou": ["_scaled_sigmoid_jit", "sigmoid"],
+      "rodou": true,
+      "correto": true,
+      "mediana_ms": 184.78,
+      "speedup": 2.6,
+      "first_call_ms": 301.52,
+      "erro": ""
+    },
+    {
+      "arm": "llm_only",
+      "importou": true,
+      "njit_decor": 2,
+      "njit_compilou": ["scaled_sigmoid", "sigmoid"],
+      "rodou": true,
+      "correto": true,
+      "mediana_ms": 2537.3,
+      "speedup": 0.19,
+      "first_call_ms": 2588.64,
+      "erro": ""
+    }
+  ]
+}

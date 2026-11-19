@@ -1,0 +1,67 @@
+[
+  {
+    "app": "cube-builder",
+    "original": {
+      "mediana_ms": 0.001,
+      "desvio_ms": 0.0,
+      "amostras_ms": [
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001
+      ]
+    },
+    "arms": [
+      {
+        "arm": "ast_only",
+        "importou": true,
+        "njit_count": 3,
+        "compilou": [],
+        "rodou": true,
+        "correto": true,
+        "primeira_chamada_ms": 252.54,
+        "mediana_ms": 0.001,
+        "desvio_ms": 0.0,
+        "amostras_ms": [
+          0.002,
+          0.002,
+          0.002,
+          0.001,
+          0.001,
+          0.001,
+          0.001,
+          0.001,
+          0.001,
+          0.001
+        ],
+        "erro": "",
+        "speedup": 1.02
+      },
+      {
+        "arm": "llm_plus_ast",
+        "importou": false,
+        "erro": "RuntimeError: Equivalence tests failed after 3 attempt(s). Aborting."
+      },
+      {
+        "arm": "llm_only",
+        "importou": false,
+        "njit_count": 0,
+        "compilou": [],
+        "rodou": false,
+        "correto": false,
+        "primeira_chamada_ms": null,
+        "mediana_ms": null,
+        "desvio_ms": null,
+        "amostras_ms": [],
+        "erro": "ModuleNotFoundError: No module named 'shapely'",
+        "speedup": 0
+      }
+    ]
+  }
+]

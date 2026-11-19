@@ -1,0 +1,14 @@
+{
+  "app": "yuki-mt",
+  "source_subdir": "original/src",
+  "model": "gemini-3.1-pro-preview",
+  "elapsed": "5943.0 ms",
+  "tokens": {
+    "prompt": 2347,
+    "thoughts": null,
+    "output": 866,
+    "total": 3213
+  },
+  "n_decorators": 0,
+  "files_written": 2
+}

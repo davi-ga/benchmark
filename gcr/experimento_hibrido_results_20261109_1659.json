@@ -1,0 +1,72 @@
+[
+  {
+    "app": "img2palette",
+    "ref_mediana_ms": 241.729,
+    "arms": [
+      {
+        "arm": "ast_only",
+        "importou": true,
+        "njit_count": 5,
+        "rodou": true,
+        "correto": true,
+        "mediana_ms": 253.352,
+        "speedup": 0.95,
+        "erro": "",
+        "first_call_ms": 6293.53
+      },
+      {
+        "arm": "llm_plus_ast",
+        "importou": true,
+        "njit_count": 8,
+        "rodou": true,
+        "correto": false,
+        "mediana_ms": 229.258,
+        "speedup": 1.05,
+        "erro": "",
+        "first_call_ms": 2899.12
+      },
+      {
+        "arm": "llm_only_raw_1",
+        "importou": true,
+        "njit_count": 0,
+        "rodou": true,
+        "correto": true,
+        "mediana_ms": 227.41,
+        "speedup": 1.06,
+        "erro": "",
+        "first_call_ms": 254.23
+      },
+      {
+        "arm": "llm_only_raw_2",
+        "importou": true,
+        "njit_count": 0,
+        "rodou": true,
+        "correto": true,
+        "mediana_ms": 233.894,
+        "speedup": 1.03,
+        "erro": "",
+        "first_call_ms": 184.58
+      },
+      {
+        "arm": "llm_only_preprocessed_1",
+        "importou": true,
+        "njit_count": 6,
+        "rodou": false,
+        "correto": false,
+        "mediana_ms": NaN,
+        "speedup": 0,
+        "erro": "TypingError: Failed in nopython mode pipeline (step: nopython frontend)\nFailed in nopython mode pipeline (step: nopython frontend)\nNo implementation of function Function(<built-in function asarray>) found for signature:\n \n >>> asarray(UniTuple(array(float64, 1d, C) x 3))\n \nThere are 2 candidate implementations:\n"
+      },
+      {
+        "arm": "llm_only_preprocessed_2",
+        "importou": true,
+        "njit_count": 6,
+        "rodou": false,
+        "correto": false,
+        "mediana_ms": NaN,
+        "speedup": 0,
+        "erro": "TypingError: Failed in nopython mode pipeline (step: nopython frontend)\nFailed in nopython mode pipeline (step: nopython frontend)\nNo implementation of function Function(<built-in function asarray>) found for signature:\n \n >>> asarray(UniTuple(array(float64, 1d, C) x 3))\n \nThere are 2 candidate implementations:\n"
+      }
+    ]
+  }
+]

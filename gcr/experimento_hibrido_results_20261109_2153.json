@@ -1,0 +1,72 @@
+[
+  {
+    "app": "img2palette",
+    "ref_mediana_ms": 242.362,
+    "arms": [
+      {
+        "arm": "ast_only",
+        "importou": true,
+        "njit_count": 5,
+        "rodou": true,
+        "correto": true,
+        "mediana_ms": 245.559,
+        "speedup": 0.99,
+        "erro": "",
+        "first_call_ms": 5979.93
+      },
+      {
+        "arm": "llm_plus_ast",
+        "importou": true,
+        "njit_count": 2,
+        "rodou": true,
+        "correto": true,
+        "mediana_ms": 216.037,
+        "speedup": 1.12,
+        "erro": "",
+        "first_call_ms": 1009.85
+      },
+      {
+        "arm": "llm_only_raw_1",
+        "importou": true,
+        "njit_count": 0,
+        "rodou": true,
+        "correto": true,
+        "mediana_ms": 218.857,
+        "speedup": 1.11,
+        "erro": "",
+        "first_call_ms": 337.36
+      },
+      {
+        "arm": "llm_only_raw_2",
+        "importou": true,
+        "njit_count": 0,
+        "rodou": true,
+        "correto": true,
+        "mediana_ms": 238.952,
+        "speedup": 1.01,
+        "erro": "",
+        "first_call_ms": 231.86
+      },
+      {
+        "arm": "llm_only_preprocessed_1",
+        "importou": true,
+        "njit_count": 2,
+        "rodou": false,
+        "correto": false,
+        "mediana_ms": NaN,
+        "speedup": 0,
+        "erro": "NameError: name 'AgglomerativeClustering' is not defined"
+      },
+      {
+        "arm": "llm_only_preprocessed_2",
+        "importou": true,
+        "njit_count": 2,
+        "rodou": false,
+        "correto": false,
+        "mediana_ms": NaN,
+        "speedup": 0,
+        "erro": "NameError: name 'AgglomerativeClustering' is not defined"
+      }
+    ]
+  }
+]

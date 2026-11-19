@@ -3,7 +3,7 @@ import sys
 import time
 
 import numpy as np
-from flask import Flask, jsonify, request
+from flask import Flask, g, jsonify, request
 
 # A pasta de funções é o artefato produzido/consumido pelo forge.
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "functions"))
@@ -21,6 +21,20 @@ for _v in _VALS:
 print("[warmup] ok", _warm)
 
 
+@app.before_request
+def _mark_request_start():
+    g.t0 = time.perf_counter()
+
+
+@app.after_request
+def _add_billed_header(resp):
+    # Tempo de processamento no servidor (roteamento + handler + serialização),
+    # mais próximo do que o Cloud Run cobra do que o compute interno do handler.
+    if hasattr(g, "t0"):
+        resp.headers["X-Billed-Ms"] = f"{(time.perf_counter() - g.t0) * 1000:.3f}"
+    return resp
+
+
 @app.route("/score", methods=["POST"])
 def score():
     data = request.get_json(silent=True) or {}
@@ -30,9 +44,11 @@ def score():
     for i in range(n):
         total += scoring.scaled_sigmoid(_VALS[i % 1000])
     elapsed = time.perf_counter() - start
+    billed_ms = (time.perf_counter() - g.t0) * 1000.0
     return jsonify(
         {
             "time_ms": elapsed * 1000.0,
+            "billed_ms": billed_ms,
             "n": n,
             "result": float(total),
             "version": VERSION,

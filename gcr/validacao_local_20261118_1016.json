@@ -1,0 +1,250 @@
+[
+  {
+    "app": "fbosler",
+    "original": {
+      "mediana_ms": 528.898,
+      "desvio_ms": 35.631,
+      "amostras_ms": [
+        508.093,
+        536.215,
+        611.682,
+        519.267,
+        534.201,
+        523.594,
+        597.036,
+        516.108,
+        513.818,
+        536.153
+      ]
+    },
+    "arms": [
+      {
+        "arm": "ast_only",
+        "importou": true,
+        "njit_count": 2,
+        "compilou": [],
+        "rodou": true,
+        "correto": true,
+        "primeira_chamada_ms": 613.58,
+        "mediana_ms": 206.722,
+        "desvio_ms": 19.639,
+        "amostras_ms": [
+          199.493,
+          209.514,
+          212.542,
+          226.866,
+          217.057,
+          257.064,
+          192.056,
+          195.439,
+          203.929,
+          194.468
+        ],
+        "erro": "",
+        "speedup": 2.56
+      },
+      {
+        "arm": "llm_plus_ast",
+        "importou": true,
+        "njit_count": 2,
+        "compilou": [],
+        "rodou": true,
+        "correto": true,
+        "primeira_chamada_ms": 265.17,
+        "mediana_ms": 206.429,
+        "desvio_ms": 21.633,
+        "amostras_ms": [
+          201.996,
+          204.787,
+          211.246,
+          210.941,
+          206.738,
+          195.821,
+          195.42,
+          206.119,
+          253.492,
+          254.198
+        ],
+        "erro": "",
+        "speedup": 2.56
+      },
+      {
+        "arm": "llm_only",
+        "importou": true,
+        "njit_count": 2,
+        "compilou": [],
+        "rodou": true,
+        "correto": true,
+        "primeira_chamada_ms": 2867.58,
+        "mediana_ms": 2789.66,
+        "desvio_ms": 125.111,
+        "amostras_ms": [
+          3056.418,
+          3073.595,
+          2798.183,
+          2829.592,
+          2712.12,
+          2818.522,
+          2764.666,
+          2753.81,
+          2781.136,
+          2773.845
+        ],
+        "erro": "",
+        "speedup": 0.19
+      }
+    ]
+  },
+  {
+    "app": "img2palette",
+    "original": {
+      "mediana_ms": 98.185,
+      "desvio_ms": 14.864,
+      "amostras_ms": [
+        97.838,
+        95.437,
+        84.661,
+        87.029,
+        98.532,
+        101.026,
+        106.271,
+        138.916,
+        99.083,
+        97.596
+      ]
+    },
+    "arms": [
+      {
+        "arm": "ast_only",
+        "importou": true,
+        "njit_count": 2,
+        "compilou": [],
+        "rodou": true,
+        "correto": true,
+        "primeira_chamada_ms": 1656.75,
+        "mediana_ms": 107.153,
+        "desvio_ms": 14.622,
+        "amostras_ms": [
+          101.873,
+          93.862,
+          107.564,
+          147.848,
+          101.911,
+          114.529,
+          113.292,
+          106.743,
+          115.157,
+          104.461
+        ],
+        "erro": "",
+        "speedup": 0.92
+      },
+      {
+        "arm": "llm_plus_ast",
+        "importou": true,
+        "njit_count": 2,
+        "compilou": [],
+        "rodou": true,
+        "correto": true,
+        "primeira_chamada_ms": 358.0,
+        "mediana_ms": 86.537,
+        "desvio_ms": 5.427,
+        "amostras_ms": [
+          86.5,
+          83.548,
+          86.574,
+          94.437,
+          99.727,
+          85.807,
+          91.972,
+          83.418,
+          84.194,
+          91.413
+        ],
+        "erro": "",
+        "speedup": 1.13
+      },
+      {
+        "arm": "llm_only",
+        "importou": true,
+        "njit_count": 0,
+        "compilou": [],
+        "rodou": true,
+        "correto": true,
+        "primeira_chamada_ms": 127.56,
+        "mediana_ms": 78.431,
+        "desvio_ms": 2.643,
+        "amostras_ms": [
+          79.133,
+          76.62,
+          77.761,
+          78.734,
+          77.81,
+          78.129,
+          79.843,
+          85.876,
+          76.785,
+          79.704
+        ],
+        "erro": "",
+        "speedup": 1.25
+      }
+    ]
+  },
+  {
+    "app": "cube-builder",
+    "original": {
+      "mediana_ms": 0.001,
+      "desvio_ms": 0.0,
+      "amostras_ms": [
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001
+      ]
+    },
+    "arms": [
+      {
+        "arm": "ast_only",
+        "importou": true,
+        "njit_count": 3,
+        "compilou": [],
+        "rodou": true,
+        "correto": true,
+        "primeira_chamada_ms": 53.29,
+        "mediana_ms": 0.001,
+        "desvio_ms": 0.0,
+        "amostras_ms": [
+          0.001,
+          0.002,
+          0.002,
+          0.001,
+          0.001,
+          0.001,
+          0.001,
+          0.001,
+          0.001,
+          0.001
+        ],
+        "erro": "",
+        "speedup": 0.71
+      },
+      {
+        "arm": "llm_plus_ast",
+        "importou": false,
+        "erro": "RuntimeError: LLM call failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project is temporarily rate-limited to prevent exceeding its monthly spending cap. Please raise your project spend cap or wait before retrying.', 'status': 'RESOURCE_EXHAUSTED'}}"
+      },
+      {
+        "arm": "llm_only",
+        "importou": false,
+        "erro": "ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project is temporarily rate-limited to prevent exceeding its monthly spending cap. Please raise your project spend cap or wait before retrying.', 'status': 'RESOURCE_EXHAUSTED'}}"
+      }
+    ]
+  }
+]

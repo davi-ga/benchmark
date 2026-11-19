@@ -1,0 +1,74 @@
+[
+  {
+    "app": "yuki-mt",
+    "ref_mediana_ms": 2.75,
+    "arms": [
+      {
+        "arm": "ast_only",
+        "importou": true,
+        "njit_count": 0,
+        "rodou": true,
+        "correto": true,
+        "mediana_ms": 0.857,
+        "speedup": 3.21,
+        "erro": "",
+        "first_call_ms": 1.08
+      },
+      {
+        "arm": "llm_plus_ast",
+        "importou": true,
+        "njit_count": 2,
+        "rodou": true,
+        "correto": true,
+        "mediana_ms": 0.32,
+        "speedup": 8.59,
+        "erro": "",
+        "first_call_ms": 619.09
+      },
+      {
+        "arm": "llm_only_raw_1",
+        "importou": true,
+        "njit_count": 0,
+        "rodou": true,
+        "correto": true,
+        "mediana_ms": 2.793,
+        "speedup": 0.98,
+        "erro": "",
+        "first_call_ms": 3.13
+      },
+      {
+        "arm": "llm_only_raw_2",
+        "importou": true,
+        "njit_count": 0,
+        "rodou": true,
+        "correto": true,
+        "mediana_ms": 2.727,
+        "speedup": 1.01,
+        "erro": "",
+        "first_call_ms": 2.97
+      },
+      {
+        "arm": "llm_only_preprocessed_1",
+        "importou": true,
+        "njit_count": 0,
+        "rodou": true,
+        "correto": true,
+        "mediana_ms": 0.843,
+        "speedup": 3.26,
+        "erro": "",
+        "first_call_ms": 1.01
+      },
+      {
+        "arm": "llm_only_preprocessed_2",
+        "importou": true,
+        "njit_count": 0,
+        "rodou": true,
+        "correto": true,
+        "mediana_ms": 0.847,
+        "speedup": 3.25,
+        "erro": "",
+        "first_call_ms": 0.96
+      }
+    ]
+  }
+]

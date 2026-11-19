@@ -1,0 +1,355 @@
+[
+  {
+    "app": "yuki-mt",
+    "original": {
+      "mediana_ms": 3.021,
+      "desvio_ms": 1.299,
+      "amostras_ms": [
+        3.126,
+        2.786,
+        3.039,
+        3.003,
+        2.846,
+        3.306,
+        4.666,
+        6.925,
+        2.992,
+        2.959
+      ]
+    },
+    "arms": [
+      {
+        "arm": "ast_only",
+        "importou": true,
+        "njit_count": 0,
+        "compilou": [],
+        "rodou": true,
+        "correto": true,
+        "primeira_chamada_ms": 1.08,
+        "mediana_ms": 0.898,
+        "desvio_ms": 0.729,
+        "amostras_ms": [
+          1.167,
+          0.889,
+          0.896,
+          0.834,
+          0.943,
+          0.855,
+          0.89,
+          0.947,
+          0.9,
+          3.21
+        ],
+        "erro": "",
+        "speedup": 3.36
+      },
+      {
+        "arm": "llm_plus_ast",
+        "importou": true,
+        "njit_count": 0,
+        "compilou": [],
+        "rodou": true,
+        "correto": true,
+        "primeira_chamada_ms": 1.14,
+        "mediana_ms": 0.987,
+        "desvio_ms": 0.943,
+        "amostras_ms": [
+          0.999,
+          0.975,
+          0.887,
+          0.872,
+          0.894,
+          0.855,
+          1.161,
+          2.536,
+          1.049,
+          3.658
+        ],
+        "erro": "",
+        "speedup": 3.06
+      },
+      {
+        "arm": "llm_only",
+        "importou": true,
+        "njit_count": 0,
+        "compilou": [],
+        "rodou": true,
+        "correto": true,
+        "primeira_chamada_ms": 3.41,
+        "mediana_ms": 3.244,
+        "desvio_ms": 1.087,
+        "amostras_ms": [
+          2.872,
+          5.51,
+          5.677,
+          3.001,
+          2.68,
+          3.289,
+          4.184,
+          3.451,
+          2.983,
+          3.198
+        ],
+        "erro": "",
+        "speedup": 0.93
+      }
+    ]
+  },
+  {
+    "app": "img2palette",
+    "original": {
+      "mediana_ms": 82.727,
+      "desvio_ms": 20.651,
+      "amostras_ms": [
+        146.187,
+        89.461,
+        78.664,
+        77.406,
+        77.864,
+        84.565,
+        82.629,
+        87.248,
+        78.864,
+        82.825
+      ]
+    },
+    "arms": [
+      {
+        "arm": "ast_only",
+        "importou": true,
+        "njit_count": 2,
+        "compilou": [],
+        "rodou": true,
+        "correto": true,
+        "primeira_chamada_ms": 1441.47,
+        "mediana_ms": 83.307,
+        "desvio_ms": 2.273,
+        "amostras_ms": [
+          85.895,
+          84.712,
+          81.271,
+          79.108,
+          83.839,
+          81.322,
+          83.703,
+          79.4,
+          84.193,
+          82.911
+        ],
+        "erro": "",
+        "speedup": 0.99
+      },
+      {
+        "arm": "llm_plus_ast",
+        "importou": true,
+        "njit_count": 2,
+        "compilou": [],
+        "rodou": true,
+        "correto": true,
+        "primeira_chamada_ms": 371.94,
+        "mediana_ms": 84.452,
+        "desvio_ms": 14.151,
+        "amostras_ms": [
+          90.182,
+          84.454,
+          81.47,
+          82.84,
+          87.737,
+          84.06,
+          84.307,
+          127.501,
+          102.075,
+          84.449
+        ],
+        "erro": "",
+        "speedup": 0.98
+      },
+      {
+        "arm": "llm_only",
+        "importou": true,
+        "njit_count": 0,
+        "compilou": [],
+        "rodou": true,
+        "correto": true,
+        "primeira_chamada_ms": 96.68,
+        "mediana_ms": 93.906,
+        "desvio_ms": 3.015,
+        "amostras_ms": [
+          95.36,
+          89.774,
+          90.84,
+          89.107,
+          98.825,
+          95.054,
+          94.348,
+          94.26,
+          90.865,
+          93.552
+        ],
+        "erro": "",
+        "speedup": 0.88
+      }
+    ]
+  },
+  {
+    "app": "cube-builder",
+    "original": {
+      "mediana_ms": 0.001,
+      "desvio_ms": 0.0,
+      "amostras_ms": [
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001
+      ]
+    },
+    "arms": [
+      {
+        "arm": "ast_only",
+        "importou": true,
+        "njit_count": 3,
+        "compilou": [],
+        "rodou": true,
+        "correto": true,
+        "primeira_chamada_ms": 61.8,
+        "mediana_ms": 0.003,
+        "desvio_ms": 0.0,
+        "amostras_ms": [
+          0.003,
+          0.003,
+          0.003,
+          0.003,
+          0.003,
+          0.003,
+          0.003,
+          0.003,
+          0.003,
+          0.003
+        ],
+        "erro": "",
+        "speedup": 0.22
+      },
+      {
+        "arm": "llm_plus_ast",
+        "importou": true,
+        "njit_count": 3,
+        "compilou": [],
+        "rodou": true,
+        "correto": true,
+        "primeira_chamada_ms": 63.34,
+        "mediana_ms": 0.001,
+        "desvio_ms": 0.0,
+        "amostras_ms": [
+          0.002,
+          0.001,
+          0.001,
+          0.001,
+          0.002,
+          0.001,
+          0.001,
+          0.001,
+          0.002,
+          0.001
+        ],
+        "erro": "",
+        "speedup": 0.67
+      },
+      {
+        "arm": "llm_only",
+        "importou": false,
+        "njit_count": 0,
+        "compilou": [],
+        "rodou": false,
+        "correto": false,
+        "primeira_chamada_ms": null,
+        "mediana_ms": null,
+        "desvio_ms": null,
+        "amostras_ms": [],
+        "erro": "ModuleNotFoundError: No module named 'shapely'",
+        "speedup": 0
+      }
+    ]
+  },
+  {
+    "app": "fbosler",
+    "original": {
+      "mediana_ms": 566.578,
+      "desvio_ms": 50.107,
+      "amostras_ms": [
+        593.328,
+        565.273,
+        608.21,
+        628.134,
+        642.83,
+        514.951,
+        518.064,
+        567.883,
+        507.791,
+        521.121
+      ]
+    },
+    "arms": [
+      {
+        "arm": "ast_only",
+        "importou": true,
+        "njit_count": 2,
+        "compilou": [],
+        "rodou": true,
+        "correto": true,
+        "primeira_chamada_ms": 339.8,
+        "mediana_ms": 195.63,
+        "desvio_ms": 22.384,
+        "amostras_ms": [
+          190.805,
+          198.385,
+          189.54,
+          190.882,
+          196.033,
+          198.403,
+          195.226,
+          196.533,
+          193.393,
+          264.433
+        ],
+        "erro": "",
+        "speedup": 2.9
+      },
+      {
+        "arm": "llm_plus_ast",
+        "importou": true,
+        "njit_count": 2,
+        "compilou": [],
+        "rodou": true,
+        "correto": true,
+        "primeira_chamada_ms": 270.54,
+        "mediana_ms": 205.862,
+        "desvio_ms": 19.84,
+        "amostras_ms": [
+          208.215,
+          197.68,
+          199.735,
+          202.181,
+          212.823,
+          203.3,
+          214.188,
+          265.992,
+          208.958,
+          203.508
+        ],
+        "erro": "",
+        "speedup": 2.75
+      },
+      {
+        "arm": "llm_only",
+        "importou": false,
+        "erro": "ClientError: 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
+      }
+    ]
+  }
+]

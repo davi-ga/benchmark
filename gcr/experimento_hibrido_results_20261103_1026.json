@@ -1,0 +1,70 @@
+[
+  {
+    "app": "img2palette",
+    "ref_mediana_ms": 77.006,
+    "arms": [
+      {
+        "arm": "ast_only",
+        "importou": true,
+        "njit_count": 5,
+        "rodou": true,
+        "correto": true,
+        "mediana_ms": 80.647,
+        "speedup": 0.95,
+        "erro": "",
+        "first_call_ms": 2084.68
+      },
+      {
+        "arm": "llm_plus_ast",
+        "importou": true,
+        "njit_count": 12,
+        "rodou": true,
+        "correto": false,
+        "mediana_ms": 75.784,
+        "speedup": 1.02,
+        "erro": "",
+        "first_call_ms": 1120.03
+      },
+      {
+        "arm": "llm_only_raw_1",
+        "importou": false,
+        "njit_count": 0,
+        "rodou": false,
+        "correto": false,
+        "mediana_ms": null,
+        "speedup": 0,
+        "erro": "LLM call: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+      },
+      {
+        "arm": "llm_only_raw_2",
+        "importou": false,
+        "njit_count": 0,
+        "rodou": false,
+        "correto": false,
+        "mediana_ms": null,
+        "speedup": 0,
+        "erro": "LLM call: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+      },
+      {
+        "arm": "llm_only_preprocessed_1",
+        "importou": false,
+        "njit_count": 0,
+        "rodou": false,
+        "correto": false,
+        "mediana_ms": null,
+        "speedup": 0,
+        "erro": "LLM call: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+      },
+      {
+        "arm": "llm_only_preprocessed_2",
+        "importou": false,
+        "njit_count": 0,
+        "rodou": false,
+        "correto": false,
+        "mediana_ms": null,
+        "speedup": 0,
+        "erro": "LLM call: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+      }
+    ]
+  }
+]

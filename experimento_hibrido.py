@@ -4,13 +4,19 @@ Experimento controlado: Original vs LLM-Only vs AST-Only vs LLM+AST (forge)
 
 Prova experimental da necessidade do hibrido LLM+AST.
 
-Brasos:
-  - reference      : codigo original (baseline de tempo/correcao)
-  - llm_only       : MODULARIZE_PROMPT aplicado ao codigo BRUTO (sem qualquer AST)
-  - ast_only       : pre + post + anotacao AST, sem LLM (modulo gerado e guardado
-                     em optimized_astonly_backup/)
-  - llm_plus_ast   : pipeline completa; reusa o modulo ja gerado em optimized/
-                     (mesmo prompt/config, sem gasto novo de LLM)
+Brasos (o prompt difere por PAPEL, nao por capricho — ver docs/COMPROVACAO_HIBRIDO.md §1.1):
+  - reference        : codigo original (baseline de tempo/correcao)
+  - llm_only_annotate: LLM como ANOTADOR — prompt que pede @numba.njit (ANNOTATE_PROMPT/
+                       PROMPT_NUMBA_STRONG); fonte crua ou pre-processada (modo default:
+                       EXPERIMENTO_LLM_ONLY_MODE=annotate). E a variante de performance.
+  - llm_only_modular : LLM como MODULARIZADOR — MODULARIZE_PROMPT oficial sobre codigo
+                       cru. Como esse prompt DELEGA a anotacao ao AST (Inserter), a saida
+                       tem ZERO @numba.njit por construcao; NAO e variante de performance,
+                       serve so para evidenciar a delegacao.
+  - ast_only         : pre + post + anotacao AST, sem LLM (modulo gerado e guardado
+                       em optimized_astonly_backup/)
+  - llm_plus_ast     : pipeline completa (LLM modulariza com o prompt oficial + AST
+                       anota); reusa o modulo ja gerado em optimized/
 
 Metricas por braco: importa?, njit_count, compila/roda na chamada-sonda,
 correcao numerica vs reference, tempo mediano aquecido e speedup.
@@ -241,12 +247,17 @@ def eval_arm(app: str, arm: str, docs: list[dict], reference_val) -> dict:
     return res
 
 
-def llm_only_arm(app: str, rep: int) -> tuple[list[dict], str]:
-    """Modulariza o codigo BRUTO sem nenhum AST, com o prompt oficial."""
+def llm_modularize_only_arm(app: str, rep: int) -> tuple[list[dict], str]:
+    """LLM como MODULARIZADOR (MODULARIZE_PROMPT oficial), sem AST.
+
+    NAO e uma variante de performance: o MODULARIZE_PROMPT delega a anotacao
+    @numba.njit ao AST (Inserter), de modo que a saida tem ZERO decorators por
+    construcao. Existe apenas para evidenciar essa delegacao (brasos 'b' do doc
+    em docs/COMPROVACAO_HIBRIDO.md §1.1), nao para medir speedup.
+    """
     sys.path.insert(0, str(ROOT / "src"))
     from services.model import ModelService
 
-    spec = None
     import json as _json
     src_dir = GCR / app / "original"
     docs = []
@@ -418,7 +429,7 @@ def run_app(app: str):
     for base_label, src in runs:
         for i in range(REPS_LLM_ONLY):
             if src is None:
-                docs, err = llm_only_arm(app, i)
+                docs, err = llm_modularize_only_arm(app, i)
             else:
                 docs, err = llm_only_annotate_arm(app, source=src)
             label = f"{base_label}_{i + 1}"
