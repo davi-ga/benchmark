@@ -1,0 +1,17 @@
+FROM python:3.12-slim
+
+RUN apt-get update && apt-get install -y --no-install-recommends libgomp1 \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY web/requirements-optimized.txt requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# "optimized/" é gerado pelo forge no passo anterior do Cloud Build.
+COPY optimized/ functions/
+COPY web/app.py .
+
+EXPOSE 8080
+
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "--workers", "1", "--timeout", "300", "app:app"]

@@ -1,212 +1,123 @@
- # Teste do forge no Google Cloud Run
+# Teste do forge no Google Cloud Run
 
-Este diretório contém a configuração para testar o forge no Google Cloud Run, comparando código original vs otimizado.
+Este diretório contém a configuração para executar o **forge dentro do Cloud Build** e
+comparar, no Cloud Run, o código **original** com o **otimizado** gerado no próprio build,
+em quatro aplicações.
 
 ## Estrutura
 
+Cada aplicação tem sua pasta de build, com o recorte puro em `functions/` (entrada do forge),
+uma camada web mínima em `web/`, os dois Dockerfiles e os dois Cloud Builds:
+
 ```
 benchmarks/gcr/
-├── README.md                    # Este arquivo
-├── get_urls.sh                  # Lista URLs dos serviços deployados
-├── test_simple.sh               # Teste simples de um serviço
-├── test_load.sh                 # Teste de carga comparativo
+├── yuki-mt-build/                 # e img2palette-build/, cube-builder-build/, fbosler/
+│   ├── functions/                 # funções puras, SEM @njit (entrada do forge)
+│   ├── web/                       # camada web mínima (app.py, requirements)
+│   ├── Dockerfile.original
+│   ├── Dockerfile.optimized
+│   ├── cloudbuild-original.yaml   # deploy sem forge
+│   └── cloudbuild-optimized.yaml  # o forge roda AQUI, em tempo de build
 │
-├── yuki-mt/
-│   ├── original/                # Versão SEM forge
-│   │   ├── src/knn_feature.py
-│   │   ├── app.py
-│   │   ├── requirements.txt
-│   │   ├── Dockerfile
-│   │   └── cloudbuild.yaml
-│   │
-│   └── optimized/               # Versão COM forge
-│       ├── src/knn_feature.py
-│       ├── app.py
-│       ├── requirements.txt
-│       ├── Dockerfile
-│       └── cloudbuild.yaml
-│
-├── img2palette/
-│   ├── original/
-│   └── optimized/
-│
-└── cube-builder/
-    ├── original/
-    └── optimized/
+├── run_gcr_requests.py            # medição (tempo e custo por request)
+├── validate_metrics.py            # contraprova no Cloud Monitoring
+├── gcr_buildtime_results.json     # dados brutos por execução (campanha consolidada)
+└── gcr_all_cost_v2.json           # dados da coleta v2
 ```
+
+O `optimized/` **não existe no repositório**: o `cloudbuild-optimized.yaml` roda, como passo
+`run-forge` (imagem `python:3.12`, que já traz `git`), com os segredos do Secret Manager:
+
+```bash
+pip install --no-cache-dir "forge[build] @ git+https://github.com/davi-ga/numba-build.git"
+forge --source-dir functions --output-dir optimized
+```
+
+antes do `docker build`, de modo que o artefato implantado é exatamente o que o forge gerou
+no build.
+
+## Aplicações
+
+| app | recorte puro (`functions/`) | endpoint |
+|---|---|---|
+| yuki-mt | `knn_feature.get_features_for_one` | `/predict` |
+| img2palette | conversões de cor (`rgb2lab`/`lab2rgb`/`get_cluster`) | `/palette-local` |
+| cube-builder | `processing.extract_qa_bits` | `/qa` |
+| fbosler | funções de pontuação/decaimento temporal | `/score` |
 
 ## Pré-requisitos
 
-1. **gcloud CLI** instalado e autenticado
-2. **Projeto GCP** configurado: `tcc-dev-496317`
-3. **APIs habilitadas:** Cloud Run, Cloud Build, Secret Manager, Container Registry
-4. **Secrets configurados:** GEMINI_API_KEY, PROMPT
+1. **gcloud CLI** autenticado
+2. **Projeto GCP**: `tcc-dev-496317`
+3. **APIs habilitadas**: Cloud Run, Cloud Build, Secret Manager, Container Registry
+4. **Secrets**: `GEMINI_API_KEY`, `MODULARIZE_PROMPT`, `TEST_PROMPT`
 
 ## Deploy
 
-### 1. Deploy da Versão Original (SEM forge)
-
 ```bash
-cd yuki-mt/original
-gcloud builds submit --config=cloudbuild.yaml . --project=tcc-dev-496317
+# variante otimizada — o forge roda no build
+cd yuki-mt-build
+gcloud builds submit --config=cloudbuild-optimized.yaml --project=tcc-dev-496317 .
+
+# variante original — sem forge
+gcloud builds submit --config=cloudbuild-original.yaml --project=tcc-dev-496317 .
 ```
 
-### 2. Deploy da Versão Otimizada (COM forge)
+Repita para `img2palette-build`, `cube-builder-build` e `fbosler`. Cada app publica os
+serviços `<app>-original` e `<app>-optimized`.
+
+## Medição
+
+`run_gcr_requests.py` resolve a URL e os recursos (CPU/memória) de cada serviço via
+`gcloud run services describe`, descarta 1 request de aquecimento e mede N requests,
+registrando **por execução**:
+
+- `wall_ms` — latência observada pelo cliente (rede + servidor);
+- `server_ms` — `time_ms` medido dentro do endpoint;
+- `billed_ms` — tempo de processamento no servidor (`X-Billed-Ms`), base preferencial do custo;
+- `cost_usd` — custo estimado (CPU + memória + taxa por request).
 
 ```bash
-cd yuki-mt/optimized
-gcloud builds submit --config=cloudbuild.yaml . --project=tcc-dev-496317
+.venv/bin/python benchmarks/gcr/run_gcr_requests.py \
+    --project tcc-dev-496317 \
+    --apps yuki-mt img2palette cube-builder fbosler \
+    --requests 30 --validate-metrics \
+    --output benchmarks/gcr/gcr_all_cost_v2.json
 ```
 
-**Nota:** O forge roda automaticamente no Cloud Build, otimizando o código antes do deploy.
+### Modelo de custo (Cloud Run, Tier 1, `us-central1`)
 
-### 3. Repetir para img2palette e cube-builder
-
-```bash
-cd img2palette/original
-gcloud builds submit --config=cloudbuild.yaml . --project=tcc-dev-496317
-
-cd ../optimized
-gcloud builds submit --config=cloudbuild.yaml . --project=tcc-dev-496317
-
-cd ../../cube-builder/original
-gcloud builds submit --config=cloudbuild.yaml . --project=tcc-dev-496317
-
-cd ../optimized
-gcloud builds submit --config=cloudbuild.yaml . --project=tcc-dev-496317
+```
+custo/request = duração_cobrada × (vCPU × $0,000024 + GiB × $0,0000025) + $0,40/1e6
 ```
 
-## Teste
+A duração cobrada é arredondada **para cima em 100 ms** (descritor
+`run.googleapis.com/container/billable_instance_time`).
 
-### 1. Obter URLs dos Serviços
+### Contraprova
 
-```bash
-./get_urls.sh
-```
-
-### 2. Teste Simples
+`validate_metrics.py` compara o medido com `billable_instance_time` e `request_count` do
+Cloud Monitoring, por revisão/serviço:
 
 ```bash
-# Testar yuki-mt original
-./test_simple.sh https://yuki-mt-original-xxx-uc.a.run.app yuki-mt
-
-# Testar yuki-mt optimized
-./test_simple.sh https://yuki-mt-optimized-xxx-uc.a.run.app yuki-mt
-```
-
-### 3. Teste de Carga Comparativo
-
-```bash
-# 20 requests para cada versão
-./test_load.sh \
-  https://yuki-mt-original-xxx-uc.a.run.app \
-  https://yuki-mt-optimized-xxx-uc.a.run.app \
-  yuki-mt \
-  20
-```
-
-## Apps Testados
-
-### 1. yuki-mt
-
-**Código:** `knn_feature.py` (158 linhas)  
-**Função principal:** `compute_knn_features(X, y)`  
-**Speedup esperado:** >5x (benchmark local: 9.67x)  
-**Config GCR:** 1 CPU, 512MB RAM  
-**Endpoint:** `/predict`
-
-### 2. img2palette
-
-**Código:** `image.py` (520 linhas)  
-**Funções principais:** `get_palette()`, `rgb2xyz()`, `compute_medoid()`  
-**Speedup esperado:** >2x (benchmark local: 5.37x)  
-**Config GCR:** 1 CPU, 1GB RAM  
-**Endpoint:** `/palette`
-
-### 3. cube-builder
-
-**Código:** `processing.py` + `maestro.py`  
-**Funções principais:** `blend_stack_window()`, `compute_ndvi()`  
-**Speedup esperado:** >1.2x (benchmark local: 1.03x)  
-**Config GCR:** 2 CPU, 2GB RAM  
-**Endpoint:** `/blend`, `/ndvi`
-
-## Monitoramento
-
-### Logs do Cloud Run
-
-```bash
-# Logs do yuki-mt original
-gcloud logging read \
-  "resource.type=cloud_run_revision AND resource.labels.service_name=yuki-mt-original" \
-  --limit=50 \
-  --project=tcc-dev-496317
-
-# Logs do yuki-mt optimized
-gcloud logging read \
-  "resource.type=cloud_run_revision AND resource.labels.service_name=yuki-mt-optimized" \
-  --limit=50 \
-  --project=tcc-dev-496317
-```
-
-### Métricas de Performance
-
-```bash
-# Ver métricas no Cloud Console
-# https://console.cloud.google.com/run?project=tcc-dev-496317
+python benchmarks/gcr/validate_metrics.py --project tcc-dev-496317 \
+    --results benchmarks/gcr/gcr_all_cost_v2.json
 ```
 
 ## Cleanup
 
-Para deletar os serviços após os testes:
-
 ```bash
-for APP in yuki-mt img2palette cube-builder; do
+for APP in yuki-mt img2palette cube-builder fbosler; do
   for VERSION in original optimized; do
     gcloud run services delete ${APP}-${VERSION} \
-      --region=us-central1 \
-      --project=tcc-dev-496317 \
-      --quiet
+      --region=us-central1 --project=tcc-dev-496317 --quiet
   done
 done
 ```
 
 ## Troubleshooting
 
-### Problema: forge falha no Cloud Build
-
-```bash
-# Ver logs do build
-gcloud builds describe BUILD_ID --project=tcc-dev-496317
-
-# Testar forge localmente
-cd yuki-mt/optimized
-forge --source-dir src --output-dir optimized
-```
-
-### Problema: Cold start lento
-
-Adicionar `--min-instances 1` no cloudbuild.yaml para manter instância quente.
-
-### Problema: OOM (Out of Memory)
-
-Aumentar memória no cloudbuild.yaml:
-```yaml
-- "--memory"
-- "4Gi"
-```
-
-## Estimativa de Custos
-
-- **Cloud Build:** Grátis (primeiros 120 min/mês)
-- **Cloud Run:** ~$1-2/mês para testes
-- **Gemini API:** ~$0.79 (3 execuções do forge)
-- **Total:** ~$3-5
-
-## Resultados Esperados
-
-| App | Speedup Mínimo | Latência p95 Máx | Taxa Erro Máx |
-|-----|----------------|------------------|---------------|
-| yuki-mt | >3x | <100ms | <1% |
-| img2palette | >2x | <500ms | <1% |
-| cube-builder | >1.2x | <1000ms | <1% |
+- **forge falha no Cloud Build**: `gcloud builds describe BUILD_ID --project=tcc-dev-496317`;
+  testar localmente com `forge --source-dir functions --output-dir optimized`.
+- **OOM**: aumentar `--memory` no `cloudbuild-*.yaml` (o `img2palette` usa 2 GiB).
+- **Cold start lento**: usar `--min-instances 1` no `cloudbuild-*.yaml`.
