@@ -76,14 +76,14 @@ MAIN_FILE = {
     "yuki-mt": "src/knn_feature.py",
     "img2palette": "src/image.py",
     "cube-builder": "src/processing.py",
-    "fbosler": "scoring.py",
+    "fbosler": "functions/scoring.py",
 }
 
 ORIGINAL_DIR = {
     "yuki-mt": GCR / "yuki-mt" / "original",
     "img2palette": GCR / "img2palette" / "original",
     "cube-builder": GCR / "cube-builder" / "original",
-    "fbosler": GCR / "fbosler" / "functions",
+    "fbosler": GCR / "fbosler" / "original",
 }
 
 
@@ -94,7 +94,7 @@ def _probe_fbosler(src_dir, arm):
     """Sonda do fbosler: lote de 200k chamadas de scaled_sigmoid (carga do web/app.py)."""
     vals = np.linspace(-3.0, 3.0, 1000)
     n = 200_000
-    src = GCR / "fbosler" / "functions" / "scoring.py"
+    src = GCR / "fbosler" / "original" / "functions" / "scoring.py"
 
     def _total(module):
         fn = module.scaled_sigmoid
@@ -112,7 +112,7 @@ def _probe_fbosler(src_dir, arm):
     def make_callable(module):
         return lambda: _total(module)
 
-    return "scoring.py", make_reference, make_callable, None
+    return "functions/scoring.py", make_reference, make_callable, None
 
 
 PROBES = dict(_EH_PROBES)

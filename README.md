@@ -55,6 +55,17 @@ Scripts relacionados:
 
 Compara código **original** versus **otimizado** nas aplicações yuki-mt, img2palette, cube-builder e fbosler, executando no Cloud Run.
 
+Os quatro apps seguem o **fluxo build-time** (padrão do `fbosler`). Cada diretório `<app>-build/`
+contém `functions/` (código puro, entrada do forge), `web/` (camada de serviço, sem middleware) e os
+pares `Dockerfile.{original,optimized}` e `cloudbuild-{original,optimized}.yaml`. No passo `run-forge`
+do Cloud Build, `forge --source-dir functions --output-dir optimized` gera o diretório otimizado **dentro
+do build**; o `optimized/` nunca é commitado. Cada app publica os serviços `<app>-original` e
+`<app>-optimized`.
+
+Os diretórios históricos (`<app>/original`, `<app>/optimized`, `<app>/optimized-fixed`) correspondem a
+uma fase anterior, com artefatos **pré-gerados** e **middleware de runtime**, mantidos apenas como
+arquivo. Só o fbosler já seguia o fluxo build-time desde o início.
+
 Scripts principais:
 
 - `build_optimized_fixed.py` — roda a pipeline sobre `original/` e gera `optimized-fixed/`.
@@ -83,6 +94,8 @@ Conjunto de experimentos que mediu o efeito do **aquecimento** (pré-compilaçã
 - `gcr/gcr_img2_no_warmup_results.json` — execução **sem** aquecimento (`warmup_per_service: 0`), usada como contraste.
 
 O aquecimento desses experimentos era provido pela camada de execução (`forge-middleware`), que **não integra o desenho final** da ferramenta (ver a seção "Planos futuros" no README raiz). Por isso, esses resultados ficam registrados como **evidência exploratória** do custo de partida a frio e do efeito do aquecimento, e não como parte do fluxo adotado. Para contexto, o cold start do Numba foi de cerca de 2,7 s no yuki-mt e de cerca de 30 s no img2palette.
+
+Os apps no fluxo build-time (`<app>-build/`) **não usam middleware**: o aquecimento é feito no carregamento do processo, em uma chamada de warm-up inline no `web/app.py`, antes da primeira requisição.
 
 ## 7. Captura de artefatos
 
