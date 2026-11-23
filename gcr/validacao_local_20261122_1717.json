@@ -1,0 +1,98 @@
+[
+  {
+    "app": "yuki-mt",
+    "original": {
+      "mediana_ms": 0.821,
+      "desvio_ms": 0.044,
+      "amostras_ms": [
+        0.806,
+        0.777,
+        0.827,
+        0.807,
+        0.883,
+        0.803,
+        0.815,
+        0.873,
+        0.919,
+        0.854
+      ]
+    },
+    "arms": [
+      {
+        "arm": "ast_only",
+        "importou": true,
+        "njit_count": 0,
+        "compilou": [],
+        "rodou": true,
+        "correto": true,
+        "primeira_chamada_ms": 1.03,
+        "mediana_ms": 0.872,
+        "desvio_ms": 0.033,
+        "amostras_ms": [
+          0.917,
+          0.84,
+          0.876,
+          0.838,
+          0.89,
+          0.912,
+          0.912,
+          0.867,
+          0.827,
+          0.868
+        ],
+        "erro": "",
+        "speedup": 0.94
+      },
+      {
+        "arm": "llm_plus_ast",
+        "importou": true,
+        "njit_count": 2,
+        "compilou": [],
+        "rodou": true,
+        "correto": true,
+        "primeira_chamada_ms": 627.69,
+        "mediana_ms": 0.313,
+        "desvio_ms": 0.035,
+        "amostras_ms": [
+          0.331,
+          0.308,
+          0.295,
+          0.287,
+          0.284,
+          0.32,
+          0.342,
+          0.317,
+          0.309,
+          0.403
+        ],
+        "erro": "",
+        "speedup": 2.62
+      },
+      {
+        "arm": "llm_only",
+        "importou": true,
+        "njit_count": 0,
+        "compilou": [],
+        "rodou": true,
+        "correto": true,
+        "primeira_chamada_ms": 0.97,
+        "mediana_ms": 0.834,
+        "desvio_ms": 0.034,
+        "amostras_ms": [
+          0.821,
+          0.808,
+          0.835,
+          0.833,
+          0.784,
+          0.863,
+          0.906,
+          0.862,
+          0.837,
+          0.821
+        ],
+        "erro": "",
+        "speedup": 0.98
+      }
+    ]
+  }
+]

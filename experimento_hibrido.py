@@ -136,8 +136,11 @@ def probe_yuki(dir_path: Path, arm: str):
 
     def make_callable(module):
         entry = getattr(module, "nearestneighborsfeats__get_features_for_one", None)
+        cls = getattr(module, "NearestNeighborsFeats", None)
+
+        nn = NearestNeighbors(n_neighbors=9, metric="euclidean", n_jobs=1).fit(X)
+
         if entry is not None:
-            nn = NearestNeighbors(n_neighbors=9, metric="euclidean", n_jobs=1).fit(X)
             def run():
                 dist, idx = nn.kneighbors(Xt)
                 return np.asarray([
@@ -145,11 +148,32 @@ def probe_yuki(dir_path: Path, arm: str):
                     for i in range(len(Xt))
                 ])
             return run
-        cls = getattr(module, "NearestNeighborsFeats", None)
+
         if cls is not None:
             m = cls(n_jobs=1, k_list=[1, 3, 5, 7, 9], metric="euclidean")
             m.fit(X, y)
-            return lambda: np.asarray(m.predict(Xt))
+
+            def run():
+                dist, idx = nn.kneighbors(Xt)
+                original_kneighbors = m.NN.kneighbors
+                state = {"i": 0}
+
+                def fake_kneighbors(x):
+                    i = state["i"]
+                    state["i"] += 1
+                    return dist[i:i + 1], idx[i:i + 1]
+
+                m.NN.kneighbors = fake_kneighbors
+                try:
+                    out = []
+                    for i in range(len(Xt)):
+                        out.append(m._get_features_for_one(Xt[i:i + 1]))
+                finally:
+                    m.NN.kneighbors = original_kneighbors
+                return np.asarray(out)
+
+            return run
+
         raise AttributeError("no yuki entry point (class or *_get_features_for_one)")
 
     return "src/knn_feature.py", make_reference, make_callable, None
