@@ -1,0 +1,2533 @@
+{
+  "metadata": {
+    "start_time": "2026-11-24T13:37:13Z",
+    "project": "tcc-dev-496317",
+    "regions": [
+      "us-central1",
+      "europe-west1",
+      "southamerica-east1"
+    ],
+    "apps": [
+      "yuki-mt",
+      "fbosler"
+    ],
+    "variants": [
+      "original",
+      "optimized"
+    ],
+    "requests_per_service": 30,
+    "warmups_per_service": 1,
+    "note": "mesma imagem em todas as regiões; custo em preços Tier 1 us-central1",
+    "end_time": "2026-11-24T13:47:09Z"
+  },
+  "regions": {
+    "us-central1": {
+      "apps": {
+        "yuki-mt": {
+          "original": {
+            "error": "warm-up failed: HTTP Error 503: Service Unavailable",
+            "runs": [],
+            "url": "https://yuki-mt-original-b56c2yqz6q-uc.a.run.app/predict"
+          },
+          "optimized": {
+            "error": "warm-up failed: HTTP Error 503: Service Unavailable",
+            "runs": [],
+            "url": "https://yuki-mt-optimized-b56c2yqz6q-uc.a.run.app/predict"
+          }
+        },
+        "fbosler": {
+          "original": {
+            "error": "warm-up failed: HTTP Error 503: Service Unavailable",
+            "runs": [],
+            "url": "https://fbosler-original-b56c2yqz6q-uc.a.run.app/score"
+          },
+          "optimized": {
+            "error": "warm-up failed: HTTP Error 503: Service Unavailable",
+            "runs": [],
+            "url": "https://fbosler-optimized-b56c2yqz6q-uc.a.run.app/score"
+          }
+        }
+      }
+    },
+    "europe-west1": {
+      "apps": {
+        "yuki-mt": {
+          "original": {
+            "cold": {
+              "ok": true,
+              "wall_ms": 6334.342781000032,
+              "server_ms": 22.177010000000053,
+              "billed_ms": 22.74543599999923,
+              "cost_basis": "billed_ms",
+              "cost_usd": 2.9250000000000004e-06
+            },
+            "n_requested": 30,
+            "n_ok": 30,
+            "resources": {
+              "cpu": 1.0,
+              "mem_gb": 0.5
+            },
+            "wall_ms": {
+              "mean": 591.0903042667238,
+              "std": 23.91264145703894,
+              "min": 565.8425460001126,
+              "max": 705.209879999984,
+              "median": 588.7576830000398,
+              "iqr": 16.091862999928708,
+              "ci95": [
+                584.4357616667063,
+                600.5397588667316
+              ]
+            },
+            "server_ms": {
+              "mean": 23.118964466666487,
+              "std": 1.7212225903536431,
+              "min": 20.98026499999861,
+              "max": 27.917199999997422,
+              "median": 22.45392100000032,
+              "iqr": 1.2886929999993413,
+              "ci95": [
+                22.554940833332772,
+                23.749592066666263
+              ]
+            },
+            "billed_ms": {
+              "mean": 23.672567899999446,
+              "std": 1.7152164508095433,
+              "min": 21.517463999998654,
+              "max": 28.408240999997503,
+              "median": 22.964297999999772,
+              "iqr": 1.337503999998546,
+              "ci95": [
+                23.103581933333096,
+                24.29767999999915
+              ]
+            },
+            "cost_usd": {
+              "mean": 2.9250000000000004e-06,
+              "std": 0.0,
+              "min": 2.9250000000000004e-06,
+              "max": 2.9250000000000004e-06,
+              "median": 2.9250000000000004e-06,
+              "iqr": 0.0,
+              "ci95": [
+                2.9250000000000004e-06,
+                2.9250000000000004e-06
+              ]
+            },
+            "cost_per_million": 2.9250000000000003,
+            "runs": [
+              {
+                "ok": true,
+                "wall_ms": 616.2590889998683,
+                "server_ms": 22.182573999998567,
+                "billed_ms": 22.629789999999872,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 578.4712160002528,
+                "server_ms": 22.753448999999648,
+                "billed_ms": 23.25539600000326,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 586.9007729997975,
+                "server_ms": 27.042658000002717,
+                "billed_ms": 27.658325000000872,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 577.2287890004009,
+                "server_ms": 22.12246699999909,
+                "billed_ms": 22.6449879999997,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 577.4332510000022,
+                "server_ms": 22.967464000000604,
+                "billed_ms": 23.463661000000968,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 590.8106339998085,
+                "server_ms": 23.012629000000118,
+                "billed_ms": 23.749375999997824,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 586.4762090000113,
+                "server_ms": 22.169926000000117,
+                "billed_ms": 22.67261799999787,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 578.9192449997245,
+                "server_ms": 23.45861899999946,
+                "billed_ms": 23.982491999998246,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 583.5960670001441,
+                "server_ms": 27.917199999997422,
+                "billed_ms": 28.408240999997503,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 601.664004000213,
+                "server_ms": 26.56896199999892,
+                "billed_ms": 27.10279799999782,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 589.9528250001822,
+                "server_ms": 21.592523999999003,
+                "billed_ms": 22.296658999998442,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 589.8623039997801,
+                "server_ms": 22.46463399999854,
+                "billed_ms": 22.975401000000062,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 595.2944270002263,
+                "server_ms": 22.258312000001723,
+                "billed_ms": 22.82993000000033,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 576.3958480001747,
+                "server_ms": 24.750791999998967,
+                "billed_ms": 25.241039000000853,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 602.1956470003715,
+                "server_ms": 22.1888760000013,
+                "billed_ms": 22.730288000001764,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 587.8621589999966,
+                "server_ms": 22.32050799999996,
+                "billed_ms": 22.924474999999944,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 565.8425460001126,
+                "server_ms": 25.056576000000774,
+                "billed_ms": 25.665891999999246,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 576.7341629998555,
+                "server_ms": 24.114770000000618,
+                "billed_ms": 24.61176999999992,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 590.1047100001051,
+                "server_ms": 22.370274000000023,
+                "billed_ms": 22.953194999999482,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 598.7304790000962,
+                "server_ms": 21.959526999999923,
+                "billed_ms": 22.479154999999196,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 594.5630790001815,
+                "server_ms": 25.55102199999837,
+                "billed_ms": 26.088643999997885,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 572.1373549999953,
+                "server_ms": 22.22666900000192,
+                "billed_ms": 22.723176999999595,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 590.3228739998667,
+                "server_ms": 20.98026499999861,
+                "billed_ms": 21.517463999998654,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 579.8442959999193,
+                "server_ms": 21.594780999997454,
+                "billed_ms": 22.229244999998343,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 587.5837900002807,
+                "server_ms": 22.4432080000021,
+                "billed_ms": 22.912365999999906,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 705.209879999984,
+                "server_ms": 21.69308799999925,
+                "billed_ms": 22.337960000001544,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 575.8784140002717,
+                "server_ms": 22.58260199999995,
+                "billed_ms": 22.995338000001198,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 591.7747529997541,
+                "server_ms": 21.946696999997073,
+                "billed_ms": 22.475860999996655,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 595.0070950002555,
+                "server_ms": 22.688977000001387,
+                "billed_ms": 23.348083000001907,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 589.6532070000831,
+                "server_ms": 22.58888400000103,
+                "billed_ms": 23.2734099999945,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              }
+            ],
+            "url": "https://yuki-mt-original-b56c2yqz6q-ew.a.run.app/predict"
+          },
+          "optimized": {
+            "cold": {
+              "ok": true,
+              "wall_ms": 12211.140127999897,
+              "server_ms": 5.149806999998674,
+              "billed_ms": 5.820532000001322,
+              "cost_basis": "billed_ms",
+              "cost_usd": 2.9250000000000004e-06
+            },
+            "n_requested": 30,
+            "n_ok": 30,
+            "resources": {
+              "cpu": 1.0,
+              "mem_gb": 0.5
+            },
+            "wall_ms": {
+              "mean": 589.6761479666869,
+              "std": 62.24631329841875,
+              "min": 546.9594649998726,
+              "max": 793.6671109996496,
+              "median": 570.851083999969,
+              "iqr": 14.602997000110918,
+              "ci95": [
+                570.5113160999948,
+                613.5324142000323
+              ]
+            },
+            "server_ms": {
+              "mean": 4.512305866666703,
+              "std": 0.4085421135282261,
+              "min": 4.089141000001462,
+              "max": 5.541067999999427,
+              "median": 4.368673500001918,
+              "iqr": 0.5247349999990547,
+              "ci95": [
+                4.377198433332789,
+                4.663547233333769
+              ]
+            },
+            "billed_ms": {
+              "mean": 5.036182233333146,
+              "std": 0.42703356805549214,
+              "min": 4.568421999998407,
+              "max": 6.087278000002527,
+              "median": 4.902589500000332,
+              "iqr": 0.5995589999976403,
+              "ci95": [
+                4.896493299998757,
+                5.198505999999033
+              ]
+            },
+            "cost_usd": {
+              "mean": 2.9250000000000004e-06,
+              "std": 0.0,
+              "min": 2.9250000000000004e-06,
+              "max": 2.9250000000000004e-06,
+              "median": 2.9250000000000004e-06,
+              "iqr": 0.0,
+              "ci95": [
+                2.9250000000000004e-06,
+                2.9250000000000004e-06
+              ]
+            },
+            "cost_per_million": 2.9250000000000003,
+            "runs": [
+              {
+                "ok": true,
+                "wall_ms": 546.9594649998726,
+                "server_ms": 4.185732999999914,
+                "billed_ms": 4.710078999998757,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 556.8892080000296,
+                "server_ms": 4.149321999999955,
+                "billed_ms": 4.603656000000456,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 568.790417999935,
+                "server_ms": 4.432624999999746,
+                "billed_ms": 4.905288999999868,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 575.1294460001191,
+                "server_ms": 4.366731000001067,
+                "billed_ms": 4.849545999999094,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 741.9426599999497,
+                "server_ms": 4.220131000000293,
+                "billed_ms": 4.717185000000512,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 703.0022680000911,
+                "server_ms": 4.286049000000958,
+                "billed_ms": 4.823248000001001,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 571.5230499999961,
+                "server_ms": 4.370616000002769,
+                "billed_ms": 4.940450999999513,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 549.4237120001344,
+                "server_ms": 4.090348999998383,
+                "billed_ms": 4.568421999998407,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 571.8495529999927,
+                "server_ms": 4.459908000001178,
+                "billed_ms": 4.94654599999933,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 587.5055559999964,
+                "server_ms": 4.303441000001129,
+                "billed_ms": 4.806095999999371,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 562.3887349997858,
+                "server_ms": 4.744865999999348,
+                "billed_ms": 5.325277000000739,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 560.5264490000081,
+                "server_ms": 4.36080400000094,
+                "billed_ms": 4.899976000000805,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 724.8231100002158,
+                "server_ms": 4.221689000001305,
+                "billed_ms": 4.728800000002309,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 554.7617429997445,
+                "server_ms": 4.404011999998403,
+                "billed_ms": 4.905202999999858,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 551.9429880000644,
+                "server_ms": 4.822604999997537,
+                "billed_ms": 5.394694999999672,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 793.6671109996496,
+                "server_ms": 4.948278999997058,
+                "billed_ms": 5.506410000002404,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 570.6411189999017,
+                "server_ms": 4.465737000003855,
+                "billed_ms": 5.156878000001086,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 571.2365700001101,
+                "server_ms": 5.541067999999427,
+                "billed_ms": 6.087278000002527,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 558.2324319998406,
+                "server_ms": 4.246576999996421,
+                "billed_ms": 4.812191999995719,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 566.9226030004211,
+                "server_ms": 4.836457000003236,
+                "billed_ms": 5.3167439999981525,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 582.8703120000682,
+                "server_ms": 4.748859000002881,
+                "billed_ms": 5.364452999998548,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 567.5642720002543,
+                "server_ms": 4.184715999997479,
+                "billed_ms": 4.650084999994419,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 564.3600819998937,
+                "server_ms": 4.339109000000008,
+                "billed_ms": 4.889308000002757,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 557.631560000118,
+                "server_ms": 5.45551900000163,
+                "billed_ms": 5.99644100000063,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 575.2147150001292,
+                "server_ms": 4.1602609999955575,
+                "billed_ms": 4.63254200000307,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 571.602342999995,
+                "server_ms": 4.19332100000247,
+                "billed_ms": 4.605992999998421,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 572.1288080003433,
+                "server_ms": 4.537847999998235,
+                "billed_ms": 5.014935000005494,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 571.0610490000363,
+                "server_ms": 4.089141000001462,
+                "billed_ms": 4.681679999997357,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 567.2761069999979,
+                "server_ms": 4.705215000001317,
+                "billed_ms": 5.21566999999834,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 572.4169949999123,
+                "server_ms": 5.498187999997128,
+                "billed_ms": 6.0303889999957505,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              }
+            ],
+            "url": "https://yuki-mt-optimized-b56c2yqz6q-ew.a.run.app/predict"
+          }
+        },
+        "fbosler": {
+          "original": {
+            "cold": {
+              "ok": true,
+              "wall_ms": 3338.8869780001187,
+              "server_ms": 1700.999466999999,
+              "billed_ms": 1701.2001019999996,
+              "cost_basis": "billed_ms",
+              "cost_usd": 4.585e-05
+            },
+            "n_requested": 30,
+            "n_ok": 30,
+            "resources": {
+              "cpu": 1.0,
+              "mem_gb": 0.5
+            },
+            "wall_ms": {
+              "mean": 2094.768124533281,
+              "std": 65.43582594608473,
+              "min": 2001.8093989997396,
+              "max": 2230.006940000294,
+              "median": 2086.415933999888,
+              "iqr": 65.64316499998313,
+              "ci95": [
+                2072.786563299951,
+                2118.9293517999736
+              ]
+            },
+            "server_ms": {
+              "mean": 1744.970134466666,
+              "std": 53.905772725212465,
+              "min": 1674.406523000002,
+              "max": 1863.5860950000024,
+              "median": 1743.616777499998,
+              "iqr": 67.60441100000139,
+              "ci95": [
+                1726.8644187666655,
+                1763.5963294666658
+              ]
+            },
+            "billed_ms": {
+              "mean": 1745.0865013333341,
+              "std": 53.907014051777544,
+              "min": 1674.5061009999915,
+              "max": 1863.7133900000008,
+              "median": 1743.732490500001,
+              "iqr": 67.59128199999873,
+              "ci95": [
+                1726.8001926333336,
+                1765.3942125000008
+              ]
+            },
+            "cost_usd": {
+              "mean": 4.5597500000000005e-05,
+              "std": 1.6709530369594887e-06,
+              "min": 4.3325e-05,
+              "max": 4.8375000000000004e-05,
+              "median": 4.585e-05,
+              "iqr": 2.5250000000000004e-06,
+              "ci95": [
+                4.5008333333333334e-05,
+                4.618666666666667e-05
+              ]
+            },
+            "cost_per_million": 45.597500000000004,
+            "runs": [
+              {
+                "ok": true,
+                "wall_ms": 2035.8150010001737,
+                "server_ms": 1695.5192259999983,
+                "billed_ms": 1695.638240000001,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.3325e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 2165.4980389998855,
+                "server_ms": 1827.9693990000005,
+                "billed_ms": 1828.0854180000006,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.8375000000000004e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 2041.8428210000457,
+                "server_ms": 1706.9091650000025,
+                "billed_ms": 1707.0274070000019,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.585e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 2103.658729000017,
+                "server_ms": 1763.1236369999997,
+                "billed_ms": 1763.2295219999996,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.585e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 2060.496540999793,
+                "server_ms": 1709.424472000002,
+                "billed_ms": 1709.527425000001,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.585e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 2223.602509000102,
+                "server_ms": 1859.2455279999988,
+                "billed_ms": 1859.3602320000002,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.8375000000000004e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 2035.8102099999087,
+                "server_ms": 1687.5956570000028,
+                "billed_ms": 1687.6948929999999,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.3325e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 2075.661541000045,
+                "server_ms": 1745.3963419999993,
+                "billed_ms": 1745.5050479999982,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.585e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 2085.9387599998627,
+                "server_ms": 1762.3123010000015,
+                "billed_ms": 1762.4178529999988,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.585e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 2200.6416699996407,
+                "server_ms": 1863.5860950000024,
+                "billed_ms": 1863.7133900000008,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.8375000000000004e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 2230.006940000294,
+                "server_ms": 1691.2821780000015,
+                "billed_ms": 1691.3890510000015,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.3325e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 2181.8966020000516,
+                "server_ms": 1833.277011,
+                "billed_ms": 1833.3960900000009,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.8375000000000004e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 2056.7352899997786,
+                "server_ms": 1708.0397729999959,
+                "billed_ms": 1708.141415,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.585e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 2021.957088000363,
+                "server_ms": 1687.6124349999984,
+                "billed_ms": 1687.7218280000009,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.3325e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 2101.7936059997737,
+                "server_ms": 1775.3235699999977,
+                "billed_ms": 1775.423940000003,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.585e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 2041.9614369998271,
+                "server_ms": 1715.9073300000002,
+                "billed_ms": 1716.0010369999982,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.585e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 2086.893107999913,
+                "server_ms": 1743.309451000002,
+                "billed_ms": 1743.4774070000003,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.585e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 2090.537703999871,
+                "server_ms": 1743.393753999996,
+                "billed_ms": 1743.5072070000003,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.585e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 2070.145723999758,
+                "server_ms": 1722.2351869999954,
+                "billed_ms": 1722.347978000002,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.585e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 2097.4729719996503,
+                "server_ms": 1762.1896909999962,
+                "billed_ms": 1762.3209280000012,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.585e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 2023.342945999957,
+                "server_ms": 1695.002124999995,
+                "billed_ms": 1695.1621849999938,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.3325e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 2207.577166000192,
+                "server_ms": 1743.839801,
+                "billed_ms": 1743.9577740000018,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.585e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 2107.485986000029,
+                "server_ms": 1766.9767390000004,
+                "billed_ms": 1767.0756870000018,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.585e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 2176.3213350000115,
+                "server_ms": 1831.1905210000034,
+                "billed_ms": 1831.2934779999991,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.8375000000000004e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 2088.3394710003813,
+                "server_ms": 1759.3799630000008,
+                "billed_ms": 1759.5705370000019,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.585e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 2083.2631079997554,
+                "server_ms": 1755.5600719999943,
+                "billed_ms": 1755.659491000003,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.585e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 2099.3672139998125,
+                "server_ms": 1751.530896999995,
+                "billed_ms": 1751.638088000007,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.585e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 2015.109941999981,
+                "server_ms": 1681.9482460000045,
+                "billed_ms": 1682.0615640000085,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.3325e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 2001.8093989997396,
+                "server_ms": 1674.406523000002,
+                "billed_ms": 1674.5061009999915,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.3325e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 2032.0608769998216,
+                "server_ms": 1685.6169449999925,
+                "billed_ms": 1685.7438260000067,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.3325e-05
+              }
+            ],
+            "url": "https://fbosler-original-b56c2yqz6q-ew.a.run.app/score"
+          },
+          "optimized": {
+            "cold": {
+              "ok": true,
+              "wall_ms": 6222.386368000116,
+              "server_ms": 607.1122769999988,
+              "billed_ms": 607.2616320000002,
+              "cost_basis": "billed_ms",
+              "cost_usd": 1.8075e-05
+            },
+            "n_requested": 30,
+            "n_ok": 30,
+            "resources": {
+              "cpu": 1.0,
+              "mem_gb": 0.5
+            },
+            "wall_ms": {
+              "mean": 922.6907740332839,
+              "std": 66.28161797593515,
+              "min": 839.6185399997194,
+              "max": 1110.219603999667,
+              "median": 902.5950129998819,
+              "iqr": 44.070845999613084,
+              "ci95": [
+                900.529099866632,
+                947.6624506332579
+              ]
+            },
+            "server_ms": {
+              "mean": 559.2515446333335,
+              "std": 29.01522936644814,
+              "min": 510.72788200000474,
+              "max": 640.0290240000004,
+              "median": 559.6251015000018,
+              "iqr": 39.04642999999896,
+              "ci95": [
+                549.7021695000001,
+                570.0355543666662
+              ]
+            },
+            "billed_ms": {
+              "mean": 559.3582338333333,
+              "std": 29.022642174328038,
+              "min": 510.82970000000216,
+              "max": 640.1625539999998,
+              "median": 559.7162670000007,
+              "iqr": 39.07712799999524,
+              "ci95": [
+                549.1081694666664,
+                569.7275464999996
+              ]
+            },
+            "cost_usd": {
+              "mean": 1.571833333333333e-05,
+              "std": 6.406130325487177e-07,
+              "min": 1.555e-05,
+              "max": 1.8075e-05,
+              "median": 1.555e-05,
+              "iqr": 0.0,
+              "ci95": [
+                1.555e-05,
+                1.5970833333333333e-05
+              ]
+            },
+            "cost_per_million": 15.718333333333332,
+            "runs": [
+              {
+                "ok": true,
+                "wall_ms": 977.1182249996855,
+                "server_ms": 640.0290240000004,
+                "billed_ms": 640.1625539999998,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.8075e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 892.985182999837,
+                "server_ms": 544.3247820000004,
+                "billed_ms": 544.4238789999999,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 1022.1243129999493,
+                "server_ms": 557.0724140000003,
+                "billed_ms": 557.1647319999968,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 866.4892280003187,
+                "server_ms": 520.2655069999978,
+                "billed_ms": 520.3561130000019,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 859.7001520001868,
+                "server_ms": 537.8220159999998,
+                "billed_ms": 537.9117089999994,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 879.1025560003618,
+                "server_ms": 519.6903550000015,
+                "billed_ms": 519.7777760000015,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 959.9680829996942,
+                "server_ms": 609.5897990000019,
+                "billed_ms": 609.6803529999981,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.8075e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 883.9154739998776,
+                "server_ms": 543.4710870000004,
+                "billed_ms": 543.5793699999998,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 900.8395249998102,
+                "server_ms": 560.5615260000008,
+                "billed_ms": 560.7531670000014,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 878.0865099997754,
+                "server_ms": 551.8752040000016,
+                "billed_ms": 551.9750610000003,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 912.6575669997692,
+                "server_ms": 563.7295449999975,
+                "billed_ms": 563.8326199999995,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 886.4607509999587,
+                "server_ms": 559.0590310000003,
+                "billed_ms": 559.1531200000013,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 1010.2723350000815,
+                "server_ms": 560.1911720000032,
+                "billed_ms": 560.2794140000001,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 918.2320820000314,
+                "server_ms": 590.1871169999993,
+                "billed_ms": 590.3491729999998,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 869.4298979999076,
+                "server_ms": 538.2969670000009,
+                "billed_ms": 538.3885349999993,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 1041.6429040001276,
+                "server_ms": 595.1228999999998,
+                "billed_ms": 595.2094710000005,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 919.1483150002568,
+                "server_ms": 572.5904150000006,
+                "billed_ms": 572.7077060000028,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 1069.3161210001563,
+                "server_ms": 532.5980240000022,
+                "billed_ms": 532.7054330000038,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 880.083583999749,
+                "server_ms": 555.9355150000016,
+                "billed_ms": 556.0271209999996,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 866.077807000238,
+                "server_ms": 519.4971989999999,
+                "billed_ms": 519.6012389999964,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 903.4852589998081,
+                "server_ms": 576.9743359999993,
+                "billed_ms": 577.132087999999,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 922.698606999802,
+                "server_ms": 568.2118670000023,
+                "billed_ms": 568.3013149999994,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 903.7742990003608,
+                "server_ms": 565.1113400000014,
+                "billed_ms": 565.2459490000012,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 901.7047669999556,
+                "server_ms": 574.5191409999961,
+                "billed_ms": 574.6162000000013,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 923.1734019999749,
+                "server_ms": 576.8684459999988,
+                "billed_ms": 576.9888369999946,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 879.0384239996456,
+                "server_ms": 529.3753600000031,
+                "billed_ms": 529.4663199999974,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 1110.219603999667,
+                "server_ms": 589.382791999995,
+                "billed_ms": 589.4720589999949,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 839.6185399997194,
+                "server_ms": 510.72788200000474,
+                "billed_ms": 510.82970000000216,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 919.5716909998737,
+                "server_ms": 579.1397489999995,
+                "billed_ms": 579.2360490000021,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 883.7880149999364,
+                "server_ms": 535.3258269999941,
+                "billed_ms": 535.4199520000052,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              }
+            ],
+            "url": "https://fbosler-optimized-b56c2yqz6q-ew.a.run.app/score"
+          }
+        }
+      }
+    },
+    "southamerica-east1": {
+      "apps": {
+        "yuki-mt": {
+          "original": {
+            "cold": {
+              "ok": true,
+              "wall_ms": 4544.595311000194,
+              "server_ms": 15.772902000000144,
+              "billed_ms": 16.19646500000016,
+              "cost_basis": "billed_ms",
+              "cost_usd": 2.9250000000000004e-06
+            },
+            "n_requested": 30,
+            "n_ok": 30,
+            "resources": {
+              "cpu": 1.0,
+              "mem_gb": 0.5
+            },
+            "wall_ms": {
+              "mean": 243.02742966672972,
+              "std": 41.88928485369754,
+              "min": 207.820840000295,
+              "max": 455.11376400008885,
+              "median": 239.96712400003162,
+              "iqr": 20.08642400005556,
+              "ci95": [
+                232.3204153000764,
+                259.49808896677195
+              ]
+            },
+            "server_ms": {
+              "mean": 16.556605300000154,
+              "std": 1.5215404556143772,
+              "min": 15.131796000000364,
+              "max": 20.671746000001434,
+              "median": 16.005090000001942,
+              "iqr": 2.230705999998861,
+              "ci95": [
+                16.05227503333353,
+                17.107917400000318
+              ]
+            },
+            "billed_ms": {
+              "mean": 16.865390200000146,
+              "std": 1.5295521893926485,
+              "min": 15.445897999999403,
+              "max": 20.95390899999927,
+              "median": 16.306165000000483,
+              "iqr": 2.3417860000005675,
+              "ci95": [
+                16.36005776666701,
+                17.440042233333546
+              ]
+            },
+            "cost_usd": {
+              "mean": 2.9250000000000004e-06,
+              "std": 0.0,
+              "min": 2.9250000000000004e-06,
+              "max": 2.9250000000000004e-06,
+              "median": 2.9250000000000004e-06,
+              "iqr": 0.0,
+              "ci95": [
+                2.9250000000000004e-06,
+                2.9250000000000004e-06
+              ]
+            },
+            "cost_per_million": 2.9250000000000003,
+            "runs": [
+              {
+                "ok": true,
+                "wall_ms": 224.2672259999381,
+                "server_ms": 15.640732000001378,
+                "billed_ms": 15.956678000000224,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 239.56423700019513,
+                "server_ms": 15.185549999999992,
+                "billed_ms": 15.472023999999251,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 243.2460559998617,
+                "server_ms": 15.536382000000515,
+                "billed_ms": 15.823383000000746,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 240.77889499994853,
+                "server_ms": 15.131796000000364,
+                "billed_ms": 15.445897999999403,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 259.8797890000242,
+                "server_ms": 19.431565000001427,
+                "billed_ms": 19.72991899999954,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 232.2094549999747,
+                "server_ms": 15.160891000000731,
+                "billed_ms": 15.447148000001576,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 240.79789600000367,
+                "server_ms": 15.573091000000261,
+                "billed_ms": 15.878559999999098,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 218.07862900004693,
+                "server_ms": 15.925838000001136,
+                "billed_ms": 16.20642700000019,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 216.65115199994034,
+                "server_ms": 18.041785999999504,
+                "billed_ms": 18.360346999999777,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 246.78834700034713,
+                "server_ms": 18.561807999999402,
+                "billed_ms": 18.897999,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 241.9404290003513,
+                "server_ms": 16.223510999999746,
+                "billed_ms": 16.509328999999795,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 236.87205199985328,
+                "server_ms": 15.223969999999198,
+                "billed_ms": 15.521081000001047,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 244.35364999999365,
+                "server_ms": 16.11322199999954,
+                "billed_ms": 16.405903000000777,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 244.4111590002649,
+                "server_ms": 20.671746000001434,
+                "billed_ms": 20.95390899999927,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 239.12486100016395,
+                "server_ms": 15.326873000001129,
+                "billed_ms": 15.610517000000712,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 455.11376400008885,
+                "server_ms": 15.728039999999055,
+                "billed_ms": 16.01749000000119,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 239.79394299976775,
+                "server_ms": 15.456895999999887,
+                "billed_ms": 15.791478999998887,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 224.0356749998682,
+                "server_ms": 16.54482500000043,
+                "billed_ms": 16.831680000001015,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 248.04914200012718,
+                "server_ms": 18.74508900000116,
+                "billed_ms": 19.093842000000194,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 216.12992100017436,
+                "server_ms": 15.261167000000242,
+                "billed_ms": 15.545749999999359,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 245.30324799980008,
+                "server_ms": 18.633906999999894,
+                "billed_ms": 18.958645999999746,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 222.34095900012107,
+                "server_ms": 17.687601999998748,
+                "billed_ms": 18.133264999999454,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 243.58064500029286,
+                "server_ms": 16.239180999999547,
+                "billed_ms": 16.60903500000188,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 246.48995500001547,
+                "server_ms": 18.945309999999438,
+                "billed_ms": 19.234120000000132,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 240.14030500029548,
+                "server_ms": 15.816977000000065,
+                "billed_ms": 16.109340999999944,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 207.820840000295,
+                "server_ms": 16.588140999999723,
+                "billed_ms": 16.882768000002102,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 241.74135500015836,
+                "server_ms": 15.718554999999412,
+                "billed_ms": 16.02813899999944,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 238.5088219998579,
+                "server_ms": 16.08434200000275,
+                "billed_ms": 16.414417000000014,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 213.12026400028117,
+                "server_ms": 15.263697999998271,
+                "billed_ms": 15.553086000000604,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 239.69021899984,
+                "server_ms": 16.235668000000203,
+                "billed_ms": 16.539525999998972,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              }
+            ],
+            "url": "https://yuki-mt-original-b56c2yqz6q-rj.a.run.app/predict"
+          },
+          "optimized": {
+            "cold": {
+              "ok": true,
+              "wall_ms": 10503.444718000083,
+              "server_ms": 9.731773999998694,
+              "billed_ms": 11.431847000000772,
+              "cost_basis": "billed_ms",
+              "cost_usd": 2.9250000000000004e-06
+            },
+            "n_requested": 30,
+            "n_ok": 30,
+            "resources": {
+              "cpu": 1.0,
+              "mem_gb": 0.5
+            },
+            "wall_ms": {
+              "mean": 216.8509958999948,
+              "std": 15.830995891178697,
+              "min": 194.70502400008627,
+              "max": 245.18130899969037,
+              "median": 217.07728799992765,
+              "iqr": 28.568798000378592,
+              "ci95": [
+                211.27908173334617,
+                222.3299918000066
+              ]
+            },
+            "server_ms": {
+              "mean": 5.340777766666586,
+              "std": 1.319548517997052,
+              "min": 4.277912999999245,
+              "max": 9.942985999998655,
+              "median": 4.886067999999355,
+              "iqr": 0.7595229999992625,
+              "ci95": [
+                4.939111166666521,
+                5.856506899999658
+              ]
+            },
+            "billed_ms": {
+              "mean": 5.903762833333441,
+              "std": 1.4937579541237582,
+              "min": 4.695642999998029,
+              "max": 11.240208000000251,
+              "median": 5.36675649999907,
+              "iqr": 0.8964349999978083,
+              "ci95": [
+                5.441237399999939,
+                6.469699433333413
+              ]
+            },
+            "cost_usd": {
+              "mean": 2.9250000000000004e-06,
+              "std": 0.0,
+              "min": 2.9250000000000004e-06,
+              "max": 2.9250000000000004e-06,
+              "median": 2.9250000000000004e-06,
+              "iqr": 0.0,
+              "ci95": [
+                2.9250000000000004e-06,
+                2.9250000000000004e-06
+              ]
+            },
+            "cost_per_million": 2.9250000000000003,
+            "runs": [
+              {
+                "ok": true,
+                "wall_ms": 237.38756299962915,
+                "server_ms": 5.159878000000617,
+                "billed_ms": 5.655318000002296,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 231.59887000019808,
+                "server_ms": 5.459995000002493,
+                "billed_ms": 5.990974000003035,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 239.69283399992491,
+                "server_ms": 9.942985999998655,
+                "billed_ms": 11.240208000000251,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 201.58787100035624,
+                "server_ms": 6.529498999999106,
+                "billed_ms": 6.992533000001799,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 223.07722699997612,
+                "server_ms": 4.71546600000039,
+                "billed_ms": 5.253396000000521,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 211.07734899987918,
+                "server_ms": 5.79645799999895,
+                "billed_ms": 7.090778999998548,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 245.18130899969037,
+                "server_ms": 6.6004929999969875,
+                "billed_ms": 7.772880000000981,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 206.0132970000268,
+                "server_ms": 8.01116499999921,
+                "billed_ms": 8.881676999997978,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 230.00584600004004,
+                "server_ms": 5.103161000000966,
+                "billed_ms": 5.730822000000302,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 207.82096899984026,
+                "server_ms": 4.891566999997821,
+                "billed_ms": 5.277393000000075,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 203.4234220000144,
+                "server_ms": 4.460387000001731,
+                "billed_ms": 4.990478999999937,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 203.58489400041435,
+                "server_ms": 4.608382000000688,
+                "billed_ms": 5.1066519999984905,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 202.49709299969254,
+                "server_ms": 4.829512999997121,
+                "billed_ms": 5.261252000000383,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 205.24711999996725,
+                "server_ms": 4.643622999999764,
+                "billed_ms": 5.052364000000864,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 203.7784849999298,
+                "server_ms": 4.865679000001677,
+                "billed_ms": 5.252454000000739,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 200.60638999984803,
+                "server_ms": 4.672680999998846,
+                "billed_ms": 5.098836999998468,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 224.06787299996722,
+                "server_ms": 4.527265000000114,
+                "billed_ms": 4.923022999999915,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 197.22484900012205,
+                "server_ms": 5.017482999999601,
+                "billed_ms": 5.542997999999244,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 231.06589100007113,
+                "server_ms": 4.277912999999245,
+                "billed_ms": 4.695642999998029,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 226.9772780000494,
+                "server_ms": 4.773847000002718,
+                "billed_ms": 5.2245190000022035,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 229.90651000009166,
+                "server_ms": 8.345330999997458,
+                "billed_ms": 8.768386999999933,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 196.65277000012793,
+                "server_ms": 4.373566000001716,
+                "billed_ms": 4.889300999998625,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 194.70502400008627,
+                "server_ms": 4.28736499999971,
+                "billed_ms": 4.7439070000017125,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 202.4867479999557,
+                "server_ms": 5.367904999999951,
+                "billed_ms": 5.948798999998672,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 195.8968389999427,
+                "server_ms": 5.234647999998288,
+                "billed_ms": 5.69498100000132,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 234.4474420001461,
+                "server_ms": 4.300194000002477,
+                "billed_ms": 4.7069010000022615,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 225.93441200024245,
+                "server_ms": 4.8805690000008894,
+                "billed_ms": 5.532427000002116,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 234.6659299996645,
+                "server_ms": 4.460785999999217,
+                "billed_ms": 4.86001099999811,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 227.01456699996925,
+                "server_ms": 5.057505999999989,
+                "billed_ms": 5.456119999998066,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              },
+              {
+                "ok": true,
+                "wall_ms": 231.90320499998052,
+                "server_ms": 5.028022000001187,
+                "billed_ms": 5.477849999998341,
+                "cost_basis": "billed_ms",
+                "cost_usd": 2.9250000000000004e-06
+              }
+            ],
+            "url": "https://yuki-mt-optimized-b56c2yqz6q-rj.a.run.app/predict"
+          }
+        },
+        "fbosler": {
+          "original": {
+            "cold": {
+              "ok": true,
+              "wall_ms": 3098.1370380000044,
+              "server_ms": 1611.7160619999993,
+              "billed_ms": 1611.988352000001,
+              "cost_basis": "billed_ms",
+              "cost_usd": 4.3325e-05
+            },
+            "n_requested": 30,
+            "n_ok": 30,
+            "resources": {
+              "cpu": 1.0,
+              "mem_gb": 0.5
+            },
+            "wall_ms": {
+              "mean": 1807.017799833314,
+              "std": 105.87937860070949,
+              "min": 1650.178502000017,
+              "max": 2140.041158999793,
+              "median": 1800.0740119998682,
+              "iqr": 120.76397100054237,
+              "ci95": [
+                1772.391894133352,
+                1844.2387837666502
+              ]
+            },
+            "server_ms": {
+              "mean": 1630.1512495666666,
+              "std": 75.91090017636402,
+              "min": 1496.5597699999976,
+              "max": 1804.6532339999999,
+              "median": 1629.028545499999,
+              "iqr": 85.67281899999921,
+              "ci95": [
+                1603.8827968333328,
+                1657.913888633334
+              ]
+            },
+            "billed_ms": {
+              "mean": 1630.3008519000005,
+              "std": 75.92142357081353,
+              "min": 1496.6665500000004,
+              "max": 1804.7586289999983,
+              "median": 1629.1396150000032,
+              "iqr": 85.66767600000003,
+              "ci95": [
+                1603.8723381000002,
+                1656.9278370666675
+              ]
+            },
+            "cost_usd": {
+              "mean": 4.2988333333333337e-05,
+              "std": 2.2713710477994565e-06,
+              "min": 3.8275e-05,
+              "max": 4.8375000000000004e-05,
+              "median": 4.3325e-05,
+              "iqr": 2.5249999999999936e-06,
+              "ci95": [
+                4.2230833333333336e-05,
+                4.3830000000000006e-05
+              ]
+            },
+            "cost_per_million": 42.98833333333334,
+            "runs": [
+              {
+                "ok": true,
+                "wall_ms": 1766.8364819996896,
+                "server_ms": 1605.5055010000015,
+                "billed_ms": 1605.670230000001,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.3325e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 1694.283970000015,
+                "server_ms": 1547.493889,
+                "billed_ms": 1547.5990379999996,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.080000000000001e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 1750.5974969999443,
+                "server_ms": 1584.4063849999993,
+                "billed_ms": 1584.5889849999999,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.080000000000001e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 1783.9453950000461,
+                "server_ms": 1631.7238029999999,
+                "billed_ms": 1631.9121019999993,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.3325e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 1827.7124810001624,
+                "server_ms": 1668.4004629999977,
+                "billed_ms": 1668.502009000001,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.3325e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 1850.9432890000426,
+                "server_ms": 1704.6153920000008,
+                "billed_ms": 1704.865000999998,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.585e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 1978.9788650000446,
+                "server_ms": 1794.270269000002,
+                "billed_ms": 1794.593197000001,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.585e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 1730.412423999951,
+                "server_ms": 1564.711962999997,
+                "billed_ms": 1564.8266600000013,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.080000000000001e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 1780.0893359999463,
+                "server_ms": 1619.7914599999983,
+                "billed_ms": 1619.8871490000001,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.3325e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 1683.885872999781,
+                "server_ms": 1528.064065999999,
+                "billed_ms": 1528.3140060000023,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.080000000000001e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 1800.420032999682,
+                "server_ms": 1647.3126829999992,
+                "billed_ms": 1647.4600479999992,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.3325e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 1951.52211300001,
+                "server_ms": 1582.7276439999985,
+                "billed_ms": 1582.834333000001,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.080000000000001e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 1801.1002109997207,
+                "server_ms": 1655.7270729999977,
+                "billed_ms": 1655.890912000004,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.3325e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 1764.5325560001766,
+                "server_ms": 1598.9973840000005,
+                "billed_ms": 1599.1110909999975,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.080000000000001e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 1759.2308560001584,
+                "server_ms": 1609.918325999999,
+                "billed_ms": 1610.060251,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.3325e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 1861.595139000201,
+                "server_ms": 1704.1807820000017,
+                "billed_ms": 1704.2822120000026,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.585e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 1802.9420779998873,
+                "server_ms": 1648.0771840000016,
+                "billed_ms": 1648.3774710000034,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.3325e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 1723.8573950003229,
+                "server_ms": 1571.1337949999943,
+                "billed_ms": 1571.403857,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.080000000000001e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 1806.6608780000024,
+                "server_ms": 1654.9096400000067,
+                "billed_ms": 1655.0134639999997,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.3325e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 1867.8740959999232,
+                "server_ms": 1705.8977249999998,
+                "billed_ms": 1706.0526670000015,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.585e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 1884.120762999828,
+                "server_ms": 1727.5268360000027,
+                "billed_ms": 1727.6306750000003,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.585e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 1884.4143189999158,
+                "server_ms": 1713.1361650000017,
+                "billed_ms": 1713.2359169999986,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.585e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 1799.7279910000543,
+                "server_ms": 1626.497490999995,
+                "billed_ms": 1626.6134840000036,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.3325e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 1972.5115300002471,
+                "server_ms": 1804.6532339999999,
+                "billed_ms": 1804.7586289999983,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.8375000000000004e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 2140.041158999793,
+                "server_ms": 1631.5596000000028,
+                "billed_ms": 1631.665746000003,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.3325e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 1650.178502000017,
+                "server_ms": 1496.5597699999976,
+                "billed_ms": 1496.6665500000004,
+                "cost_basis": "billed_ms",
+                "cost_usd": 3.8275e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 1740.8311679996586,
+                "server_ms": 1593.2679989999983,
+                "billed_ms": 1593.375023,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.080000000000001e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 1671.7676289999872,
+                "server_ms": 1517.5733749999977,
+                "billed_ms": 1517.6885500000026,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.080000000000001e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 1676.05266999999,
+                "server_ms": 1530.8058419999995,
+                "billed_ms": 1530.9075360000008,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.080000000000001e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 1803.4672970002248,
+                "server_ms": 1635.0917480000078,
+                "billed_ms": 1635.2387639999934,
+                "cost_basis": "billed_ms",
+                "cost_usd": 4.3325e-05
+              }
+            ],
+            "url": "https://fbosler-original-b56c2yqz6q-rj.a.run.app/score"
+          },
+          "optimized": {
+            "cold": {
+              "ok": true,
+              "wall_ms": 6676.041398000052,
+              "server_ms": 711.057857000002,
+              "billed_ms": 711.4194890000008,
+              "cost_basis": "billed_ms",
+              "cost_usd": 2.0600000000000003e-05
+            },
+            "n_requested": 30,
+            "n_ok": 30,
+            "resources": {
+              "cpu": 1.0,
+              "mem_gb": 0.5
+            },
+            "wall_ms": {
+              "mean": 788.7113362000036,
+              "std": 44.65820906485527,
+              "min": 732.9339160000927,
+              "max": 961.9362960002036,
+              "median": 778.2262205000734,
+              "iqr": 38.20863700002519,
+              "ci95": [
+                774.8200785666237,
+                805.8139309666634
+              ]
+            },
+            "server_ms": {
+              "mean": 612.5600233333329,
+              "std": 23.80090865177574,
+              "min": 578.6189379999983,
+              "max": 666.0735349999989,
+              "median": 607.2662649999997,
+              "iqr": 31.238705999999866,
+              "ci95": [
+                604.5577492666658,
+                621.0894471666666
+              ]
+            },
+            "billed_ms": {
+              "mean": 612.7137635999999,
+              "std": 23.793782443417523,
+              "min": 579.0215299999986,
+              "max": 666.2156539999984,
+              "median": 607.3974990000011,
+              "iqr": 31.220577000002663,
+              "ci95": [
+                604.5935046666663,
+                621.4839067666667
+              ]
+            },
+            "cost_usd": {
+              "mean": 1.7233333333333333e-05,
+              "std": 1.2106448362505952e-06,
+              "min": 1.555e-05,
+              "max": 1.8075e-05,
+              "median": 1.8075e-05,
+              "iqr": 2.5250000000000004e-06,
+              "ci95": [
+                1.68125e-05,
+                1.7654166666666664e-05
+              ]
+            },
+            "cost_per_million": 17.233333333333334,
+            "runs": [
+              {
+                "ok": true,
+                "wall_ms": 864.833568999984,
+                "server_ms": 657.409702999999,
+                "billed_ms": 657.5786549999982,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.8075e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 837.7552349998041,
+                "server_ms": 658.4120770000013,
+                "billed_ms": 658.5989199999993,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.8075e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 835.5020300000433,
+                "server_ms": 666.0735349999989,
+                "billed_ms": 666.2156539999984,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.8075e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 811.9102830000884,
+                "server_ms": 648.9359970000023,
+                "billed_ms": 649.079252,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.8075e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 758.3656120000342,
+                "server_ms": 589.2945179999991,
+                "billed_ms": 589.4558390000029,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 771.1768700000903,
+                "server_ms": 599.6490240000014,
+                "billed_ms": 599.7927919999988,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 818.7411379999503,
+                "server_ms": 605.0264149999975,
+                "billed_ms": 605.1590239999989,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.8075e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 787.5309430000925,
+                "server_ms": 606.4500859999988,
+                "billed_ms": 606.5827410000004,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.8075e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 743.2219070001338,
+                "server_ms": 593.8208449999997,
+                "billed_ms": 593.9610979999976,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 773.3415379998405,
+                "server_ms": 625.0595509999996,
+                "billed_ms": 625.1816750000003,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.8075e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 733.4460009997201,
+                "server_ms": 583.7871549999995,
+                "billed_ms": 583.9212359999983,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 759.1181069997219,
+                "server_ms": 608.0824440000008,
+                "billed_ms": 608.2122570000017,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.8075e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 774.0561690002323,
+                "server_ms": 626.4581739999996,
+                "billed_ms": 626.6056060000018,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.8075e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 761.5288550000514,
+                "server_ms": 597.2601200000014,
+                "billed_ms": 597.3920439999994,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 789.2021029997522,
+                "server_ms": 617.5544179999974,
+                "billed_ms": 617.7388239999999,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.8075e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 794.8742969997511,
+                "server_ms": 636.1921289999976,
+                "billed_ms": 636.3376239999993,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.8075e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 773.6257780002234,
+                "server_ms": 603.3830160000023,
+                "billed_ms": 603.5208489999989,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.8075e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 793.1728900002781,
+                "server_ms": 619.7420360000017,
+                "billed_ms": 619.8640729999987,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.8075e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 732.9339160000927,
+                "server_ms": 578.6189379999983,
+                "billed_ms": 579.0215299999986,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 961.9362960002036,
+                "server_ms": 586.468661999998,
+                "billed_ms": 586.5826120000008,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 770.5136160002439,
+                "server_ms": 612.2524929999997,
+                "billed_ms": 612.4228179999989,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.8075e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 788.7789390001672,
+                "server_ms": 617.4809299999993,
+                "billed_ms": 617.6138150000056,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.8075e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 782.3962719999145,
+                "server_ms": 614.6811449999987,
+                "billed_ms": 614.8074349999958,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.8075e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 761.1631909999232,
+                "server_ms": 580.3355490000044,
+                "billed_ms": 580.4822250000043,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 786.0872239998571,
+                "server_ms": 603.5036809999995,
+                "billed_ms": 603.6746130000026,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.8075e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 756.2395360000664,
+                "server_ms": 608.3219160000012,
+                "billed_ms": 608.4611579999972,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.8075e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 770.8548209998298,
+                "server_ms": 590.6441829999949,
+                "billed_ms": 590.836062000001,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 799.3718279999484,
+                "server_ms": 642.855879999999,
+                "billed_ms": 643.0210560000021,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.8075e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 757.1667030001663,
+                "server_ms": 592.991512999994,
+                "billed_ms": 593.1085610000011,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.555e-05
+              },
+              {
+                "ok": true,
+                "wall_ms": 812.4944189999042,
+                "server_ms": 606.054567000001,
+                "billed_ms": 606.1828599999969,
+                "cost_basis": "billed_ms",
+                "cost_usd": 1.8075e-05
+              }
+            ],
+            "url": "https://fbosler-optimized-b56c2yqz6q-rj.a.run.app/score"
+          }
+        }
+      }
+    }
+  }
+}
