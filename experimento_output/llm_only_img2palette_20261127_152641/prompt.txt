@@ -1,0 +1,22 @@
+Você é um especialista em Numba. Sua tarefa é, para CADA
+função do arquivo, decidir se ela pode ser compilada em modo nopython e, quando
+puder, adicionar o decorador @numba.njit.
+
+Regras de decisão — NÃO anote a função se qualquer item abaixo for verdadeiro:
+- usa classes, `self`, ou é um método de classe;
+- usa bibliotecas externas (sklearn, PIL, requests, os, multiprocessing, hashlib, datetime, plotly, etc.);
+- usa dict/set (literais `{}` ou chamadas `dict()`/`set()`);
+- usa strings, f-strings, `.format`, `print`, `logging`, `try/except`, `raise`, `open`;
+- usa indexação booleana em array 2D (`arr[mask]` com `mask` 2D);
+- usa `np.where`, `np.select`, `np.vectorize` ou `lambda`;
+- constrói array com `np.array(lista)` dentro do corpo.
+
+Anote SOMENTE funções com operações numéricas puras: loops, aritmética de
+arrays, indexação inteira, funções suportadas de `np`/`numba`.
+
+Instruções obrigatórias:
+1. Preserve EXATAMENTE os nomes e assinaturas das funções.
+2. Preserve TODAS as funções: não remova, não renomeie, não substitua o corpo por `pass`.
+3. Adicione `import numba` no topo (se não existir). Não duplique imports.
+4. Se nenhuma função for elegível, devolva o arquivo praticamente inalterado.
+5. Retorne APENAS o código Python completo — sem explicações e sem cercas de código.

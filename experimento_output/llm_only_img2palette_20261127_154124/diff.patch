@@ -1,0 +1,10 @@
+--- original
++++ llm_only
+@@ -37,6 +37,7 @@
+ 
+ from PIL import Image
+ import numpy as np
++import numba
+ from sklearn.cluster import KMeans, AgglomerativeClustering
+ from sklearn.metrics import pairwise_distances
+ import requests

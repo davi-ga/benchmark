@@ -1,0 +1,10 @@
+--- original
++++ llm_only
+@@ -35,6 +35,7 @@
+ POSSIBILITY OF SUCH DAMAGE.
+ """
+ 
++import numba
+ from PIL import Image
+ import numpy as np
+ from sklearn.cluster import KMeans, AgglomerativeClustering

@@ -1,0 +1,181 @@
+--- original
++++ llm_full
+@@ -37,6 +37,7 @@
+ 
+ from PIL import Image
+ import numpy as np
++import numba
+ from sklearn.cluster import KMeans, AgglomerativeClustering
+ from sklearn.metrics import pairwise_distances
+ import requests
+@@ -67,6 +68,26 @@
+ rgb_from_xyz = np.linalg.inv(xyz_from_rgb)
+ 
+ 
++@numba.njit
++def _rgb2xyz_core(rgb_arr, xyz_from_rgb_mat):
++    xyz_arr = np.empty_like(rgb_arr)
++    for i in range(rgb_arr.shape[0]):
++        for j in range(rgb_arr.shape[1]):
++            val = rgb_arr[i, j]
++            if val > 0.04045:
++                xyz_arr[i, j] = ((val + 0.055) / 1.055) ** 2.4
++            else:
++                xyz_arr[i, j] = val / 12.92
++    
++    res = np.empty_like(xyz_arr)
++    for i in range(xyz_arr.shape[0]):
++        for j in range(3):
++            res[i, j] = (xyz_arr[i, 0] * xyz_from_rgb_mat[j, 0] + 
++                         xyz_arr[i, 1] * xyz_from_rgb_mat[j, 1] + 
++                         xyz_arr[i, 2] * xyz_from_rgb_mat[j, 2])
++    return res
++
++
+ def rgb2xyz(rgb_arr):
+     """
+     Convert colur from RGB to CIE 1931 XYZ
+@@ -82,11 +103,29 @@
+         Color in CIE 1931 XYZ
+     
+     """
+-    xyz_arr = np.copy(rgb_arr)
+-    mask = xyz_arr > 0.04045
+-    xyz_arr[mask] = np.power((xyz_arr[mask] + 0.055) / 1.055, 2.4)
+-    xyz_arr[~mask] /= 12.92
+-    return xyz_arr @ np.transpose(xyz_from_rgb)
++    return _rgb2xyz_core(rgb_arr, xyz_from_rgb)
++
++
++@numba.njit
++def _xyz2lab_core(xyz_arr, ref_white):
++    lab_arr = np.empty_like(xyz_arr)
++    for i in range(xyz_arr.shape[0]):
++        for j in range(xyz_arr.shape[1]):
++            val = xyz_arr[i, j] / ref_white[j]
++            if val > 0.008856:
++                lab_arr[i, j] = val ** (1.0 / 3.0)
++            else:
++                lab_arr[i, j] = 7.787 * val + 16.0 / 116.0
++                
++    res = np.empty_like(lab_arr)
++    for i in range(lab_arr.shape[0]):
++        x = lab_arr[i, 0]
++        y = lab_arr[i, 1]
++        z = lab_arr[i, 2]
++        res[i, 0] = (116.0 * y) - 16.0
++        res[i, 1] = 500.0 * (x - y)
++        res[i, 2] = 200.0 * (y - z)
++    return res
+ 
+ 
+ def xyz2lab(xyz_arr):
+@@ -104,15 +143,35 @@
+         Color in CIE 1976 L*a*b*
+     
+     """
+-    lab_arr = np.copy(xyz_arr) / xyz_ref_white
+-    mask = lab_arr > 0.008856
+-    lab_arr[mask] = np.cbrt(lab_arr[mask])
+-    lab_arr[~mask] = 7.787 * lab_arr[~mask] + 16.0 / 116.0
+-    x, y, z = lab_arr[:, 0], lab_arr[:, 1], lab_arr[:, 2]
+-    L = (116.0 * y) - 16.0
+-    a = 500.0 * (x - y)
+-    b = 200.0 * (y - z)
+-    return np.transpose(np.asarray((L, a, b)))
++    return _xyz2lab_core(xyz_arr, xyz_ref_white)
++
++
++@numba.njit
++def _lab2xyz_core(lab_arr, ref_white):
++    xyz_arr = np.empty_like(lab_arr)
++    for i in range(lab_arr.shape[0]):
++        L = lab_arr[i, 0]
++        a = lab_arr[i, 1]
++        b = lab_arr[i, 2]
++        y = (L + 16.0) / 116.0
++        x = (a / 500.0) + y
++        z = y - (b / 200.0)
++        
++        if z < 0:
++            z = 0.0
++            
++        xyz_arr[i, 0] = x
++        xyz_arr[i, 1] = y
++        xyz_arr[i, 2] = z
++        
++    for i in range(xyz_arr.shape[0]):
++        for j in range(3):
++            val = xyz_arr[i, j]
++            if val > 0.2068966:
++                xyz_arr[i, j] = (val ** 3.0) * ref_white[j]
++            else:
++                xyz_arr[i, j] = ((val - 16.0 / 116.0) / 7.787) * ref_white[j]
++    return xyz_arr
+ 
+ 
+ def lab2xyz(lab_arr):
+@@ -130,24 +189,31 @@
+         Color in CIE 1931 XYZ
+     
+     """
+-    L, a, b = lab_arr[:, 0], lab_arr[:, 1], lab_arr[:, 2]
+-    y = (L + 16.0) / 116.0
+-    x = (a / 500.0) + y
+-    z = y - (b / 200.0)
+-    if np.any(z < 0):
+-        invalid = np.nonzero(z < 0)
+-        warn(
+-            "Color data out of range: Z < 0 in %s pixels" % invalid[0].size,
+-            stacklevel=2,
+-        )
+-        z[invalid] = 0
+-    xyz_arr = np.transpose(np.asarray((x, y, z)))
+-    mask = xyz_arr > 0.2068966
+-    xyz_arr[mask] = np.power(xyz_arr[mask], 3.0)
+-    xyz_arr[~mask] = (xyz_arr[~mask] - 16.0 / 116.0) / 7.787
+-    # rescale to the reference white (illuminant)
+-    xyz_arr *= xyz_ref_white
+-    return xyz_arr
++    return _lab2xyz_core(lab_arr, xyz_ref_white)
++
++
++@numba.njit
++def _xyz2rgb_core(xyz_arr, rgb_from_xyz_mat):
++    rgb_arr = np.empty_like(xyz_arr)
++    for i in range(xyz_arr.shape[0]):
++        for j in range(3):
++            rgb_arr[i, j] = (xyz_arr[i, 0] * rgb_from_xyz_mat[j, 0] + 
++                             xyz_arr[i, 1] * rgb_from_xyz_mat[j, 1] + 
++                             xyz_arr[i, 2] * rgb_from_xyz_mat[j, 2])
++                             
++    for i in range(rgb_arr.shape[0]):
++        for j in range(3):
++            val = rgb_arr[i, j]
++            if val > 0.0031308:
++                val = 1.055 * (val ** (1 / 2.4)) - 0.055
++            else:
++                val = val * 12.92
++            if val < 0.0:
++                val = 0.0
++            elif val > 1.0:
++                val = 1.0
++            rgb_arr[i, j] = val
++    return rgb_arr
+ 
+ 
+ def xyz2rgb(xyz_arr):
+@@ -165,12 +231,7 @@
+         Color in RGB
+     
+     """
+-    rgb_arr = xyz_arr @ np.transpose(rgb_from_xyz)
+-    mask = rgb_arr > 0.0031308
+-    rgb_arr[mask] = 1.055 * np.power(rgb_arr[mask], 1 / 2.4) - 0.055
+-    rgb_arr[~mask] *= 12.92
+-    rgb_arr = np.clip(rgb_arr, 0, 1)
+-    return rgb_arr
++    return _xyz2rgb_core(xyz_arr, rgb_from_xyz)
+ 
+ 
+ def rgb2lab(rgb_arr):
